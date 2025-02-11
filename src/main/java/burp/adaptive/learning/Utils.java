@@ -7,10 +7,12 @@ import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
-import static burp.adaptive.learning.LearningExtension.api;
+import static burp.adaptive.learning.LearningExtension.*;
+import static burp.adaptive.learning.LearningExtension.responseHistory;
 
 public class Utils {
     public static HttpRequest modifyRequest(HttpRequestToBeSent req, String type, String name, String value) {
@@ -79,5 +81,10 @@ public class Utils {
         } catch (Exception e) {
             return "";
         }
+    }
+    public static void resetHistory() {
+        requestHistoryPos = 1;
+        requestHistory = new ArrayList<>();
+        responseHistory = new ArrayList<>();
     }
 }

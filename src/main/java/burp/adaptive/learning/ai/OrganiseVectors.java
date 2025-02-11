@@ -21,7 +21,6 @@ public class OrganiseVectors {
             try {
                 HttpRequestResponse baseRequestResponse = api.http().sendRequest(req);
                 baseRequestResponse.annotations().setNotes("This is the base request/response");
-                api.organizer().sendToOrganizer(baseRequestResponse);
                 for(int i = 0; i < headersAndParameters.length(); i++) {
                     CustomResponseGroup responsesAnalyser = new CustomResponseGroup(Utils::calculateFingerprint, baseRequestResponse);
                     for(int k=1;k<=5;k++) {
@@ -48,6 +47,7 @@ public class OrganiseVectors {
                         if(modifiedReq != null) {
                             HttpRequestResponse requestResponse = api.http().sendRequest(modifiedReq);
                             if(!responsesAnalyser.matches(requestResponse)) {
+                                api.organizer().sendToOrganizer(baseRequestResponse);
                                 StringBuilder notes = new StringBuilder();
                                 notes.append("The response is different in the following ways");
                                 notes.append(System.lineSeparator());

@@ -28,6 +28,7 @@ public class LearningExtension implements BurpExtension, ExtensionUnloadingHandl
     public static int requestHistoryPos = 1;
     public static ArrayList<HttpRequestToBeSent> requestHistory = new ArrayList<>();
     public static ArrayList<HttpResponseReceived> responseHistory = new ArrayList<>();
+    public static String lastHost = null;
     public static final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     @Override

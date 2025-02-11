@@ -11,6 +11,7 @@ import burp.api.montoya.http.handler.ResponseReceivedAction;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static burp.adaptive.learning.LearningExtension.*;
 
@@ -18,7 +19,12 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
     @Override
     public RequestToBeSentAction handleHttpRequestToBeSent(HttpRequestToBeSent req) {
         ToolSource toolSource = req.toolSource();
+        String currentHost = req.httpService().host();
         if(AI.isAiSupported() && toolSource.isFromTool(ToolType.REPEATER)) {
+            if(lastHost != null && !currentHost.equals(lastHost)) {
+               Utils.resetHistory();
+            }
+
             if(requestHistoryPos >= maxAmountOfRequests) {
                 JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.toArray(new HttpRequestToBeSent[0]));
                 if(!headersAndParameters.isEmpty()) {
@@ -26,13 +32,12 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
                 } else {
                     api.logging().logToOutput("Nothing to analyse. Adaptive learning requires data changing in the request.");
                 }
-                requestHistoryPos = 1;
-                requestHistory = new ArrayList<>();
-                responseHistory = new ArrayList<>();
+                Utils.resetHistory();
             } else {
                 requestHistory.add(req);
                 requestHistoryPos++;
             }
+            lastHost = currentHost;
         }
         return null;
     }
