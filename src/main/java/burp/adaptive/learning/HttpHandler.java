@@ -26,7 +26,7 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
                 } else {
                     api.logging().logToOutput("Nothing to analyse. Adaptive learning requires data changing in the request.");
                 }
-                requestHistoryPos = 0;
+                requestHistoryPos = 1;
                 requestHistory = new ArrayList<>();
                 responseHistory = new ArrayList<>();
             } else {

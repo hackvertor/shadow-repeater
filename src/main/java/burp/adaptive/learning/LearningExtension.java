@@ -25,7 +25,7 @@ public class LearningExtension implements BurpExtension, ExtensionUnloadingHandl
     public static MontoyaApi api;
     public static int amountOfVariations = 10;
     public static int maxAmountOfRequests = 5;
-    public static int requestHistoryPos = 0;
+    public static int requestHistoryPos = 1;
     public static ArrayList<HttpRequestToBeSent> requestHistory = new ArrayList<>();
     public static ArrayList<HttpResponseReceived> responseHistory = new ArrayList<>();
     public static final ExecutorService executorService = Executors.newSingleThreadExecutor();
