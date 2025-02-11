@@ -35,6 +35,7 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
             }
 
             if(requestHistoryPos >= amountOfRequests) {
+                requestHistory.add(req);
                 JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.toArray(new HttpRequestToBeSent[0]));
                 if(!headersAndParameters.isEmpty()) {
                     VariationAnalyser.analyse(headersAndParameters, req, responseHistory.toArray(new HttpResponseReceived[0]));
