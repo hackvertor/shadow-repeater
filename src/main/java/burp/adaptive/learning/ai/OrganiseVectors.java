@@ -1,46 +1,41 @@
 package burp.adaptive.learning.ai;
 
+import burp.CustomResponseGroup;
 import burp.adaptive.learning.LearningExtension;
 import burp.adaptive.learning.Utils;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.handler.HttpResponseReceived;
 import burp.api.montoya.http.message.HttpRequestResponse;
-import burp.api.montoya.http.message.params.HttpParameter;
-import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.requests.HttpRequest;
-import burp.api.montoya.http.message.responses.analysis.AttributeType;
-import burp.api.montoya.http.message.responses.analysis.ResponseVariationsAnalyzer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.Set;
 
-import static burp.adaptive.learning.LearningExtension.api;
+import static burp.adaptive.learning.LearningExtension.*;
 
 public class OrganiseVectors {
     public static void organise(HttpRequestToBeSent req, JSONArray variations, JSONArray headersAndParameters, HttpResponseReceived[] repeaterResponses) {
         LearningExtension.executorService.submit(() -> {
             try {
-                ResponseVariationsAnalyzer repeaterAnalyzer = api.http().createResponseVariationsAnalyzer();
-                for (HttpResponseReceived repeaterResponse : repeaterResponses) {
-                    repeaterAnalyzer.updateWith(repeaterResponse);
-                }
                 HttpRequestResponse baseRequestResponse = api.http().sendRequest(req);
                 baseRequestResponse.annotations().setNotes("This is the base request/response");
                 api.organizer().sendToOrganizer(baseRequestResponse);
-                Set<AttributeType> invariantRepeaterResponseAttributes = repeaterAnalyzer.invariantAttributes();
-                boolean foundInterestingItem = false;
                 for(int i = 0; i < headersAndParameters.length(); i++) {
-                    for(int k=0;k<3;k++) {
-                        HttpRequest modifiedReq = null;
-                        JSONObject headerParamObj = headersAndParameters.getJSONObject(i);
-                        String type = headerParamObj.getString("type");
-                        String name = headerParamObj.has("name") ? headerParamObj.getString("name") : "";
-                        String controlValue = "";
-                        HttpRequest controlReq = Utils.modifyRequest(req, type, name, controlValue);
-                        HttpRequestResponse controlRequestResponse = api.http().sendRequest(controlReq);
+                    CustomResponseGroup responsesAnalyser = new CustomResponseGroup(Utils::calculateFingerprint, baseRequestResponse);
+                    for(int k=1;k<=5;k++) {
+                        try {
+                            JSONObject headerParamObj = headersAndParameters.getJSONObject(i);
+                            String type = headerParamObj.getString("type");
+                            String name = headerParamObj.has("name") ? headerParamObj.getString("name") : "";
+                            String controlValue = Utils.randomString(k * 2);
+                            HttpRequest controlReq = Utils.modifyRequest(req, type, name, controlValue);
+                            HttpRequestResponse controlRequestResponse = api.http().sendRequest(controlReq);
+                            responsesAnalyser.add(controlRequestResponse);
+                        } catch (RuntimeException e) {
+                            api.logging().logToError("Invalid control value length");
+                        }
 
                     }
                     for(int j = 0; j < variations.length(); j++) {
@@ -52,39 +47,18 @@ public class OrganiseVectors {
                         modifiedReq = Utils.modifyRequest(req, type, name, vector);
                         if(modifiedReq != null) {
                             HttpRequestResponse requestResponse = api.http().sendRequest(modifiedReq);
-                            ResponseVariationsAnalyzer analyzer = api.http().createResponseVariationsAnalyzer();
-                            analyzer.updateWith(baseRequestResponse.response());
-                            analyzer.updateWith(requestResponse.response());
-                            Set<AttributeType> responseAttributesThatDiffer = analyzer.variantAttributes();
-                            if(!responseAttributesThatDiffer.isEmpty()) {
+                            if(!responsesAnalyser.matches(requestResponse)) {
                                 StringBuilder notes = new StringBuilder();
-                                notes.append("Variations: ").append(responseAttributesThatDiffer.size());
-                                notes.append(System.lineSeparator());
-                                notes.append(System.lineSeparator());
                                 notes.append("The response is different in the following ways");
                                 notes.append(System.lineSeparator());
-                                if(baseRequestResponse.response().statusCode() != requestResponse.response().statusCode()) {
-                                    notes.append("Old status code: ").append(baseRequestResponse.response().statusCode());
-                                    notes.append("New status code: ").append(requestResponse.response().statusCode());
-                                }
-                                for(AttributeType attributeType : responseAttributesThatDiffer) {
-                                    if(invariantRepeaterResponseAttributes.contains(attributeType)) {
-                                        continue;
-                                    }
-                                    notes.append(attributeType.name());
-                                    notes.append(System.lineSeparator());
-                                    foundInterestingItem = true;
-                                }
-                                if(foundInterestingItem) {
-                                    requestResponse.annotations().setNotes(notes.toString());
-                                    api.organizer().sendToOrganizer(requestResponse);
-                                }
+                                notes.append(responsesAnalyser.describeDiff(requestResponse));
+                                requestResponse.annotations().setNotes(notes.toString());
+                                api.organizer().sendToOrganizer(requestResponse);
+                                api.logging().logToOutput("Found interesting items. Check the organiser to see the results.");
+                                return;
                             }
                         }
                     }
-                }
-                if(foundInterestingItem) {
-                    api.logging().logToOutput("Found interesting items. Check the organiser to see the results.");
                 }
             } catch (Throwable throwable) {
                 StringWriter writer = new StringWriter();
