@@ -1,6 +1,8 @@
 package burp.adaptive.learning.ai;
 
 import burp.adaptive.learning.LearningExtension;
+import burp.adaptive.learning.settings.InvalidTypeSettingException;
+import burp.adaptive.learning.settings.UnregisteredSettingException;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.handler.HttpResponseReceived;
 import org.json.JSONArray;
@@ -15,6 +17,13 @@ public class VariationAnalyser {
     public static void analyse(JSONArray headersAndParameters, HttpRequestToBeSent req, HttpResponseReceived[] repeaterResponses) {
         LearningExtension.executorService.submit(() -> {
             try {
+                int maxVariationAmount;
+                try {
+                    maxVariationAmount = LearningExtension.generalSettings.getInteger("maxVariationAmount");
+                } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
+                    api.logging().logToError("Error loading settings:" + e);
+                    throw new RuntimeException(e);
+                }
                 api.logging().logToOutput("------");
                 api.logging().logToOutput("Analysing:\n" + headersAndParameters.toString() + "\n");
                 AI ai = new AI();
@@ -22,7 +31,7 @@ public class VariationAnalyser {
                 ai.setSystemMessage("""
                         You are a web security expert.
                         Your job is to analyze the JSON given to you and look for variations of what's being tested.
-                        You should return a JSON array of""" + " " + amountOfVariations + " " + """
+                        You should return a JSON array of""" + " " + maxVariationAmount + " vectors." + """
                         The JSON structure should be:[{"vector":"$yourVariation"}].
                         If you cannot find a variation just return an empty array.
                         Do not output markdown. Do not describe what you are doing just return JSON.

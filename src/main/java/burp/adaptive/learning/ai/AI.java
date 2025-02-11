@@ -1,5 +1,8 @@
 package burp.adaptive.learning.ai;
 
+import burp.adaptive.learning.LearningExtension;
+import burp.adaptive.learning.settings.InvalidTypeSettingException;
+import burp.adaptive.learning.settings.UnregisteredSettingException;
 import burp.api.montoya.ai.chat.Message;
 import burp.api.montoya.ai.chat.PromptOptions;
 import burp.api.montoya.ai.chat.PromptResponse;
@@ -10,7 +13,6 @@ import java.security.NoSuchAlgorithmException;
 import static burp.adaptive.learning.LearningExtension.api;
 
 public class AI {
-    public static boolean debug = false;
     public static final String featureMessage = "This feature is only available on the AI version of Burp.";
     public static long lastExecutionTime = 0;
     public static long apiRequestLimitMS = 1000;
@@ -61,6 +63,13 @@ public class AI {
         return new String(messageDigest.digest());
     }
     public String execute() {
+        boolean debug;
+        try {
+            debug = LearningExtension.generalSettings.getBoolean("debug");
+        } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
+            api.logging().logToError("Error loading settings:" + e);
+            throw new RuntimeException(e);
+        }
         if(!isAiSupported()) {
             throw new RuntimeException("Montoya AI API is not enabled. You need to enable use AI in the extension tab.");
         }

@@ -2,7 +2,7 @@ package burp.adaptive.learning.ai;
 
 import burp.CustomResponseGroup;
 import burp.adaptive.learning.LearningExtension;
-import burp.adaptive.learning.Utils;
+import burp.adaptive.learning.utils.Utils;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.handler.HttpResponseReceived;
 import burp.api.montoya.http.message.HttpRequestResponse;

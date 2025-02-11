@@ -1,11 +1,16 @@
-package burp.adaptive.learning;
+package burp.adaptive.learning.utils;
 
+import burp.adaptive.learning.settings.Settings;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -86,5 +91,34 @@ public class Utils {
         requestHistoryPos = 1;
         requestHistory = new ArrayList<>();
         responseHistory = new ArrayList<>();
+    }
+    public static void registerGeneralSettings(Settings settings) {
+        settings.registerBooleanSetting("debug", false, "Debug AI requests", "AI", null);
+        settings.registerIntegerSetting("amountOfRequests", 5, "Amount amount of requests before doing AI analysis", "Repeater settings", 1, 100);
+        settings.registerIntegerSetting("maxVariationAmount", 10, "Maximum amount of variations", "Repeater settings", 1, 1000);
+    }
+
+    public static JFrame getSettingsWindowInstance() {
+        if(SettingsFrame != null) {
+            return SettingsFrame;
+        }
+        SettingsFrame = new JFrame();
+        SettingsFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                SettingsFrame.setVisible(false);
+                SettingsFrame.getContentPane().removeAll();
+                SettingsFrame.getContentPane().setLayout(new BorderLayout());
+            }
+        });
+        return SettingsFrame;
+    }
+
+    public static JMenu generateMenuBar() {
+        JMenu menuBar = new JMenu(extensionName);
+        JMenuItem settingsMenu = new JMenuItem("Settings");
+        settingsMenu.addActionListener(e -> Settings.showSettingsWindow());
+        menuBar.add(settingsMenu);
+        return menuBar;
     }
 }
