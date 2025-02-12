@@ -40,7 +40,7 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
                 if(!headersAndParameters.isEmpty()) {
                     VariationAnalyser.analyse(headersAndParameters, req, responseHistory.toArray(new HttpResponseReceived[0]));
                 } else {
-                    api.logging().logToOutput("Nothing to analyse. Adaptive learning requires data changing in the request.");
+                    api.logging().logToOutput("Nothing to analyse. Shadow Repeater requires data changing in the request.");
                 }
                 Utils.resetHistory();
             } else {
