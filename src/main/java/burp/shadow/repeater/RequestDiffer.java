@@ -1,9 +1,9 @@
 package burp.shadow.repeater;
 
-import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
+import burp.api.montoya.http.message.requests.HttpRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,16 +12,16 @@ import java.util.stream.Collectors;
 
 public class RequestDiffer {
     public static Set<String> headersToSkip = Set.of("Content-Length");
-    public static JSONArray generateHeadersAndParametersJson(HttpRequestToBeSent[] requests) {
+    public static JSONArray generateHeadersAndParametersJson(HttpRequest[] requests) {
         JSONArray result = new JSONArray();
         if (requests == null || requests.length == 0) return result;
 
         boolean allIdentical = areAllRequestsIdentical(requests);
 
         if (!allIdentical) {
-            HttpRequestToBeSent previous = null;
+            HttpRequest previous = null;
             for (int i = 0; i < requests.length; i++) {
-                HttpRequestToBeSent current = requests[i];
+                HttpRequest current = requests[i];
                 if (i == 0) {
                     addAllItems(result, current);
                 } else {
@@ -36,14 +36,14 @@ public class RequestDiffer {
         return result;
     }
 
-    private static boolean areAllRequestsIdentical(HttpRequestToBeSent[] requests) {
+    private static boolean areAllRequestsIdentical(HttpRequest[] requests) {
         for (int i = 1; i < requests.length; i++) {
             if (!requestsEquivalent(requests[0], requests[i])) return false;
         }
         return true;
     }
 
-    private static boolean requestsEquivalent(HttpRequestToBeSent a, HttpRequestToBeSent b) {
+    private static boolean requestsEquivalent(HttpRequest a, HttpRequest b) {
         if (!a.pathWithoutQuery().equals(b.pathWithoutQuery())) return false;
         if (!a.headers().equals(b.headers())) return false;
         return parametersEqual(a.parameters(), b.parameters());
@@ -62,7 +62,7 @@ public class RequestDiffer {
         return set;
     }
 
-    private static void addAllItems(JSONArray result, HttpRequestToBeSent request) {
+    private static void addAllItems(JSONArray result, HttpRequest request) {
         for (ParsedHttpParameter param : request.parameters()) {
             String type = parameterTypeText(param.type());
             if (!type.isEmpty()) {
@@ -94,7 +94,7 @@ public class RequestDiffer {
         }
     }
 
-    private static void addDifferences(JSONArray result, HttpRequestToBeSent current, HttpRequestToBeSent previous) {
+    private static void addDifferences(JSONArray result, HttpRequest current, HttpRequest previous) {
         String curPath = current.pathWithoutQuery();
         String prevPath = previous.pathWithoutQuery();
         if (!curPath.equals(prevPath)) {
@@ -151,7 +151,7 @@ public class RequestDiffer {
         };
     }
 
-    private static Set<String> buildRequestSet(HttpRequestToBeSent req) {
+    private static Set<String> buildRequestSet(HttpRequest req) {
         Set<String> set = new HashSet<>();
         for (ParsedHttpParameter p : req.parameters()) {
             String t = parameterTypeText(p.type());
@@ -171,9 +171,9 @@ public class RequestDiffer {
         return set;
     }
 
-    private static Set<String> intersectionOfAllRequests(HttpRequestToBeSent[] requests) {
+    private static Set<String> intersectionOfAllRequests(HttpRequest[] requests) {
         Set<String> intersection = null;
-        for (HttpRequestToBeSent r : requests) {
+        for (HttpRequest r : requests) {
             Set<String> current = buildRequestSet(r);
             if (intersection == null) {
                 intersection = new HashSet<>(current);

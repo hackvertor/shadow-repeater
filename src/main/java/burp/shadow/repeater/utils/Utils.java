@@ -20,7 +20,7 @@ import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 import static burp.shadow.repeater.ShadowRepeaterExtension.responseHistory;
 
 public class Utils {
-    public static HttpRequest modifyRequest(HttpRequestToBeSent req, String type, String name, String value) {
+    public static HttpRequest modifyRequest(HttpRequest req, String type, String name, String value) {
         return switch (type) {
             case "header" -> req.withRemovedHeader(name).withAddedHeader(name, value);
             case "URL", "BODY", "COOKIE", "JSON" -> {
@@ -94,6 +94,7 @@ public class Utils {
     }
     public static void registerGeneralSettings(Settings settings) {
         settings.registerBooleanSetting("debug", false, "Debug AI requests", "AI", null);
+        settings.registerBooleanSetting("autoInvoke", true, "Auto invoke after repeater requests", "Repeater settings", null);
         settings.registerIntegerSetting("amountOfRequests", 5, "Amount of requests before doing AI analysis", "Repeater settings", 1, 100);
         settings.registerIntegerSetting("maxVariationAmount", 20, "Maximum amount of variations", "Repeater settings", 1, 1000);
     }

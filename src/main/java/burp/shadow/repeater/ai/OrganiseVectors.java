@@ -1,6 +1,7 @@
 package burp.shadow.repeater.ai;
 
 import burp.CustomResponseGroup;
+import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.utils.Utils;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
@@ -16,7 +17,7 @@ import java.io.StringWriter;
 import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
 public class OrganiseVectors {
-    public static void organise(HttpRequestToBeSent req, JSONArray variations, JSONArray headersAndParameters, HttpResponseReceived[] repeaterResponses) {
+    public static void organise(HttpRequest req, JSONArray variations, JSONArray headersAndParameters, HttpResponse[] repeaterResponses) {
         ShadowRepeaterExtension.executorService.submit(() -> {
             try {
                 HttpRequestResponse baseRequestResponse = api.http().sendRequest(req);
@@ -61,6 +62,7 @@ public class OrganiseVectors {
                         }
                     }
                 }
+                api.logging().logToOutput("Nothing interesting found.");
             } catch (Throwable throwable) {
                 StringWriter writer = new StringWriter();
                 throwable.printStackTrace(new PrintWriter(writer));

@@ -3,6 +3,8 @@ package burp.shadow.repeater;
 import burp.BulkUtilities;
 import burp.IBurpExtender;
 import burp.IBurpExtenderCallbacks;
+import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ai.AI;
 import burp.shadow.repeater.settings.Settings;
 import burp.shadow.repeater.utils.Utils;
@@ -28,10 +30,11 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
     public static String extensionName = "Shadow Repeater";
     public static MontoyaApi api;
     public static int requestHistoryPos = 1;
-    public static ArrayList<HttpRequestToBeSent> requestHistory = new ArrayList<>();
-    public static ArrayList<HttpResponseReceived> responseHistory = new ArrayList<>();
+    public static ArrayList<HttpRequest> requestHistory = new ArrayList<>();
+    public static ArrayList<HttpResponse> responseHistory = new ArrayList<>();
     public static String lastHost = null;
     public static final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    public static String nothingToAnalyseMsg = "Nothing to analyse. "+ extensionName +" requires data changing in the request.";
 
     @Override
     public void initialize(MontoyaApi montoyaApi) {
@@ -39,6 +42,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
         api.extension().setName(extensionName);
         api.logging().logToOutput(extensionName+ " v1.0");
         api.http().registerHttpHandler(new HttpHandler());
+        api.userInterface().registerContextMenuItemsProvider(new ContextMenu());
         api.extension().registerUnloadingHandler(this);
         if(!AI.isAiSupported()) {
             api.logging().logToOutput("AI features are not available. You need to enable \"Use AI\" in the extension tab.");

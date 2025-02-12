@@ -1,5 +1,7 @@
 package burp.shadow.repeater;
 
+import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ai.AI;
 import burp.shadow.repeater.ai.VariationAnalyser;
 import burp.shadow.repeater.settings.InvalidTypeSettingException;
@@ -22,13 +24,14 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
         String currentHost = req.httpService().host();
         if(AI.isAiSupported() && toolSource.isFromTool(ToolType.REPEATER)) {
             int amountOfRequests;
+            boolean autoInvoke;
             try {
                 amountOfRequests = ShadowRepeaterExtension.generalSettings.getInteger("amountOfRequests");
+                autoInvoke = ShadowRepeaterExtension.generalSettings.getBoolean("autoInvoke");
             } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
                 api.logging().logToError("Error loading settings:" + e);
                 throw new RuntimeException(e);
             }
-
 
             if(lastHost != null && !currentHost.equals(lastHost)) {
                Utils.resetHistory();
@@ -37,11 +40,13 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
             if(requestHistoryPos >= amountOfRequests) {
                 api.logging().logToOutput("Repeater request " + requestHistoryPos + " of " + amountOfRequests);
                 requestHistory.add(req);
-                JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.toArray(new HttpRequestToBeSent[0]));
-                if(!headersAndParameters.isEmpty()) {
-                    VariationAnalyser.analyse(headersAndParameters, req, responseHistory.toArray(new HttpResponseReceived[0]));
-                } else {
-                    api.logging().logToOutput("Nothing to analyse. Shadow Repeater requires data changing in the request.");
+                if(autoInvoke) {
+                    JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.toArray(new HttpRequest[0]));
+                    if (!headersAndParameters.isEmpty()) {
+                        VariationAnalyser.analyse(headersAndParameters, req, responseHistory.toArray(new HttpResponse[0]));
+                    } else {
+                        api.logging().logToOutput(nothingToAnalyseMsg);
+                    }
                 }
                 Utils.resetHistory();
             } else {
@@ -56,7 +61,7 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
 
     @Override
     public ResponseReceivedAction handleHttpResponseReceived(HttpResponseReceived resp) {
-        responseHistory.add(resp);
+        //responseHistory.add(resp);
         return null;
     }
 }
