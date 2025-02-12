@@ -10,6 +10,7 @@ import burp.api.montoya.ui.contextmenu.ContextMenuEvent;
 import burp.api.montoya.ui.contextmenu.ContextMenuItemsProvider;
 import burp.shadow.repeater.ai.VariationAnalyser;
 import burp.shadow.repeater.settings.Settings;
+import burp.shadow.repeater.utils.Utils;
 import org.json.JSONArray;
 
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class ContextMenu implements ContextMenuItemsProvider {
             JMenuItem sendToItem = new JMenuItem("Send to " + extensionName);
 
             HttpRequestResponse requestResponse = event.messageEditorRequestResponse().isPresent() ? event.messageEditorRequestResponse().get().requestResponse() : event.selectedRequestResponses().getFirst();
-            sendToItem.addActionListener(l -> {
+            sendToItem.addActionListener(e -> {
                 JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.toArray(new HttpRequest[0]));
                 if (!headersAndParameters.isEmpty()) {
                     VariationAnalyser.analyse(headersAndParameters, requestResponse.request(), new HttpResponseReceived[0]);
@@ -40,6 +41,9 @@ public class ContextMenu implements ContextMenuItemsProvider {
                 }
             });
             menuItemList.add(sendToItem);
+            JMenuItem resetHistoryItem = new JMenuItem("Reset request history");
+            resetHistoryItem.addActionListener(e -> Utils.resetHistory());
+            menuItemList.add(resetHistoryItem);
             JMenuItem settings = new JMenuItem("Settings");
             settings.addActionListener(e -> Settings.showSettingsWindow());
             menuItemList.add(settings);
