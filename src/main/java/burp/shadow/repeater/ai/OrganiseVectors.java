@@ -56,7 +56,7 @@ public class OrganiseVectors {
                                 notes.append(responsesAnalyser.describeDiff(requestResponse));
                                 requestResponse.annotations().setNotes(notes.toString());
                                 api.organizer().sendToOrganizer(requestResponse);
-                                api.logging().logToOutput("Found interesting items. Check the organiser to see the results.");
+                                api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
                                 return;
                             }
                         }

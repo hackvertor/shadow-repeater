@@ -33,7 +33,7 @@ public class VariationAnalyser {
                         Your job is to analyze the JSON given to you and look for variations of what's being tested.
                         You should return a JSON array of""" + " " + maxVariationAmount + " vectors." + """
                         The JSON structure should be:[{"vector":"$yourVariation"}].
-                        If you cannot find a variation just return an empty array.
+                        If you cannot find a variation just return an empty array.                       
                         Do not output markdown. Do not describe what you are doing just return JSON.
                         Your response must be a **valid JSON array of objects**. Ensure all string values inside the objects are properly escaped. This includes:
                         - Escaping double quotes (`"`) as `\\"`
