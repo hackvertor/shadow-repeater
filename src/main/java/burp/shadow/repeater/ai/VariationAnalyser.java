@@ -7,6 +7,7 @@ import burp.shadow.repeater.settings.InvalidTypeSettingException;
 import burp.shadow.repeater.settings.UnregisteredSettingException;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -31,17 +32,9 @@ public class VariationAnalyser {
                 ai.setSystemMessage("""
                         You are a web security expert.
                         Your job is to analyze the JSON given to you and look for variations of what's being tested.
-                        You should return a JSON array of""" + " " + maxVariationAmount + " vectors." + """
-                        The JSON structure should be:[{"vector":"$yourVariation"}].
-                        If you cannot find a variation just return an empty array.
-                        Your response must be a **valid JSON array of objects**. Ensure all string values inside the objects are properly escaped. This includes:
-                        - Escaping double quotes (`"`) as `\\"`
-                        - Escaping backslashes (`\\`) as `\\\\`
-                        - Escaping newlines (`\\n`), tabs (`\\t`), and special characters
-                        - Avoiding unescaped control characters
-
-                        Return **only JSON**. No markdown, no code blocks, and no extra text.
-                        You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.                       
+                        You should return list of""" + " " + maxVariationAmount + " vectors separated by new lines." + """                       
+                        Return **only vectors separated by new lines**. No markdown, no code blocks, and no extra text.
+                        You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.
                         Here is a list of headers and parameters for you to analyse in JSON:
                         """);
 
@@ -50,7 +43,13 @@ public class VariationAnalyser {
                 api.logging().logToOutput("Sending information to the AI");
                 String response = ai.execute();
                 try {
-                    JSONArray variations = new JSONArray(response);
+                    String[] vectors = response.split("\n");
+                    JSONArray variations = new JSONArray();
+                    for (String vector : vectors) {
+                        JSONObject variation = new JSONObject();
+                        variation.put("vector", vector);
+                        variations.put(variation);
+                    }
                     api.logging().logToOutput("Variations found:\n" + variations);
                     OrganiseVectors.organise(req, variations, headersAndParameters, repeaterResponses);
                 } catch (JSONException e) {
