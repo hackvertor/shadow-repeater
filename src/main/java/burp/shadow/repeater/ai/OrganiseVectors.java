@@ -60,7 +60,6 @@ public class OrganiseVectors {
                         }
                     }
                 }
-                api.logging().logToOutput("Nothing interesting found.");
             } catch (Throwable throwable) {
                 StringWriter writer = new StringWriter();
                 throwable.printStackTrace(new PrintWriter(writer));
