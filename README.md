@@ -1,4 +1,4 @@
-![](https://github.com/hackvertor/shadow-repeater/blob/master/src/main/resources/images/logo.png)
+![](https://github.com/hackvertor/shadow-repeater/blob/main/src/main/resources/images/logo.png)
 
 # Shadow Repeater
 
