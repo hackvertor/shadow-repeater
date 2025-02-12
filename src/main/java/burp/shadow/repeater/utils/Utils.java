@@ -1,5 +1,6 @@
 package burp.shadow.repeater.utils;
 
+import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.settings.Settings;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.message.HttpRequestResponse;
@@ -121,5 +122,17 @@ public class Utils {
         settingsMenu.addActionListener(e -> Settings.showSettingsWindow());
         menuBar.add(settingsMenu);
         return menuBar;
+    }
+
+    public static ImageIcon createImageIcon(String path, String description) {
+        java.net.URL imgURL = ShadowRepeaterExtension.class.getResource(path);
+        if (imgURL != null) {
+            ImageIcon img = new ImageIcon(imgURL, description);
+            Image resizedImage = img.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+            return new ImageIcon(resizedImage);
+        } else {
+            api.logging().logToError("Couldn't find file: " + path);
+            return null;
+        }
     }
 }

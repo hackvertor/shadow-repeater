@@ -17,8 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static burp.shadow.repeater.ShadowRepeaterExtension.api;
-import static burp.shadow.repeater.ShadowRepeaterExtension.extensionName;
+import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 import static burp.shadow.repeater.utils.GridbagUtils.addMarginToGbc;
 import static burp.shadow.repeater.utils.GridbagUtils.createConstraints;
 import static java.awt.GridBagConstraints.CENTER;
@@ -39,7 +38,7 @@ public class Settings {
         settingsWindow.getContentPane().removeAll();
         settingsWindow.setTitle(extensionName + " settings");
         settingsWindow.setResizable(false);
-        settingsWindow.setPreferredSize(new Dimension(500, 400));
+        settingsWindow.setPreferredSize(new Dimension(500, 550));
         Container pane = settingsWindow.getContentPane();
         try {
             Map<String, Integer> columns = new HashMap<>();
@@ -47,12 +46,19 @@ public class Settings {
             columns.put("Repeater settings", 1);
             JPanel settingsInterface = settings.buildInterface(settingsWindow, 250, 25,10, columns, ShadowRepeaterExtension.generalSettings);
             settingsInterface.setAutoscrolls(true);
-            settingsInterface.setPreferredSize(new Dimension(500, 350));
+            settingsInterface.setPreferredSize(new Dimension(500, 400));
             JScrollPane settingsScroll = new JScrollPane(settingsInterface);
             settingsScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             settingsScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
             pane.setLayout(new GridBagLayout());
-            pane.add(settingsScroll, createConstraints(0, 0, 1, GridBagConstraints.BOTH, 1, 1, 5, 5, CENTER));
+            JLabel logoLabel;
+            logoLabel = new JLabel(Utils.createImageIcon("/images/logo.png", "logo"));
+            JPanel logoContainer = new JPanel(new GridBagLayout());
+            logoContainer.add(logoLabel, GridbagUtils.createConstraints(0, 0, 1, 1, 0, 0, 0, 0, GridBagConstraints.NORTH));
+            JLabel versionLabel = new JLabel(version);
+            logoContainer.add(versionLabel, GridbagUtils.createConstraints(0, 1, 1, 1, 0, 0, 0, 0, GridBagConstraints.SOUTH));
+            pane.add(logoContainer, addMarginToGbc(createConstraints(0, 0, 1, GridBagConstraints.NONE, 1, 0, 5, 5, GridBagConstraints.NORTHEAST), 5, 5, 5, 5));
+            pane.add(settingsScroll, createConstraints(0, 1, 1, GridBagConstraints.BOTH, 1, 1, 5, 5, CENTER));
         } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
             ShadowRepeaterExtension.callbacks.printError("Error building interface:" + e);
             throw new RuntimeException(e);

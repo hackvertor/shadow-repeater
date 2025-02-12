@@ -28,6 +28,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
     public static IBurpExtenderCallbacks callbacks;
     public static Settings generalSettings = null;
     public static String extensionName = "Shadow Repeater";
+    public static String version = "v1.0.0";
     public static MontoyaApi api;
     public static int requestHistoryPos = 1;
     public static ArrayList<HttpRequest> requestHistory = new ArrayList<>();
@@ -40,7 +41,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
     public void initialize(MontoyaApi montoyaApi) {
         ShadowRepeaterExtension.api = montoyaApi;
         api.extension().setName(extensionName);
-        api.logging().logToOutput(extensionName+ " v1.0");
+        api.logging().logToOutput(extensionName+ " " + version);
         api.http().registerHttpHandler(new HttpHandler());
         api.userInterface().registerContextMenuItemsProvider(new ContextMenu());
         api.extension().registerUnloadingHandler(this);
