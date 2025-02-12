@@ -43,8 +43,7 @@ public class VariationAnalyser {
                         - Avoiding unescaped control characters
 
                         Return **only JSON**. No markdown, no code blocks, and no extra text.
-                        You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.
-                        The vector you produce should be relevant the 
+                        You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.                       
                         Here is a list of headers and parameters for you to analyse in JSON:
                         """);
 
