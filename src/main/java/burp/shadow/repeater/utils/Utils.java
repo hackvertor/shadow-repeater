@@ -95,7 +95,7 @@ public class Utils {
     public static void registerGeneralSettings(Settings settings) {
         settings.registerBooleanSetting("debug", false, "Debug AI requests", "AI", null);
         settings.registerIntegerSetting("amountOfRequests", 5, "Amount of requests before doing AI analysis", "Repeater settings", 1, 100);
-        settings.registerIntegerSetting("maxVariationAmount", 10, "Maximum amount of variations", "Repeater settings", 1, 1000);
+        settings.registerIntegerSetting("maxVariationAmount", 20, "Maximum amount of variations", "Repeater settings", 1, 1000);
     }
 
     public static JFrame getSettingsWindowInstance() {

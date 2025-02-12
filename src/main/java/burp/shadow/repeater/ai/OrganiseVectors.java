@@ -23,6 +23,7 @@ public class OrganiseVectors {
                 baseRequestResponse.annotations().setNotes("This is the base request/response");
                 for(int i = 0; i < headersAndParameters.length(); i++) {
                     CustomResponseGroup responsesAnalyser = new CustomResponseGroup(Utils::calculateFingerprint, baseRequestResponse);
+                    api.logging().logToOutput("Trying random values");
                     for(int k=1;k<=5;k++) {
                         try {
                             JSONObject headerParamObj = headersAndParameters.getJSONObject(i);
@@ -37,6 +38,7 @@ public class OrganiseVectors {
                         }
 
                     }
+                    api.logging().logToOutput("Trying variations");
                     for(int j = 0; j < variations.length(); j++) {
                         HttpRequest modifiedReq = null;
                         JSONObject headerParamObj = headersAndParameters.getJSONObject(i);
@@ -64,6 +66,8 @@ public class OrganiseVectors {
                 StringWriter writer = new StringWriter();
                 throwable.printStackTrace(new PrintWriter(writer));
                 api.logging().logToError(writer.toString());
+            } finally {
+                api.logging().logToOutput("Complete.");
             }
         });
     }
