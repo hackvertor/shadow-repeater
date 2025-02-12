@@ -1,19 +1,17 @@
-package burp.adaptive.learning;
+package burp.shadow.repeater;
 
 import burp.BulkUtilities;
 import burp.IBurpExtender;
 import burp.IBurpExtenderCallbacks;
-import burp.IExtensionHelpers;
-import burp.adaptive.learning.ai.AI;
-import burp.adaptive.learning.settings.Settings;
-import burp.adaptive.learning.utils.Utils;
+import burp.shadow.repeater.ai.AI;
+import burp.shadow.repeater.settings.Settings;
+import burp.shadow.repeater.utils.Utils;
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.EnhancedCapability;
 import burp.api.montoya.MontoyaApi;
 import burp.api.montoya.extension.ExtensionUnloadingHandler;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.handler.HttpResponseReceived;
-import burp.api.montoya.http.message.responses.analysis.ResponseVariationsAnalyzer;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -22,12 +20,12 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class LearningExtension implements BurpExtension, ExtensionUnloadingHandler, IBurpExtender {
+public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadingHandler, IBurpExtender {
 
     public static JFrame SettingsFrame = null;
     public static IBurpExtenderCallbacks callbacks;
     public static Settings generalSettings = null;
-    public static String extensionName = "Adaptive Learning";
+    public static String extensionName = "Shadow Repeater";
     public static MontoyaApi api;
     public static int requestHistoryPos = 1;
     public static ArrayList<HttpRequestToBeSent> requestHistory = new ArrayList<>();
@@ -37,7 +35,7 @@ public class LearningExtension implements BurpExtension, ExtensionUnloadingHandl
 
     @Override
     public void initialize(MontoyaApi montoyaApi) {
-        LearningExtension.api = montoyaApi;
+        ShadowRepeaterExtension.api = montoyaApi;
         api.extension().setName(extensionName);
         api.logging().logToOutput(extensionName+ " v1.0");
         api.http().registerHttpHandler(new HttpHandler());
@@ -60,7 +58,7 @@ public class LearningExtension implements BurpExtension, ExtensionUnloadingHandl
 
     @Override
     public void registerExtenderCallbacks(IBurpExtenderCallbacks callbacks) {
-        LearningExtension.callbacks = callbacks;
+        ShadowRepeaterExtension.callbacks = callbacks;
         new BulkUtilities(callbacks, new HashMap<>(), extensionName);
         generalSettings = new Settings("general", callbacks);
         Utils.registerGeneralSettings(generalSettings);

@@ -1,8 +1,8 @@
-package burp.adaptive.learning.ai;
+package burp.shadow.repeater.ai;
 
 import burp.CustomResponseGroup;
-import burp.adaptive.learning.LearningExtension;
-import burp.adaptive.learning.utils.Utils;
+import burp.shadow.repeater.ShadowRepeaterExtension;
+import burp.shadow.repeater.utils.Utils;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.handler.HttpResponseReceived;
 import burp.api.montoya.http.message.HttpRequestResponse;
@@ -13,11 +13,11 @@ import org.json.JSONObject;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import static burp.adaptive.learning.LearningExtension.*;
+import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
 public class OrganiseVectors {
     public static void organise(HttpRequestToBeSent req, JSONArray variations, JSONArray headersAndParameters, HttpResponseReceived[] repeaterResponses) {
-        LearningExtension.executorService.submit(() -> {
+        ShadowRepeaterExtension.executorService.submit(() -> {
             try {
                 HttpRequestResponse baseRequestResponse = api.http().sendRequest(req);
                 baseRequestResponse.annotations().setNotes("This is the base request/response");

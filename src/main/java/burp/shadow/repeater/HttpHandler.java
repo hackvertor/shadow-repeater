@@ -1,10 +1,10 @@
-package burp.adaptive.learning;
+package burp.shadow.repeater;
 
-import burp.adaptive.learning.ai.AI;
-import burp.adaptive.learning.ai.VariationAnalyser;
-import burp.adaptive.learning.settings.InvalidTypeSettingException;
-import burp.adaptive.learning.settings.UnregisteredSettingException;
-import burp.adaptive.learning.utils.Utils;
+import burp.shadow.repeater.ai.AI;
+import burp.shadow.repeater.ai.VariationAnalyser;
+import burp.shadow.repeater.settings.InvalidTypeSettingException;
+import burp.shadow.repeater.settings.UnregisteredSettingException;
+import burp.shadow.repeater.utils.Utils;
 import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.core.ToolType;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
@@ -13,7 +13,7 @@ import burp.api.montoya.http.handler.RequestToBeSentAction;
 import burp.api.montoya.http.handler.ResponseReceivedAction;
 import org.json.JSONArray;
 
-import static burp.adaptive.learning.LearningExtension.*;
+import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
 public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
     @Override
@@ -23,7 +23,7 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
         if(AI.isAiSupported() && toolSource.isFromTool(ToolType.REPEATER)) {
             int amountOfRequests;
             try {
-                amountOfRequests = LearningExtension.generalSettings.getInteger("amountOfRequests");
+                amountOfRequests = ShadowRepeaterExtension.generalSettings.getInteger("amountOfRequests");
             } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
                 api.logging().logToError("Error loading settings:" + e);
                 throw new RuntimeException(e);

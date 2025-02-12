@@ -1,9 +1,9 @@
-package burp.adaptive.learning.settings;
+package burp.shadow.repeater.settings;
 
 import burp.IBurpExtenderCallbacks;
-import burp.adaptive.learning.LearningExtension;
-import burp.adaptive.learning.utils.GridbagUtils;
-import burp.adaptive.learning.utils.Utils;
+import burp.shadow.repeater.ShadowRepeaterExtension;
+import burp.shadow.repeater.utils.GridbagUtils;
+import burp.shadow.repeater.utils.Utils;
 import org.json.JSONObject;
 
 import javax.swing.*;
@@ -17,10 +17,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static burp.adaptive.learning.LearningExtension.api;
-import static burp.adaptive.learning.LearningExtension.extensionName;
-import static burp.adaptive.learning.utils.GridbagUtils.addMarginToGbc;
-import static burp.adaptive.learning.utils.GridbagUtils.createConstraints;
+import static burp.shadow.repeater.ShadowRepeaterExtension.api;
+import static burp.shadow.repeater.ShadowRepeaterExtension.extensionName;
+import static burp.shadow.repeater.utils.GridbagUtils.addMarginToGbc;
+import static burp.shadow.repeater.utils.GridbagUtils.createConstraints;
 import static java.awt.GridBagConstraints.CENTER;
 
 public class Settings {
@@ -32,7 +32,7 @@ public class Settings {
     private boolean isModified = false;
 
     public static void showSettingsWindow() {
-        Settings settings = new Settings("general", LearningExtension.callbacks);
+        Settings settings = new Settings("general", ShadowRepeaterExtension.callbacks);
         Utils.registerGeneralSettings(settings);
         settings.load();
         JFrame settingsWindow = Utils.getSettingsWindowInstance();
@@ -45,7 +45,7 @@ public class Settings {
             Map<String, Integer> columns = new HashMap<>();
             columns.put("AI", 1);
             columns.put("Repeater settings", 1);
-            JPanel settingsInterface = settings.buildInterface(settingsWindow, 250, 25,10, columns, LearningExtension.generalSettings);
+            JPanel settingsInterface = settings.buildInterface(settingsWindow, 250, 25,10, columns, ShadowRepeaterExtension.generalSettings);
             settingsInterface.setAutoscrolls(true);
             settingsInterface.setPreferredSize(new Dimension(500, 350));
             JScrollPane settingsScroll = new JScrollPane(settingsInterface);
@@ -54,7 +54,7 @@ public class Settings {
             pane.setLayout(new GridBagLayout());
             pane.add(settingsScroll, createConstraints(0, 0, 1, GridBagConstraints.BOTH, 1, 1, 5, 5, CENTER));
         } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
-            LearningExtension.callbacks.printError("Error building interface:" + e);
+            ShadowRepeaterExtension.callbacks.printError("Error building interface:" + e);
             throw new RuntimeException(e);
         }
         settingsWindow.pack();

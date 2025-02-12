@@ -1,4 +1,4 @@
-package burp.adaptive.learning.utils;
+package burp.shadow.repeater.utils;
 
 import java.awt.*;
 

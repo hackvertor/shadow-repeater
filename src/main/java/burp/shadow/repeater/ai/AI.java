@@ -1,8 +1,8 @@
-package burp.adaptive.learning.ai;
+package burp.shadow.repeater.ai;
 
-import burp.adaptive.learning.LearningExtension;
-import burp.adaptive.learning.settings.InvalidTypeSettingException;
-import burp.adaptive.learning.settings.UnregisteredSettingException;
+import burp.shadow.repeater.ShadowRepeaterExtension;
+import burp.shadow.repeater.settings.InvalidTypeSettingException;
+import burp.shadow.repeater.settings.UnregisteredSettingException;
 import burp.api.montoya.ai.chat.Message;
 import burp.api.montoya.ai.chat.PromptOptions;
 import burp.api.montoya.ai.chat.PromptResponse;
@@ -10,7 +10,7 @@ import burp.api.montoya.ai.chat.PromptResponse;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static burp.adaptive.learning.LearningExtension.api;
+import static burp.shadow.repeater.ShadowRepeaterExtension.api;
 
 public class AI {
     public static final String featureMessage = "This feature is only available on the AI version of Burp.";
@@ -65,7 +65,7 @@ public class AI {
     public String execute() {
         boolean debug;
         try {
-            debug = LearningExtension.generalSettings.getBoolean("debug");
+            debug = ShadowRepeaterExtension.generalSettings.getBoolean("debug");
         } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
             api.logging().logToError("Error loading settings:" + e);
             throw new RuntimeException(e);

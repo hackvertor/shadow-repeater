@@ -1,8 +1,8 @@
-package burp.adaptive.learning.ai;
+package burp.shadow.repeater.ai;
 
-import burp.adaptive.learning.LearningExtension;
-import burp.adaptive.learning.settings.InvalidTypeSettingException;
-import burp.adaptive.learning.settings.UnregisteredSettingException;
+import burp.shadow.repeater.ShadowRepeaterExtension;
+import burp.shadow.repeater.settings.InvalidTypeSettingException;
+import burp.shadow.repeater.settings.UnregisteredSettingException;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.handler.HttpResponseReceived;
 import org.json.JSONArray;
@@ -11,15 +11,15 @@ import org.json.JSONException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import static burp.adaptive.learning.LearningExtension.*;
+import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
 public class VariationAnalyser {
     public static void analyse(JSONArray headersAndParameters, HttpRequestToBeSent req, HttpResponseReceived[] repeaterResponses) {
-        LearningExtension.executorService.submit(() -> {
+        ShadowRepeaterExtension.executorService.submit(() -> {
             try {
                 int maxVariationAmount;
                 try {
-                    maxVariationAmount = LearningExtension.generalSettings.getInteger("maxVariationAmount");
+                    maxVariationAmount = ShadowRepeaterExtension.generalSettings.getInteger("maxVariationAmount");
                 } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
                     api.logging().logToError("Error loading settings:" + e);
                     throw new RuntimeException(e);

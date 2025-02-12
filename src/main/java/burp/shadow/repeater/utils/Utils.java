@@ -1,6 +1,6 @@
-package burp.adaptive.learning.utils;
+package burp.shadow.repeater.utils;
 
-import burp.adaptive.learning.settings.Settings;
+import burp.shadow.repeater.settings.Settings;
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.params.HttpParameter;
@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
-import static burp.adaptive.learning.LearningExtension.*;
-import static burp.adaptive.learning.LearningExtension.responseHistory;
+import static burp.shadow.repeater.ShadowRepeaterExtension.*;
+import static burp.shadow.repeater.ShadowRepeaterExtension.responseHistory;
 
 public class Utils {
     public static HttpRequest modifyRequest(HttpRequestToBeSent req, String type, String name, String value) {

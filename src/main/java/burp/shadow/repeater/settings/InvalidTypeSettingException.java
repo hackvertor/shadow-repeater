@@ -1,4 +1,4 @@
-package burp.adaptive.learning.settings;
+package burp.shadow.repeater.settings;
 
 public class InvalidTypeSettingException extends Exception {
     public InvalidTypeSettingException() {

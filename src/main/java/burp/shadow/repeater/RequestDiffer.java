@@ -1,4 +1,4 @@
-package burp.adaptive.learning;
+package burp.shadow.repeater;
 
 import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.message.HttpHeader;
