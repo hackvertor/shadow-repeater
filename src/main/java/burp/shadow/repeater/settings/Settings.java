@@ -38,7 +38,7 @@ public class Settings {
         settingsWindow.getContentPane().removeAll();
         settingsWindow.setTitle(extensionName + " settings");
         settingsWindow.setResizable(false);
-        settingsWindow.setPreferredSize(new Dimension(500, 550));
+        settingsWindow.setPreferredSize(new Dimension(500, 600));
         Container pane = settingsWindow.getContentPane();
         try {
             Map<String, Integer> columns = new HashMap<>();

@@ -127,9 +127,7 @@ public class Utils {
     public static ImageIcon createImageIcon(String path, String description) {
         java.net.URL imgURL = ShadowRepeaterExtension.class.getResource(path);
         if (imgURL != null) {
-            ImageIcon img = new ImageIcon(imgURL, description);
-            Image resizedImage = img.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
-            return new ImageIcon(resizedImage);
+            return new ImageIcon(imgURL, description);
         } else {
             api.logging().logToError("Couldn't find file: " + path);
             return null;
