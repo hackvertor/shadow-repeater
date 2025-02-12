@@ -47,6 +47,7 @@ public class VariationAnalyser {
 
                 ai.setPrompt(headersAndParameters.toString());
                 ai.setTemperature(1.0);
+                api.logging().logToOutput("Sending information to the AI");
                 String response = ai.execute();
                 try {
                     JSONArray variations = new JSONArray(response);
