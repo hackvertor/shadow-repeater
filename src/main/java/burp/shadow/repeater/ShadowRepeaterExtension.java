@@ -44,7 +44,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
         api.userInterface().registerContextMenuItemsProvider(new ContextMenu());
         api.extension().registerUnloadingHandler(this);
         if(!AI.isAiSupported()) {
-            api.logging().logToOutput("AI features are not available. You need to enable \"Use AI\" in the extension tab.");
+            api.logging().logToOutput("AI features are not available. This extension will not work without AI. You need to enable \"Use AI\" in the extension tab.");
         }
         api.userInterface().menuBar().registerMenu(Utils.generateMenuBar());
     }

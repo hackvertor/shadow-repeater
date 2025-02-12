@@ -7,7 +7,7 @@ SerialVersion: 42
 MinPlatformVersion: 4
 ProOnly: False
 Author: Portswigger Web Security - Gareth Heyes
-ShortDescription: Shadow Repeater enhances Burp Repeater by generating and testing payload variations to uncover hidden vulnerabilities, bypasses, and unexpected responses across various attack vectors.
+ShortDescription: Shadow Repeater enhances your manual testing with AI-powered, fully automatic variation testing.
 EntryPoint: build/libs/shadow-repeater.jar
 BuildCommand: ./gradlew jar
 SupportedProducts: Pro, Community
