@@ -33,19 +33,15 @@ public class VariationAnalyser {
                         Your job is to analyze the JSON given to you and look for variations of what's being tested.
                         You should return a JSON array of""" + " " + maxVariationAmount + " vectors." + """
                         The JSON structure should be:[{"vector":"$yourVariation"}].
-                        If you cannot find a variation just return an empty array.                       
-                        Do not output markdown. Do not describe what you are doing just return JSON.
+                        If you cannot find a variation just return an empty array.                                               
                         Your response must be a **valid JSON array of objects**. Ensure all string values inside the objects are properly escaped. This includes:
                         - Escaping double quotes (`"`) as `\\"`
                         - Escaping backslashes (`\\`) as `\\\\`
                         - Escaping newlines (`\\n`), tabs (`\\t`), and special characters
                         - Avoiding unescaped control characters
                                                 
-                        Return **only JSON**. No markdown, no code blocks, and no extra text.
-                        Your response should be a valid JSON array that conforms to the JSON specification.
-                        Validate your JSON response and ensure it's valid JSON.
-                        You should correctly escape all strings in the JSON value.
-                        You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.
+                        Return **only JSON**. No markdown, no code blocks, and no extra text.                      
+                        You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.                        
                         Here is a list of headers and parameters for you to analyse in JSON:
                         """);
 
