@@ -50,11 +50,10 @@ public class OrganiseVectors {
                             HttpRequestResponse requestResponse = api.http().sendRequest(modifiedReq);
                             if(!responsesAnalyser.matches(requestResponse)) {
                                 api.organizer().sendToOrganizer(baseRequestResponse);
-                                StringBuilder notes = new StringBuilder();
-                                notes.append("The response is different in the following ways");
-                                notes.append(System.lineSeparator());
-                                notes.append(responsesAnalyser.describeDiff(requestResponse));
-                                requestResponse.annotations().setNotes(notes.toString());
+                                String notes = "The response is different in the following ways" +
+                                        System.lineSeparator() +
+                                        responsesAnalyser.describeDiff(requestResponse);
+                                requestResponse.annotations().setNotes(notes);
                                 api.organizer().sendToOrganizer(requestResponse);
                                 api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
                                 return;
