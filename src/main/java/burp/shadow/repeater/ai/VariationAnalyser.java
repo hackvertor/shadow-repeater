@@ -55,7 +55,6 @@ public class VariationAnalyser {
                 try {
                     JSONArray variations = new JSONArray(response);
                     api.logging().logToOutput("Variations found:\n" + variations);
-                    api.logging().logToOutput("------");
                     OrganiseVectors.organise(req, variations, headersAndParameters, repeaterResponses);
                 } catch (JSONException e) {
                     api.logging().logToError("The AI returned invalid JSON");

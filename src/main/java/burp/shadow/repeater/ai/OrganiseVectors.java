@@ -68,6 +68,7 @@ public class OrganiseVectors {
                 api.logging().logToError(writer.toString());
             } finally {
                 api.logging().logToOutput("Complete.");
+                api.logging().logToOutput("------");
             }
         });
     }
