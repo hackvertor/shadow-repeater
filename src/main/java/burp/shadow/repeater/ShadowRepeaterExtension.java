@@ -12,8 +12,6 @@ import burp.api.montoya.BurpExtension;
 import burp.api.montoya.EnhancedCapability;
 import burp.api.montoya.MontoyaApi;
 import burp.api.montoya.extension.ExtensionUnloadingHandler;
-import burp.api.montoya.http.handler.HttpRequestToBeSent;
-import burp.api.montoya.http.handler.HttpResponseReceived;
 
 import javax.swing.*;
 import java.util.ArrayList;

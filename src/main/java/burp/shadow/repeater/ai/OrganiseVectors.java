@@ -4,8 +4,6 @@ import burp.CustomResponseGroup;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.utils.Utils;
-import burp.api.montoya.http.handler.HttpRequestToBeSent;
-import burp.api.montoya.http.handler.HttpResponseReceived;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import org.json.JSONArray;

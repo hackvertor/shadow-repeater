@@ -5,8 +5,6 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.settings.InvalidTypeSettingException;
 import burp.shadow.repeater.settings.UnregisteredSettingException;
-import burp.api.montoya.http.handler.HttpRequestToBeSent;
-import burp.api.montoya.http.handler.HttpResponseReceived;
 import org.json.JSONArray;
 import org.json.JSONException;
 

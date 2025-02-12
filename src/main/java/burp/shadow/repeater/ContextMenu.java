@@ -1,7 +1,5 @@
 package burp.shadow.repeater;
 
-import burp.IContextMenuFactory;
-import burp.IContextMenuInvocation;
 import burp.api.montoya.core.ToolType;
 import burp.api.montoya.http.handler.HttpResponseReceived;
 import burp.api.montoya.http.message.HttpRequestResponse;

@@ -2,7 +2,6 @@ package burp.shadow.repeater.utils;
 
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.settings.Settings;
-import burp.api.montoya.http.handler.HttpRequestToBeSent;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.HttpParameterType;
