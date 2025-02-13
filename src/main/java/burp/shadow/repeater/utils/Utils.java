@@ -48,7 +48,9 @@ public class Utils {
         return sb.toString();
     }
     public static HashMap<String, Object> calculateFingerprint(HttpRequestResponse resp) {
-        String[] keys = new String[]{"\",\"", "true", "false", "\"\"", "[]", "</html>", "error", "exception", "invalid", "warning", "stack", "sql syntax", "divisor", "divide", "ora-", "division", "infinity", "<script", "<div"};
+        String[] keys = new String[]{"\",\"", "true", "false", "\"\"", "[]", "</html>", "error", "exception", "invalid", "warning", "stack",
+                "sql syntax", "divisor", "divide", "ora-", "division", "infinity", "<script", "<div", "<"
+        };
         String[] newLines = new String[]{"\r" ,"\n", "\u2028", "\u2029"};
         String[] spaces = new String[]{" ", "\t", "\u00a0"};
         HashMap<String, Object> fingerprint = new HashMap<>();
