@@ -35,7 +35,6 @@ public class VariationAnalyser {
                         You should return list of""" + " " + maxVariationAmount + " vectors separated by new lines." + """                       
                         Return **only vectors separated by new lines**. No markdown, no code blocks, and no extra text.
                         You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.
-                        Do not spoof domains, try to use the existing data where possible.
                         Here is a list of headers and parameters for you to analyse in JSON:
                         """);
 
