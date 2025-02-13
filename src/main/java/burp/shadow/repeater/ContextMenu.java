@@ -1,7 +1,6 @@
 package burp.shadow.repeater;
 
 import burp.api.montoya.core.ToolType;
-import burp.api.montoya.http.handler.HttpResponseReceived;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
@@ -9,9 +8,7 @@ import burp.api.montoya.ui.contextmenu.ContextMenuEvent;
 import burp.api.montoya.ui.contextmenu.ContextMenuItemsProvider;
 import burp.shadow.repeater.ai.AI;
 import burp.shadow.repeater.ai.VariationAnalyser;
-import burp.shadow.repeater.settings.InvalidTypeSettingException;
 import burp.shadow.repeater.settings.Settings;
-import burp.shadow.repeater.settings.UnregisteredSettingException;
 import burp.shadow.repeater.utils.Utils;
 import org.json.JSONArray;
 

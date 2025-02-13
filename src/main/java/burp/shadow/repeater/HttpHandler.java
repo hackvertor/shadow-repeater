@@ -1,6 +1,5 @@
 package burp.shadow.repeater;
 
-import burp.api.montoya.http.message.params.ParsedHttpParameter;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ai.AI;
@@ -15,9 +14,6 @@ import burp.api.montoya.http.handler.HttpResponseReceived;
 import burp.api.montoya.http.handler.RequestToBeSentAction;
 import burp.api.montoya.http.handler.ResponseReceivedAction;
 import org.json.JSONArray;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
