@@ -11,6 +11,8 @@ import org.json.JSONObject;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.HashSet;
+import java.util.Set;
 
 import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
@@ -20,14 +22,19 @@ public class OrganiseVectors {
             try {
                 HttpRequestResponse baseRequestResponse = api.http().sendRequest(req);
                 baseRequestResponse.annotations().setNotes("This is the base request/response");
+                Set<String> testedParams = new HashSet<>();
                 for(int i = 0; i < headersAndParameters.length(); i++) {
+                    JSONObject headerParamObj = headersAndParameters.getJSONObject(i);
+                    String type = headerParamObj.getString("type");
+                    String name = headerParamObj.has("name") ? headerParamObj.getString("name") : "";
                     CustomResponseGroup responsesAnalyser = new CustomResponseGroup(Utils::calculateFingerprint, baseRequestResponse);
+                    if(testedParams.contains(name+type)) {
+                        continue;
+                    }
+                    testedParams.add(name+type);
                     api.logging().logToOutput("Trying random values");
-                    for(int k=1;k<=5;k++) {
+                    for(int k=1;k<=4;k++) {
                         try {
-                            JSONObject headerParamObj = headersAndParameters.getJSONObject(i);
-                            String type = headerParamObj.getString("type");
-                            String name = headerParamObj.has("name") ? headerParamObj.getString("name") : "";
                             String controlValue = Utils.randomString(k * 2);
                             HttpRequest controlReq = Utils.modifyRequest(req, type, name, controlValue);
                             HttpRequestResponse controlRequestResponse = api.http().sendRequest(controlReq);
@@ -40,9 +47,6 @@ public class OrganiseVectors {
                     api.logging().logToOutput("Trying variations");
                     for(int j = 0; j < variations.length(); j++) {
                         HttpRequest modifiedReq = null;
-                        JSONObject headerParamObj = headersAndParameters.getJSONObject(i);
-                        String type = headerParamObj.getString("type");
-                        String name = headerParamObj.has("name") ? headerParamObj.getString("name") : "";
                         String vector = variations.getJSONObject(j).getString("vector");
                         modifiedReq = Utils.modifyRequest(req, type, name, vector);
                         if(modifiedReq != null) {

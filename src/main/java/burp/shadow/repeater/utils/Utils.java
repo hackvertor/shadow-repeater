@@ -91,6 +91,7 @@ public class Utils {
         requestHistoryPos = 1;
         requestHistory = new ArrayList<>();
         responseHistory = new ArrayList<>();
+        api.logging().logToOutput("Request history reset");
     }
     public static void registerGeneralSettings(Settings settings) {
         settings.registerBooleanSetting("debug", false, "Debug AI requests", "AI", null);
