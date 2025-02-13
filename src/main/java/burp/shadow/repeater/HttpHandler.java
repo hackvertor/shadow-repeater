@@ -36,9 +36,8 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
             if(lastHost != null && !currentHost.equals(lastHost)) {
                Utils.resetHistory();
             }
-
+            api.logging().logToOutput("Repeater request " + requestHistoryPos + " of " + amountOfRequests);
             if(requestHistoryPos >= amountOfRequests) {
-                api.logging().logToOutput("Repeater request " + requestHistoryPos + " of " + amountOfRequests);
                 requestHistory.add(req);
                 if(autoInvoke) {
                     JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.toArray(new HttpRequest[0]));
@@ -50,7 +49,6 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
                 }
                 Utils.resetHistory();
             } else {
-                api.logging().logToOutput("Repeater request " + requestHistoryPos + " of " + amountOfRequests);
                 requestHistory.add(req);
                 requestHistoryPos++;
             }
