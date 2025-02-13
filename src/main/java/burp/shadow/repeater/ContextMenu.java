@@ -4,10 +4,14 @@ import burp.api.montoya.core.ToolType;
 import burp.api.montoya.http.handler.HttpResponseReceived;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.ui.contextmenu.ContextMenuEvent;
 import burp.api.montoya.ui.contextmenu.ContextMenuItemsProvider;
+import burp.shadow.repeater.ai.AI;
 import burp.shadow.repeater.ai.VariationAnalyser;
+import burp.shadow.repeater.settings.InvalidTypeSettingException;
 import burp.shadow.repeater.settings.Settings;
+import burp.shadow.repeater.settings.UnregisteredSettingException;
 import burp.shadow.repeater.utils.Utils;
 import org.json.JSONArray;
 
@@ -27,20 +31,22 @@ public class ContextMenu implements ContextMenuItemsProvider {
             List<Component> menuItemList = new ArrayList<>();
 
             JMenuItem sendToItem = new JMenuItem("Send to " + extensionName);
-
+            sendToItem.setEnabled(AI.isAiSupported());
             HttpRequestResponse requestResponse = event.messageEditorRequestResponse().isPresent() ? event.messageEditorRequestResponse().get().requestResponse() : event.selectedRequestResponses().getFirst();
+            String requestKey = Utils.generateRequestKey(requestResponse.request());
             sendToItem.addActionListener(e -> {
-                JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.toArray(new HttpRequest[0]));
+                JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.get(requestKey).toArray(new HttpRequest[0]));
                 if (!headersAndParameters.isEmpty()) {
-                    VariationAnalyser.analyse(headersAndParameters, requestResponse.request(), new HttpResponseReceived[0]);
+                    VariationAnalyser.analyse(headersAndParameters, requestResponse.request(), new HttpResponse[0]);
                 } else {
                     JOptionPane.showMessageDialog(null, nothingToAnalyseMsg);
                     api.logging().logToOutput(nothingToAnalyseMsg);
                 }
             });
             menuItemList.add(sendToItem);
-            JMenuItem resetHistoryItem = new JMenuItem("Reset request history");
-            resetHistoryItem.addActionListener(e -> Utils.resetHistory());
+            JMenuItem resetHistoryItem = new JMenuItem("Reset request history for this request");
+            resetHistoryItem.setEnabled(AI.isAiSupported());
+            resetHistoryItem.addActionListener(e -> Utils.resetHistory(requestKey));
             menuItemList.add(resetHistoryItem);
             JMenuItem settings = new JMenuItem("Settings");
             settings.addActionListener(e -> Settings.showSettingsWindow());

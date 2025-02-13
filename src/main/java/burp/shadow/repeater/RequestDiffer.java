@@ -31,6 +31,7 @@ public class RequestDiffer {
             }
             Set<String> inAll = intersectionOfAllRequests(requests);
             result = filterNeverChangedItems(result, inAll);
+            result = getMostFrequentParam(result);
         }
 
         return result;
@@ -203,5 +204,51 @@ public class RequestDiffer {
             }
         }
         return filtered;
+    }
+
+    private static JSONArray getMostFrequentParam(JSONArray items) {
+        HashMap<String, Integer> counts = new HashMap<>();
+        for (int i = 0; i < items.length(); i++) {
+            JSONObject obj = items.getJSONObject(i);
+            String type = obj.optString("type");
+            String name = obj.optString("name", "");
+            String key;
+            if ("PATH".equals(type)) {
+                key = type;
+            } else {
+                key = type + "|" + name;
+            }
+            if(counts.containsKey(key)) {
+                counts.put(key, counts.get(key) + 1);
+            } else {
+                counts.put(key, 1);
+            }
+        }
+        Map.Entry<String, Integer> maxParam = null;
+
+        for (Map.Entry<String, Integer> entry : counts.entrySet()) {
+            if (maxParam == null || entry.getValue() > maxParam.getValue()) {
+                maxParam = entry;
+            }
+        }
+        JSONArray result = new JSONArray();
+        if(maxParam == null) {
+            return result;
+        }
+        for (int i = 0; i < items.length(); i++) {
+            JSONObject obj = items.getJSONObject(i);
+            String type = obj.optString("type");
+            String name = obj.optString("name", "");
+            String key;
+            if ("PATH".equals(type)) {
+                key = type;
+            } else {
+                key = type + "|" + name;
+            }
+            if(key.equals(maxParam.getKey())) {
+                result.put(obj);
+            }
+        }
+        return result;
     }
 }

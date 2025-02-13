@@ -1,5 +1,6 @@
 package burp.shadow.repeater.utils;
 
+import burp.api.montoya.http.message.params.ParsedHttpParameter;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.settings.Settings;
 import burp.api.montoya.http.message.HttpRequestResponse;
@@ -15,6 +16,7 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 import static burp.shadow.repeater.ShadowRepeaterExtension.responseHistory;
@@ -87,17 +89,17 @@ public class Utils {
             return "";
         }
     }
-    public static void resetHistory() {
-        requestHistoryPos = 1;
-        requestHistory = new ArrayList<>();
-        responseHistory = new ArrayList<>();
+    public static void resetHistory(String key) {
+        requestHistoryPos.put(key,1);
+        requestHistory.put(key, new ArrayList<>());
+        responseHistory.put(key, new ArrayList<>());
         api.logging().logToOutput("Request history reset");
     }
     public static void registerGeneralSettings(Settings settings) {
         settings.registerBooleanSetting("debug", false, "Debug AI requests", "AI", null);
         settings.registerBooleanSetting("autoInvoke", true, "Auto invoke after repeater requests", "Repeater settings", null);
-        settings.registerIntegerSetting("amountOfRequests", 5, "Amount of requests before doing AI analysis", "Repeater settings", 1, 100);
-        settings.registerIntegerSetting("maxVariationAmount", 20, "Maximum amount of variations", "Repeater settings", 1, 1000);
+        settings.registerIntegerSetting("amountOfRequests", 5, "Amount of requests before doing AI analysis (2-100)", "Repeater settings", 2, 100);
+        settings.registerIntegerSetting("maxVariationAmount", 20, "Maximum amount of variations (1-1000)", "Repeater settings", 1, 1000);
     }
 
     public static JFrame getSettingsWindowInstance() {
@@ -132,5 +134,17 @@ public class Utils {
             api.logging().logToError("Couldn't find file: " + path);
             return null;
         }
+    }
+
+    public static String generateRequestKey(HttpRequest req) {
+        String currentHost = req.httpService().host();
+        String paramNames = req.parameters().stream().map(ParsedHttpParameter::name).collect(Collectors.joining(","));
+        String requestKey = currentHost + paramNames;
+        if(!requestHistoryPos.containsKey(requestKey)) {
+            requestHistoryPos.put(requestKey, 1);
+            requestHistory.put(requestKey, new ArrayList<>());
+            responseHistory.put(requestKey, new ArrayList<>());
+        }
+        return requestKey;
     }
 }

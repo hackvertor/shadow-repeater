@@ -28,10 +28,9 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
     public static String extensionName = "Shadow Repeater";
     public static String version = "v1.0.0";
     public static MontoyaApi api;
-    public static int requestHistoryPos = 1;
-    public static ArrayList<HttpRequest> requestHistory = new ArrayList<>();
-    public static ArrayList<HttpResponse> responseHistory = new ArrayList<>();
-    public static String lastHost = null;
+    public static HashMap<String, Integer> requestHistoryPos = new HashMap<>();
+    public static HashMap<String, ArrayList<HttpRequest>> requestHistory = new HashMap<>();
+    public static HashMap<String, ArrayList<HttpResponse>> responseHistory = new HashMap<>();
     public static final ExecutorService executorService = Executors.newSingleThreadExecutor();
     public static String nothingToAnalyseMsg = "Nothing to analyse. "+ extensionName +" requires data changing in the request.";
 

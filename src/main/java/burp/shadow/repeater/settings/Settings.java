@@ -321,7 +321,8 @@ public class Settings {
                 JSONObject currentSetting = this.settings.getJSONObject(name);
                 switch (currentSetting.getString("type")) {
                     case "Password" -> {
-                        JLabel label = new JLabel(currentSetting.getString("description"));
+                        JSONObject defaultSetting = this.defaults.getJSONObject(name);
+                        JLabel label = new JLabel(defaultSetting.getString("description"));
                         label.setPreferredSize(new Dimension(componentWidth, componentHeight));
                         JPasswordField field = new JPasswordField();
                         field.setEchoChar('*');
@@ -361,7 +362,8 @@ public class Settings {
                         });
                     }
                     case "Integer", "String" -> {
-                        JLabel label = new JLabel(currentSetting.getString("description"));
+                        JSONObject defaultSetting = this.defaults.getJSONObject(name);
+                        JLabel label = new JLabel(defaultSetting.getString("description"));
                         label.setPreferredSize(new Dimension(componentWidth, componentHeight));
                         JTextField field = new JTextField();
                         if(currentSetting.getString("type").equals("String")) {
@@ -394,7 +396,7 @@ public class Settings {
                     case "Boolean" -> {
                         JSONObject defaultSetting = this.defaults.getJSONObject(name);
                         boolean shouldWarn = defaultSetting.has("warning");
-                        JLabel label = new JLabel(currentSetting.getString("description"));
+                        JLabel label = new JLabel(defaultSetting.getString("description"));
                         label.setPreferredSize(new Dimension(componentWidth, componentHeight));
                         JCheckBox checkBox = new JCheckBox();
                         checkBox.setSelected(this.getBoolean(name));
