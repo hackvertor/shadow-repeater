@@ -35,6 +35,10 @@ public class VariationAnalyser {
                         You should return list of""" + " " + maxVariationAmount + " vectors separated by new lines." + """                       
                         Return **only vectors separated by new lines**. No markdown, no code blocks, and no extra text.
                         You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.
+                        You should avoid making up and spoofing domains.
+                        Check for any patterns that align with RFC specifications.
+                        If an RFC pattern is detected, focus the analysis on its compliance with the specification when producing variations.
+                        Do not use example domains, you should always use the existing domains in the data your analyzing.
                         Here is a list of headers and parameters for you to analyse in JSON:
                         """);
 

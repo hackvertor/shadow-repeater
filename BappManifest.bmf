@@ -10,4 +10,4 @@ Author: Portswigger Web Security - Gareth Heyes
 ShortDescription: Shadow Repeater enhances your manual testing with AI-powered, fully automatic variation testing.
 EntryPoint: build/libs/shadow-repeater.jar
 BuildCommand: ./gradlew jar
-SupportedProducts: Pro, Community
+SupportedProducts: Pro
