@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Removed unused imports">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/bulkScan-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/bulkScan-all.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/montoya-api-2024.10-montoya.jar" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="shadow-repeater" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="shadow-repeater" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="shadow-repeater" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="shadow-repeater" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="shadow-repeater" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2st2Nw1nrT5oCZ12EEIrbXGMIbF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Gradle.Build shadow-repeater.executor": "Run",
+    "Gradle.Load Gradle Dependencies.executor": "Run",
+    "Gradle.Tests in 'shadow-repeater'.executor": "Run",
+    "Gradle.adaptive-learning [jar].executor": "Run",
+    "Gradle.shadow-repeater [clean].executor": "Run",
+    "Gradle.shadow-repeater [dependencies].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/gareth.heyes/personal-projects/shadow-repeater",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.52988505",
+    "settings.editor.selected.configurable": "preferences.externalDependencies",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Gradle.adaptive-learning [jar]">
+    <configuration name="Tests in 'shadow-repeater'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="adaptive-learning [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="shadow-repeater [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="shadow-repeater [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.adaptive-learning [jar]" />
+        <item itemvalue="Gradle.shadow-repeater [clean]" />
+        <item itemvalue="Gradle.Tests in 'shadow-repeater'" />
+        <item itemvalue="Gradle.shadow-repeater [dependencies]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="" />
+      <created>1739260513665</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739260513665</updated>
+      <workItem from="1739260514692" duration="2130000" />
+      <workItem from="1739262659056" duration="23822000" />
+      <workItem from="1739287694970" duration="232000" />
+      <workItem from="1739287939829" duration="189000" />
+      <workItem from="1739288133478" duration="43487000" />
+      <workItem from="1739456856513" duration="4661000" />
+      <workItem from="1739519022444" duration="473000" />
+      <workItem from="1739519500272" duration="29000" />
+      <workItem from="1739519534082" duration="119000" />
+      <workItem from="1739519658028" duration="896000" />
+      <workItem from="1739520560391" duration="131000" />
+      <workItem from="1739520694249" duration="53000" />
+      <workItem from="1739520749497" duration="81000" />
+      <workItem from="1739520833687" duration="2714000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial import">
+      <option name="closed" value="true" />
+      <created>1739260750934</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739260750934</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Improved diffing logic to use James' bulk scan variation analyser">
+      <option name="closed" value="true" />
+      <created>1739272292538</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1739272292538</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added bulk scan jar">
+      <option name="closed" value="true" />
+      <created>1739272312338</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739272312338</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Changed request position to make max request correct">
+      <option name="closed" value="true" />
+      <created>1739272522769</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1739272522769</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refactored reset history. Clear history when host changes.">
+      <option name="closed" value="true" />
+      <created>1739275927868</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1739275927868</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added settings">
+      <option name="closed" value="true" />
+      <created>1739284538127</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1739284538127</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Improved prompt">
+      <option name="closed" value="true" />
+      <created>1739284809377</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1739284809377</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixed typo">
+      <option name="closed" value="true" />
+      <created>1739285335907</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1739285335907</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed off by one error">
+      <option name="closed" value="true" />
+      <created>1739287022115</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1739287022115</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Renamed to Shadow repeater">
+      <option name="closed" value="true" />
+      <created>1739346195832</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1739346195833</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Updated message in the console">
+      <option name="closed" value="true" />
+      <created>1739346329973</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1739346329973</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added more messages to the console">
+      <option name="closed" value="true" />
+      <created>1739347441940</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1739347441940</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fixed output formatting">
+      <option name="closed" value="true" />
+      <created>1739347630246</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1739347630246</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added name file">
+      <option name="closed" value="true" />
+      <created>1739347658815</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1739347658815</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Only applied URL encoding when the vector is not URL encoded.">
+      <option name="closed" value="true" />
+      <created>1739348543340</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1739348543340</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Changed string builder to string">
+      <option name="closed" value="true" />
+      <created>1739348633450</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1739348633450</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Optimised the prompt">
+      <option name="closed" value="true" />
+      <created>1739349393588</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1739349393588</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added console message before sending to the AI">
+      <option name="closed" value="true" />
+      <created>1739350155005</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1739350155005</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added context menu and auto invoke setting">
+      <option name="closed" value="true" />
+      <created>1739354984222</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1739354984222</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added context menu class">
+      <option name="closed" value="true" />
+      <created>1739355003617</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1739355003617</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fixed prompt">
+      <option name="closed" value="true" />
+      <created>1739355307348</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1739355307348</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added logo and readme">
+      <option name="closed" value="true" />
+      <created>1739358487107</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1739358487107</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fixed image path">
+      <option name="closed" value="true" />
+      <created>1739358560216</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1739358560216</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Updated readme">
+      <option name="closed" value="true" />
+      <created>1739358770552</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1739358770552</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Fixed logo, increased height. Added BApp description and manifest.">
+      <option name="closed" value="true" />
+      <created>1739359308911</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1739359308911</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Added reset request history option to context menu">
+      <option name="closed" value="true" />
+      <created>1739359829346</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1739359829346</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Removed unused imports">
+      <option name="closed" value="true" />
+      <created>1739360185888</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1739360185888</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Updated warning message and BApp description">
+      <option name="closed" value="true" />
+      <created>1739370086850</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1739370086850</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Updated readme">
+      <option name="closed" value="true" />
+      <created>1739370476439</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1739370476439</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Made the AI return plain text vectors separated by new lines. Tweaked the prompt to remove JSON.">
+      <option name="closed" value="true" />
+      <created>1739372431778</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1739372431778</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Removed message that sounds negative when multiple variations failed to produce difference">
+      <option name="closed" value="true" />
+      <created>1739373483871</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1739373483871</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Prevented the AI from spoofing domains and generating random domain names">
+      <option name="closed" value="true" />
+      <created>1739374682162</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1739374682162</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Reduced control values request and skipped duplicate entries in paramHeaders list">
+      <option name="closed" value="true" />
+      <created>1739435141934</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1739435141934</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Removed domain spoofing from the prompt">
+      <option name="closed" value="true" />
+      <created>1739436632231</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1739436632231</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Removed duplicate code">
+      <option name="closed" value="true" />
+      <created>1739436984627</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1739436984627</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Changed code to use a HashMap of requests and keyed it by parameters names which allows multiple repeater tabs to be used. When there is more than one parameter used it should pick the most frequent.">
+      <option name="closed" value="true" />
+      <created>1739444857793</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1739444857793</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Improved fingerprint list">
+      <option name="closed" value="true" />
+      <created>1739449116345</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1739449116346</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Removed unused imports">
+      <option name="closed" value="true" />
+      <created>1739450133667</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1739450133667</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added more messages to the console" />
+    <MESSAGE value="Fixed output formatting" />
+    <MESSAGE value="Added name file" />
+    <MESSAGE value="Only applied URL encoding when the vector is not URL encoded." />
+    <MESSAGE value="Changed string builder to string" />
+    <MESSAGE value="Optimised the prompt" />
+    <MESSAGE value="Added console message before sending to the AI" />
+    <MESSAGE value="Added context menu and auto invoke setting" />
+    <MESSAGE value="Added context menu class" />
+    <MESSAGE value="Fixed prompt" />
+    <MESSAGE value="Added logo and readme" />
+    <MESSAGE value="Fixed image path" />
+    <MESSAGE value="Fixed logo, increased height. Added BApp description and manifest." />
+    <MESSAGE value="Added reset request history option to context menu" />
+    <MESSAGE value="Updated warning message and BApp description" />
+    <MESSAGE value="Updated readme" />
+    <MESSAGE value="Made the AI return plain text vectors separated by new lines. Tweaked the prompt to remove JSON." />
+    <MESSAGE value="Removed message that sounds negative when multiple variations failed to produce difference" />
+    <MESSAGE value="Prevented the AI from spoofing domains and generating random domain names" />
+    <MESSAGE value="Reduced control values request and skipped duplicate entries in paramHeaders list" />
+    <MESSAGE value="Removed domain spoofing from the prompt" />
+    <MESSAGE value="Removed duplicate code" />
+    <MESSAGE value="Changed code to use a HashMap of requests and keyed it by parameters names which allows multiple repeater tabs to be used. When there is more than one parameter used it should pick the most frequent." />
+    <MESSAGE value="Improved fingerprint list" />
+    <MESSAGE value="Removed unused imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused imports" />
+  </component>
+</project>

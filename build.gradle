@@ -7,10 +7,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.json:json:20230227'
-    implementation 'net.portswigger.burp.extender:burp-extender-api:2.3'
-    implementation files("libs/montoya-api-2024.10-montoya.jar")
+    implementation 'org.json:json:20231013'
     implementation files("libs/bulkScan-all.jar")
+    compileOnly 'net.portswigger.burp.extender:burp-extender-api:2.3'
+    compileOnly 'net.portswigger.burp.extensions:montoya-api:2025.2'
 }
 
 jar {
