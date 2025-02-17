@@ -118,7 +118,7 @@ public class Settings {
            setting = new JSONObject();
         }
         setting.put("description", description);
-        setting.put("default", defaultValue);
+        setting.put("value", defaultValue);
         setting.put("type", "Boolean");
         setting.put("category", category);
         if(warning != null) {
@@ -136,7 +136,7 @@ public class Settings {
             setting = new JSONObject();
         }
         setting.put("description", description);
-        setting.put("default", defaultValue);
+        setting.put("value", defaultValue);
         setting.put("type", "String");
         setting.put("category", category);
         this.settings.put(name, setting);
@@ -151,7 +151,7 @@ public class Settings {
             setting = new JSONObject();
         }
         setting.put("description", description);
-        setting.put("default", defaultValue);
+        setting.put("value", defaultValue);
         setting.put("type", "Password");
         setting.put("category", category);
         this.settings.put(name, setting);
@@ -166,7 +166,7 @@ public class Settings {
             setting = new JSONObject();
         }
         setting.put("description", description);
-        setting.put("default", defaultValue);
+        setting.put("value", defaultValue);
         setting.put("type", "Integer");
         setting.put("category", category);
         setting.put("min", min);
@@ -192,7 +192,8 @@ public class Settings {
             if(setting.has("value")) {
                 return setting.getBoolean("value");
             } else {
-                return setting.getBoolean("default");
+               JSONObject defaultSetting = this.defaults.getJSONObject(name);
+               return defaultSetting.getBoolean("value");
             }
         }
         throw new InvalidTypeSettingException("The setting " + name + " expects a boolean");
@@ -205,7 +206,8 @@ public class Settings {
             if(setting.has("value")) {
                 return setting.getString("value");
             } else {
-                return setting.getString("default");
+                JSONObject defaultSetting = this.defaults.getJSONObject(name);
+                return defaultSetting.getString("value");
             }
         }
         throw new InvalidTypeSettingException("The setting " + name + " expects a string");
@@ -218,7 +220,8 @@ public class Settings {
             if(setting.has("value")) {
                 return setting.getInt("value");
             } else {
-                return setting.getInt("default");
+                JSONObject defaultSetting = this.defaults.getJSONObject(name);
+                return defaultSetting.getInt("value");
             }
         }
         throw new InvalidTypeSettingException("The setting " + name + " expects a int");
@@ -300,6 +303,19 @@ public class Settings {
             }
         }
     }
+
+    private JSONObject getSettingsObject(String name) {
+        Iterator<String> keys = this.settings.keys();
+        while(keys.hasNext()) {
+            String key = keys.next();
+            JSONObject setting = (JSONObject) this.settings.get(key);
+            if(!setting.has("value")) {
+                return this.defaults.getJSONObject(name);
+            }
+        }
+        return this.settings.getJSONObject(name);
+    }
+
     public JPanel buildInterface(JFrame settingsWindow, int componentWidth, int componentHeight, int spacing, Map<String, Integer> columns, Settings loadSettingObject) throws UnregisteredSettingException, InvalidTypeSettingException {
         JPanel settingsPanel = new JPanel(new GridBagLayout());
         JLabel status = new JLabel(" ");
@@ -315,14 +331,10 @@ public class Settings {
             categoryContainer.setBorder(BorderFactory.createTitledBorder(categoryName));
             int componentRow = 0;
             for (String name : categoryKeySet.getValue()) {
-                if(!this.settings.has(name)) {
-                    this.settings.put(name, this.defaults.getJSONObject(name));
-                }
-                JSONObject currentSetting = this.settings.getJSONObject(name);
+                JSONObject currentSetting = getSettingsObject(name);
                 switch (currentSetting.getString("type")) {
                     case "Password" -> {
-                        JSONObject defaultSetting = this.defaults.getJSONObject(name);
-                        JLabel label = new JLabel(defaultSetting.getString("description"));
+                        JLabel label = new JLabel(currentSetting.getString("description"));
                         label.setPreferredSize(new Dimension(componentWidth, componentHeight));
                         JPasswordField field = new JPasswordField();
                         field.setEchoChar('*');
@@ -362,8 +374,7 @@ public class Settings {
                         });
                     }
                     case "Integer", "String" -> {
-                        JSONObject defaultSetting = this.defaults.getJSONObject(name);
-                        JLabel label = new JLabel(defaultSetting.getString("description"));
+                        JLabel label = new JLabel(currentSetting.getString("description"));
                         label.setPreferredSize(new Dimension(componentWidth, componentHeight));
                         JTextField field = new JTextField();
                         if(currentSetting.getString("type").equals("String")) {
@@ -394,16 +405,15 @@ public class Settings {
                         });
                     }
                     case "Boolean" -> {
-                        JSONObject defaultSetting = this.defaults.getJSONObject(name);
-                        boolean shouldWarn = defaultSetting.has("warning");
-                        JLabel label = new JLabel(defaultSetting.getString("description"));
+                        boolean shouldWarn = currentSetting.has("warning");
+                        JLabel label = new JLabel(currentSetting.getString("description"));
                         label.setPreferredSize(new Dimension(componentWidth, componentHeight));
                         JCheckBox checkBox = new JCheckBox();
                         checkBox.setSelected(this.getBoolean(name));
                         checkBox.addActionListener(e -> {
                             boolean isChecked = checkBox.isSelected();
                             if(isChecked && shouldWarn) {
-                                int confirm = JOptionPane.showConfirmDialog(checkBox, defaultSetting.getString("warning"));
+                                int confirm = JOptionPane.showConfirmDialog(checkBox, currentSetting.getString("warning"));
                                 if(confirm != 0) {
                                     checkBox.setSelected(false);
                                     isChecked = false;
