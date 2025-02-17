@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Tweak the prompt to follow RFCs if detected and avoid using spoofed domains.">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Removed unused import">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +235,8 @@
       <workItem from="1739529068890" duration="10835000" />
       <workItem from="1739543824529" duration="690000" />
       <workItem from="1739546251789" duration="431000" />
-      <workItem from="1739778684240" duration="928000" />
+      <workItem from="1739778684240" duration="1239000" />
+      <workItem from="1739781591258" duration="48000" />
     </task>
     <task id="LOCAL-00001" summary="Initial import">
       <option name="closed" value="true" />
@@ -559,15 +558,37 @@
       <option name="project" value="LOCAL" />
       <updated>1739533121656</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Refactored check for differences. Added a vector reducer.">
+      <option name="closed" value="true" />
+      <created>1739779663479</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1739779663479</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Refactored check for differences. Added a vector reducer.">
+      <option name="closed" value="true" />
+      <created>1739779675282</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1739779675282</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Removed unused import">
+      <option name="closed" value="true" />
+      <created>1739779883544</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1739779883544</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added name file" />
-    <MESSAGE value="Only applied URL encoding when the vector is not URL encoded." />
     <MESSAGE value="Changed string builder to string" />
     <MESSAGE value="Optimised the prompt" />
     <MESSAGE value="Added console message before sending to the AI" />
@@ -591,6 +612,8 @@
     <MESSAGE value="Removed unused imports" />
     <MESSAGE value="Moved to public montoya API" />
     <MESSAGE value="Tweak the prompt to follow RFCs if detected and avoid using spoofed domains." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tweak the prompt to follow RFCs if detected and avoid using spoofed domains." />
+    <MESSAGE value="Refactored check for differences. Added a vector reducer." />
+    <MESSAGE value="Removed unused import" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused import" />
   </component>
 </project>

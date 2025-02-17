@@ -101,7 +101,7 @@ public class Utils {
         settings.registerBooleanSetting("debug", false, "Debug AI requests", "AI", null);
         settings.registerBooleanSetting("autoInvoke", true, "Auto invoke after repeater requests", "Repeater settings", null);
         settings.registerIntegerSetting("amountOfRequests", 5, "Amount of requests before doing AI analysis (2-100)", "Repeater settings", 2, 100);
-        settings.registerIntegerSetting("maxVariationAmount", 20, "Maximum amount of variations (1-1000)", "Repeater settings", 1, 1000);
+        settings.registerIntegerSetting("maxVariationAmount", 10, "Maximum amount of variations (1-100)", "Repeater settings", 1, 100);
     }
 
     public static JFrame getSettingsWindowInstance() {
