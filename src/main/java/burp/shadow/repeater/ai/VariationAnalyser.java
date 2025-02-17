@@ -34,6 +34,8 @@ public class VariationAnalyser {
                         Your job is to analyze the JSON given to you and look for variations of what's being tested.
                         You should return list of""" + " " + maxVariationAmount + " vectors separated by new lines." + """                       
                         Return **only vectors separated by new lines**. No markdown, no code blocks, and no extra text.
+                        Do not output markdown.
+                        Do not describe anything. Do not explain anything.
                         You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.
                         You should avoid making up and spoofing domains.
                         Check for any patterns that align with RFC specifications.

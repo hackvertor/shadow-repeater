@@ -17,6 +17,27 @@ import java.util.Set;
 import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
 public class OrganiseVectors {
+    public static boolean checkForDifferences(JSONArray vectors, HttpRequestResponse baseRequestResponse, CustomResponseGroup responsesAnalyser, HttpRequest req, String type, String name) {
+        for(int j = 0; j < vectors.length(); j++) {
+            HttpRequest modifiedReq = null;
+            String vector = vectors.getJSONObject(j).getString("vector");
+            modifiedReq = Utils.modifyRequest(req, type, name, vector);
+            if(modifiedReq != null) {
+                HttpRequestResponse requestResponse = api.http().sendRequest(modifiedReq);
+                if(!responsesAnalyser.matches(requestResponse)) {
+                    api.organizer().sendToOrganizer(baseRequestResponse);
+                    String notes = "The response is different in the following ways" +
+                            System.lineSeparator() +
+                            responsesAnalyser.describeDiff(requestResponse);
+                    requestResponse.annotations().setNotes(notes);
+                    api.organizer().sendToOrganizer(requestResponse);
+                    api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public static void organise(HttpRequest req, JSONArray variations, JSONArray headersAndParameters, HttpResponse[] repeaterResponses) {
         ShadowRepeaterExtension.executorService.submit(() -> {
             try {
@@ -45,23 +66,16 @@ public class OrganiseVectors {
 
                     }
                     api.logging().logToOutput("Trying variations");
-                    for(int j = 0; j < variations.length(); j++) {
-                        HttpRequest modifiedReq = null;
-                        String vector = variations.getJSONObject(j).getString("vector");
-                        modifiedReq = Utils.modifyRequest(req, type, name, vector);
-                        if(modifiedReq != null) {
-                            HttpRequestResponse requestResponse = api.http().sendRequest(modifiedReq);
-                            if(!responsesAnalyser.matches(requestResponse)) {
-                                api.organizer().sendToOrganizer(baseRequestResponse);
-                                String notes = "The response is different in the following ways" +
-                                        System.lineSeparator() +
-                                        responsesAnalyser.describeDiff(requestResponse);
-                                requestResponse.annotations().setNotes(notes);
-                                api.organizer().sendToOrganizer(requestResponse);
-                                api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
+                    boolean foundDifference = checkForDifferences(variations, baseRequestResponse, responsesAnalyser, req, type, name);
+                    if(!foundDifference) {
+                        api.logging().logToOutput("Trying vector reduction");
+                        JSONArray reducedVectors = VectorReducer.reduce(variations);
+                        if(reducedVectors != null && !reducedVectors.isEmpty()) {
+                            if(checkForDifferences(reducedVectors, baseRequestResponse, responsesAnalyser, req, type, name)) {
                                 return;
                             }
                         }
+
                     }
                 }
             } catch (Throwable throwable) {
