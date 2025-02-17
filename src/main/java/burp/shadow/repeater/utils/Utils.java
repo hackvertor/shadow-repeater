@@ -100,6 +100,7 @@ public class Utils {
     public static void registerGeneralSettings(Settings settings) {
         settings.registerBooleanSetting("debug", false, "Debug AI requests", "AI", null);
         settings.registerBooleanSetting("autoInvoke", true, "Auto invoke after repeater requests", "Repeater settings", null);
+        settings.registerBooleanSetting("shouldReduceVectors", false, "Attempt to reduce length of each vector if they fail", "Repeater settings", null);
         settings.registerIntegerSetting("amountOfRequests", 5, "Amount of requests before doing AI analysis (2-100)", "Repeater settings", 2, 100);
         settings.registerIntegerSetting("maxVariationAmount", 10, "Maximum amount of variations (1-100)", "Repeater settings", 1, 100);
     }

@@ -38,7 +38,7 @@ public class OrganiseVectors {
         }
         return false;
     }
-    public static void organise(HttpRequest req, JSONArray variations, JSONArray headersAndParameters, HttpResponse[] repeaterResponses) {
+    public static void organise(HttpRequest req, JSONArray variations, JSONArray headersAndParameters, HttpResponse[] repeaterResponses, boolean shouldReduceVectors) {
         ShadowRepeaterExtension.executorService.submit(() -> {
             try {
                 HttpRequestResponse baseRequestResponse = api.http().sendRequest(req);
@@ -67,7 +67,7 @@ public class OrganiseVectors {
                     }
                     api.logging().logToOutput("Trying variations");
                     boolean foundDifference = checkForDifferences(variations, baseRequestResponse, responsesAnalyser, req, type, name);
-                    if(!foundDifference) {
+                    if(!foundDifference && shouldReduceVectors) {
                         api.logging().logToOutput("Trying vector reduction");
                         JSONArray reducedVectors = VectorReducer.reduce(variations);
                         if(reducedVectors != null && !reducedVectors.isEmpty()) {

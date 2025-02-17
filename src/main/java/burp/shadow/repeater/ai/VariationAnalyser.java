@@ -19,8 +19,10 @@ public class VariationAnalyser {
         ShadowRepeaterExtension.executorService.submit(() -> {
             try {
                 int maxVariationAmount;
+                boolean shouldReduceVectors;
                 try {
                     maxVariationAmount = ShadowRepeaterExtension.generalSettings.getInteger("maxVariationAmount");
+                    shouldReduceVectors = ShadowRepeaterExtension.generalSettings.getBoolean("shouldReduceVectors");
                 } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
                     api.logging().logToError("Error loading settings:" + e);
                     throw new RuntimeException(e);
@@ -57,7 +59,7 @@ public class VariationAnalyser {
                         variations.put(variation);
                     }
                     api.logging().logToOutput("Variations found:\n" + variations);
-                    OrganiseVectors.organise(req, variations, headersAndParameters, repeaterResponses);
+                    OrganiseVectors.organise(req, variations, headersAndParameters, repeaterResponses, shouldReduceVectors);
                 } catch (JSONException e) {
                     api.logging().logToError("The AI returned invalid JSON");
                 }
