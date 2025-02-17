@@ -7,7 +7,6 @@ import org.json.JSONObject;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
-import java.util.HashSet;
 
 import static burp.shadow.repeater.ShadowRepeaterExtension.api;
 
