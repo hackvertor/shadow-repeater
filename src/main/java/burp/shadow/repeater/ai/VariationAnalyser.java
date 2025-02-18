@@ -40,14 +40,14 @@ public class VariationAnalyser {
                         Return **only vectors separated by new lines**. No markdown, no code blocks, and no extra text.
                         Do not output markdown.
                         Do not describe anything. Do not explain anything.
-                        You should be creative and imagine a WAF blocking the vector and come up with creative ways of bypassing it.
+                        You should be creative when coming up with your variations.
                         You should avoid making up and spoofing domains.
                         Check for any patterns that align with RFC specifications.
                         If an RFC pattern is detected, focus the analysis on its compliance with the specification when producing variations.
                         Do not use example domains, you should always use the existing domains in the data your analyzing.
                         What are the structural differences between the vectors in this dataset? 
-                        Identify other possible variations that could follow the same pattern.
-                        Extract common patterns from this data and generate equivalent vectors used in other contexts.                       
+                        - Identify other possible variations that could follow the same pattern.
+                        - Extract common patterns from this data and generate equivalent vectors used in other contexts.                       
                         Here is a list of headers and parameters for you to analyse in JSON:
                         """);
 

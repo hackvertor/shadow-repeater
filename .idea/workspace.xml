@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated logo">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Improved prompts and URL encoded detection. Trimmed vectors. Added spaces to control values.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,15 +273,7 @@
       <workItem from="1739886423703" duration="62000" />
       <workItem from="1739890819771" duration="273000" />
       <workItem from="1739891702730" duration="119000" />
-      <workItem from="1739892608827" duration="5907000" />
-    </task>
-    <task id="LOCAL-00004" summary="Changed request position to make max request correct">
-      <option name="closed" value="true" />
-      <created>1739272522769</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1739272522769</updated>
+      <workItem from="1739892608827" duration="8266000" />
     </task>
     <task id="LOCAL-00005" summary="Refactored reset history. Clear history when host changes.">
       <option name="closed" value="true" />
@@ -669,14 +659,21 @@
       <option name="project" value="LOCAL" />
       <updated>1739891815470</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Improved prompts and URL encoded detection. Trimmed vectors. Added spaces to control values.">
+      <option name="closed" value="true" />
+      <created>1739899073878</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1739899073878</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added reset request history option to context menu" />
     <MESSAGE value="Updated warning message and BApp description" />
     <MESSAGE value="Updated readme" />
     <MESSAGE value="Made the AI return plain text vectors separated by new lines. Tweaked the prompt to remove JSON." />
@@ -701,6 +698,7 @@
     <MESSAGE value="Updated workspace" />
     <MESSAGE value="Also encode URL request bodies if % doesn't exist" />
     <MESSAGE value="Updated logo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated logo" />
+    <MESSAGE value="Improved prompts and URL encoded detection. Trimmed vectors. Added spaces to control values." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved prompts and URL encoded detection. Trimmed vectors. Added spaces to control values." />
   </component>
 </project>
