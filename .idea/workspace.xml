@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Removed BApp description and manifest">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated bulk scan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/bulkScan-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/bulkScan-all.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ContextMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/HttpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/HttpHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/AI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VectorReducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VectorReducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/settings/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/settings/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +249,8 @@
       <workItem from="1739803207003" duration="129000" />
       <workItem from="1739804754000" duration="447000" />
       <workItem from="1739807310910" duration="106000" />
-      <workItem from="1739874262046" duration="104000" />
+      <workItem from="1739874262046" duration="748000" />
+      <workItem from="1739882904896" duration="1781000" />
     </task>
     <task id="LOCAL-00001" summary="Initial import">
       <option name="closed" value="true" />
@@ -612,14 +620,21 @@
       <option name="project" value="LOCAL" />
       <updated>1739807360775</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Updated bulk scan">
+      <option name="closed" value="true" />
+      <created>1739874397216</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1739874397216</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added context menu and auto invoke setting" />
     <MESSAGE value="Added context menu class" />
     <MESSAGE value="Fixed prompt" />
     <MESSAGE value="Added logo and readme" />
@@ -644,6 +659,7 @@
     <MESSAGE value="Fixed settings when resetting to defaults" />
     <MESSAGE value="Added setting to reduce vectors if they fail" />
     <MESSAGE value="Removed BApp description and manifest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed BApp description and manifest" />
+    <MESSAGE value="Updated bulk scan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated bulk scan" />
   </component>
 </project>

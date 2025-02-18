@@ -26,12 +26,11 @@ public class ContextMenu implements ContextMenuItemsProvider {
         if (event.isFromTool(ToolType.REPEATER))
         {
             List<Component> menuItemList = new ArrayList<>();
-
-            JMenuItem sendToItem = new JMenuItem("Send to " + extensionName);
-            sendToItem.setEnabled(AI.isAiSupported());
+            JMenuItem doAnalysisItem = new JMenuItem("Do analysis");
+            doAnalysisItem.setEnabled(AI.isAiSupported());
             HttpRequestResponse requestResponse = event.messageEditorRequestResponse().isPresent() ? event.messageEditorRequestResponse().get().requestResponse() : event.selectedRequestResponses().getFirst();
             String requestKey = Utils.generateRequestKey(requestResponse.request());
-            sendToItem.addActionListener(e -> {
+            doAnalysisItem.addActionListener(e -> {
                 JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.get(requestKey).toArray(new HttpRequest[0]));
                 if (!headersAndParameters.isEmpty()) {
                     VariationAnalyser.analyse(headersAndParameters, requestResponse.request(), new HttpResponse[0]);
@@ -40,10 +39,10 @@ public class ContextMenu implements ContextMenuItemsProvider {
                     api.logging().logToOutput(nothingToAnalyseMsg);
                 }
             });
-            menuItemList.add(sendToItem);
+            menuItemList.add(doAnalysisItem);
             JMenuItem resetHistoryItem = new JMenuItem("Reset request history for this request");
             resetHistoryItem.setEnabled(AI.isAiSupported());
-            resetHistoryItem.addActionListener(e -> Utils.resetHistory(requestKey));
+            resetHistoryItem.addActionListener(e -> Utils.resetHistory(requestKey, true));
             menuItemList.add(resetHistoryItem);
             JMenuItem settings = new JMenuItem("Settings");
             settings.addActionListener(e -> Settings.showSettingsWindow());

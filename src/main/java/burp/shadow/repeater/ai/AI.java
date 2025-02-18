@@ -41,20 +41,11 @@ public class AI {
     }
 
     public static boolean isAiSupported() {
-        return api != null && hasApiMethod(api, "ai") && api.ai().isEnabled();
+        return api != null && api.ai().isEnabled();
     }
 
     public String getSystemMessage() {
         return this.systemMessage;
-    }
-    public static boolean hasApiMethod(Object obj, String methodName) {
-         try {
-             Class<?> clazz = obj.getClass();
-             clazz.getMethod(methodName);
-             return true;
-         } catch(NoSuchMethodException e){
-             return false;
-         }
     }
 
     public static String getHash(String input) throws NoSuchAlgorithmException {
@@ -63,9 +54,9 @@ public class AI {
         return new String(messageDigest.digest());
     }
     public String execute() {
-        boolean debug;
+        boolean debugAi;
         try {
-            debug = ShadowRepeaterExtension.generalSettings.getBoolean("debug");
+            debugAi = ShadowRepeaterExtension.generalSettings.getBoolean("debugAi");
         } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
             api.logging().logToError("Error loading settings:" + e);
             throw new RuntimeException(e);
@@ -76,12 +67,12 @@ public class AI {
         if(!bypassRateLimit) {
             checkLastExecutionTime();
         }
-        if(debug) {
+        if(debugAi) {
             api.logging().logToOutput("System Prompt:" + this.systemMessage + "\n\n");
             api.logging().logToOutput("Prompt:" + this.prompt + "\n\n");
         }
         PromptResponse response = api.ai().prompt().execute(PromptOptions.promptOptions().withTemperature(this.temperature), Message.systemMessage(this.systemMessage), Message.userMessage(this.prompt));
-        if(debug) {
+        if(debugAi) {
             api.logging().logToOutput("AI Response:" + response.content() + "\n\n");
         }
         return response.content();

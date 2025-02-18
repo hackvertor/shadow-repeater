@@ -20,9 +20,13 @@ public class VariationAnalyser {
             try {
                 int maxVariationAmount;
                 boolean shouldReduceVectors;
+                boolean debugOutput;
+                boolean debugAi;
                 try {
                     maxVariationAmount = ShadowRepeaterExtension.generalSettings.getInteger("maxVariationAmount");
                     shouldReduceVectors = ShadowRepeaterExtension.generalSettings.getBoolean("shouldReduceVectors");
+                    debugOutput = ShadowRepeaterExtension.generalSettings.getBoolean("debugOutput");
+                    debugAi = ShadowRepeaterExtension.generalSettings.getBoolean("debugAi");
                 } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
                     api.logging().logToError("Error loading settings:" + e);
                     throw new RuntimeException(e);
@@ -48,7 +52,9 @@ public class VariationAnalyser {
 
                 ai.setPrompt(headersAndParameters.toString());
                 ai.setTemperature(1.0);
-                api.logging().logToOutput("Sending information to the AI");
+                if(debugAi) {
+                    api.logging().logToOutput("Sending information to the AI");
+                }
                 String response = ai.execute();
                 try {
                     String[] vectors = response.split("\n");
@@ -58,7 +64,9 @@ public class VariationAnalyser {
                         variation.put("vector", vector);
                         variations.put(variation);
                     }
-                    api.logging().logToOutput("Variations found:\n" + variations);
+                    if(debugAi) {
+                        api.logging().logToOutput("Variations found:\n" + variations);
+                    }
                     OrganiseVectors.organise(req, variations, headersAndParameters, repeaterResponses, shouldReduceVectors);
                 } catch (JSONException e) {
                     api.logging().logToError("The AI returned invalid JSON");

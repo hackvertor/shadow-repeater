@@ -11,9 +11,12 @@ import java.util.Arrays;
 import static burp.shadow.repeater.ShadowRepeaterExtension.api;
 
 public class VectorReducer {
-    public static JSONArray reduce(JSONArray vectors) {
+    public static JSONArray reduce(JSONArray vectors, boolean shouldDebugOutput) {
         try {
-            api.logging().logToOutput("Reducing vectors");
+            if(shouldDebugOutput) {
+                api.logging().logToOutput("Reducing vectors");
+            }
+
             AI ai = new AI();
             ai.setBypassRateLimit(true);
             ai.setSystemMessage("""
@@ -30,7 +33,9 @@ public class VectorReducer {
 
             ai.setPrompt(vectors.toString());
             ai.setTemperature(1.0);
-            api.logging().logToOutput("Sending existing vectors to the AI");
+            if(shouldDebugOutput) {
+                api.logging().logToOutput("Sending existing vectors to the AI");
+            }
             String response = ai.execute();
             try {
                 String[] reducedVectors = response.split("\n");
@@ -43,7 +48,9 @@ public class VectorReducer {
                     variation.put("vector", vector);
                     variations.put(variation);
                 }
-                api.logging().logToOutput("Reduced vectors found:\n" + variations);
+                if(shouldDebugOutput) {
+                    api.logging().logToOutput("Reduced vectors found:\n" + variations);
+                }
                 return variations;
             } catch (JSONException e) {
                 api.logging().logToError("The AI returned invalid JSON");

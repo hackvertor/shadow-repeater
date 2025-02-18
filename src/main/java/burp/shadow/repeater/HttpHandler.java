@@ -25,15 +25,19 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
         if(AI.isAiSupported() && toolSource.isFromTool(ToolType.REPEATER)) {
             int amountOfRequests;
             boolean autoInvoke;
+            boolean debugOutput;
             try {
                 amountOfRequests = ShadowRepeaterExtension.generalSettings.getInteger("amountOfRequests");
                 autoInvoke = ShadowRepeaterExtension.generalSettings.getBoolean("autoInvoke");
+                debugOutput = ShadowRepeaterExtension.generalSettings.getBoolean("debugOutput");
             } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
                 api.logging().logToError("Error loading settings:" + e);
                 throw new RuntimeException(e);
             }
+            if(debugOutput) {
+                api.logging().logToOutput("Repeater request " + requestHistoryPos.get(requestKey) + " of " + amountOfRequests);
+            }
 
-            api.logging().logToOutput("Repeater request " + requestHistoryPos.get(requestKey) + " of " + amountOfRequests);
             if(requestHistoryPos.get(requestKey) >= amountOfRequests) {
                 requestHistory.get(requestKey).add(req);
                 if(autoInvoke) {
@@ -44,7 +48,7 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
                         api.logging().logToOutput(nothingToAnalyseMsg);
                     }
                 }
-                Utils.resetHistory(requestKey);
+                Utils.resetHistory(requestKey, debugOutput);
             } else {
                 requestHistory.get(requestKey).add(req);
                 requestHistoryPos.put(requestKey, requestHistoryPos.get(requestKey)+1);

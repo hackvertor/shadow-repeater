@@ -38,15 +38,16 @@ public class Settings {
         settingsWindow.getContentPane().removeAll();
         settingsWindow.setTitle(extensionName + " settings");
         settingsWindow.setResizable(false);
-        settingsWindow.setPreferredSize(new Dimension(500, 600));
+        settingsWindow.setPreferredSize(new Dimension(800, 600));
         Container pane = settingsWindow.getContentPane();
         try {
             Map<String, Integer> columns = new HashMap<>();
-            columns.put("AI", 1);
             columns.put("Repeater settings", 1);
+            columns.put("AI", 2);
+            columns.put("General", 2);
             JPanel settingsInterface = settings.buildInterface(settingsWindow, 250, 25,10, columns, ShadowRepeaterExtension.generalSettings);
             settingsInterface.setAutoscrolls(true);
-            settingsInterface.setPreferredSize(new Dimension(500, 400));
+            settingsInterface.setPreferredSize(new Dimension(800, 400));
             JScrollPane settingsScroll = new JScrollPane(settingsInterface);
             settingsScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             settingsScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);

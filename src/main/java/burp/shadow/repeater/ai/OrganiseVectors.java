@@ -3,6 +3,8 @@ package burp.shadow.repeater.ai;
 import burp.CustomResponseGroup;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ShadowRepeaterExtension;
+import burp.shadow.repeater.settings.InvalidTypeSettingException;
+import burp.shadow.repeater.settings.UnregisteredSettingException;
 import burp.shadow.repeater.utils.Utils;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -40,6 +42,17 @@ public class OrganiseVectors {
     }
     public static void organise(HttpRequest req, JSONArray variations, JSONArray headersAndParameters, HttpResponse[] repeaterResponses, boolean shouldReduceVectors) {
         ShadowRepeaterExtension.executorService.submit(() -> {
+
+            boolean debugOutput;
+            boolean debugAi;
+            try {
+                debugOutput = ShadowRepeaterExtension.generalSettings.getBoolean("debugOutput");
+                debugAi = ShadowRepeaterExtension.generalSettings.getBoolean("debugAi");
+            } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
+                api.logging().logToError("Error loading settings:" + e);
+                throw new RuntimeException(e);
+            }
+
             try {
                 HttpRequestResponse baseRequestResponse = api.http().sendRequest(req);
                 baseRequestResponse.annotations().setNotes("This is the base request/response");
@@ -53,7 +66,9 @@ public class OrganiseVectors {
                         continue;
                     }
                     testedParams.add(name+type);
-                    api.logging().logToOutput("Trying random values");
+                    if(debugOutput) {
+                        api.logging().logToOutput("Trying random values");
+                    }
                     for(int k=1;k<=4;k++) {
                         try {
                             String controlValue = Utils.randomString(k * 2);
@@ -65,11 +80,16 @@ public class OrganiseVectors {
                         }
 
                     }
-                    api.logging().logToOutput("Trying variations");
+                    if(debugOutput) {
+                        api.logging().logToOutput("Trying variations");
+                    }
+
                     boolean foundDifference = checkForDifferences(variations, baseRequestResponse, responsesAnalyser, req, type, name);
                     if(!foundDifference && shouldReduceVectors) {
-                        api.logging().logToOutput("Trying vector reduction");
-                        JSONArray reducedVectors = VectorReducer.reduce(variations);
+                        if(debugOutput) {
+                            api.logging().logToOutput("Trying vector reduction");
+                        }
+                        JSONArray reducedVectors = VectorReducer.reduce(variations, debugOutput);
                         if(reducedVectors != null && !reducedVectors.isEmpty()) {
                             if(checkForDifferences(reducedVectors, baseRequestResponse, responsesAnalyser, req, type, name)) {
                                 return;
