@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added setting to reduce vectors if they fail">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Removed BApp description and manifest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/bulkScan-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/bulkScan-all.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,6 +241,8 @@
       <workItem from="1739797535334" duration="2693000" />
       <workItem from="1739803207003" duration="129000" />
       <workItem from="1739804754000" duration="447000" />
+      <workItem from="1739807310910" duration="106000" />
+      <workItem from="1739874262046" duration="104000" />
     </task>
     <task id="LOCAL-00001" summary="Initial import">
       <option name="closed" value="true" />
@@ -601,14 +604,21 @@
       <option name="project" value="LOCAL" />
       <updated>1739805076176</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Removed BApp description and manifest">
+      <option name="closed" value="true" />
+      <created>1739807360775</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1739807360775</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added console message before sending to the AI" />
     <MESSAGE value="Added context menu and auto invoke setting" />
     <MESSAGE value="Added context menu class" />
     <MESSAGE value="Fixed prompt" />
@@ -633,6 +643,7 @@
     <MESSAGE value="Removed unused import" />
     <MESSAGE value="Fixed settings when resetting to defaults" />
     <MESSAGE value="Added setting to reduce vectors if they fail" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added setting to reduce vectors if they fail" />
+    <MESSAGE value="Removed BApp description and manifest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed BApp description and manifest" />
   </component>
 </project>
