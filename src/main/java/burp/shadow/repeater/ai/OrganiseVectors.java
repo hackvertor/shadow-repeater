@@ -44,10 +44,8 @@ public class OrganiseVectors {
         ShadowRepeaterExtension.executorService.submit(() -> {
 
             boolean debugOutput;
-            boolean debugAi;
             try {
                 debugOutput = ShadowRepeaterExtension.generalSettings.getBoolean("debugOutput");
-                debugAi = ShadowRepeaterExtension.generalSettings.getBoolean("debugAi");
             } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
                 api.logging().logToError("Error loading settings:" + e);
                 throw new RuntimeException(e);
@@ -72,6 +70,9 @@ public class OrganiseVectors {
                     for(int k=1;k<=4;k++) {
                         try {
                             String controlValue = Utils.randomString(k * 2);
+                            if(k < 3) {
+                                controlValue += "  ";
+                            }
                             HttpRequest controlReq = Utils.modifyRequest(req, type, name, controlValue);
                             HttpRequestResponse controlRequestResponse = api.http().sendRequest(controlReq);
                             responsesAnalyser.add(controlRequestResponse);
@@ -91,9 +92,7 @@ public class OrganiseVectors {
                         }
                         JSONArray reducedVectors = VectorReducer.reduce(variations, debugOutput);
                         if(reducedVectors != null && !reducedVectors.isEmpty()) {
-                            if(checkForDifferences(reducedVectors, baseRequestResponse, responsesAnalyser, req, type, name)) {
-                                return;
-                            }
+                            checkForDifferences(reducedVectors, baseRequestResponse, responsesAnalyser, req, type, name);
                         }
 
                     }

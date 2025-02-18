@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Also encode URL request bodies if % doesn't exist">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated logo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,14 +274,8 @@
       <workItem from="1739885386045" duration="138000" />
       <workItem from="1739886423703" duration="62000" />
       <workItem from="1739890819771" duration="273000" />
-    </task>
-    <task id="LOCAL-00003" summary="Added bulk scan jar">
-      <option name="closed" value="true" />
-      <created>1739272312338</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1739272312338</updated>
+      <workItem from="1739891702730" duration="119000" />
+      <workItem from="1739892608827" duration="5907000" />
     </task>
     <task id="LOCAL-00004" summary="Changed request position to make max request correct">
       <option name="closed" value="true" />
@@ -664,14 +661,21 @@
       <option name="project" value="LOCAL" />
       <updated>1739885516387</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Updated logo">
+      <option name="closed" value="true" />
+      <created>1739891815470</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1739891815470</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed logo, increased height. Added BApp description and manifest." />
     <MESSAGE value="Added reset request history option to context menu" />
     <MESSAGE value="Updated warning message and BApp description" />
     <MESSAGE value="Updated readme" />
@@ -696,6 +700,7 @@
     <MESSAGE value="Removed JSON type" />
     <MESSAGE value="Updated workspace" />
     <MESSAGE value="Also encode URL request bodies if % doesn't exist" />
-    <option name="LAST_COMMIT_MESSAGE" value="Also encode URL request bodies if % doesn't exist" />
+    <MESSAGE value="Updated logo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated logo" />
   </component>
 </project>

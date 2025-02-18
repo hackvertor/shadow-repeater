@@ -20,12 +20,10 @@ public class VariationAnalyser {
             try {
                 int maxVariationAmount;
                 boolean shouldReduceVectors;
-                boolean debugOutput;
                 boolean debugAi;
                 try {
                     maxVariationAmount = ShadowRepeaterExtension.generalSettings.getInteger("maxVariationAmount");
                     shouldReduceVectors = ShadowRepeaterExtension.generalSettings.getBoolean("shouldReduceVectors");
-                    debugOutput = ShadowRepeaterExtension.generalSettings.getBoolean("debugOutput");
                     debugAi = ShadowRepeaterExtension.generalSettings.getBoolean("debugAi");
                 } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
                     api.logging().logToError("Error loading settings:" + e);
@@ -47,6 +45,9 @@ public class VariationAnalyser {
                         Check for any patterns that align with RFC specifications.
                         If an RFC pattern is detected, focus the analysis on its compliance with the specification when producing variations.
                         Do not use example domains, you should always use the existing domains in the data your analyzing.
+                        What are the structural differences between the vectors in this dataset? 
+                        Identify other possible variations that could follow the same pattern.
+                        Extract common patterns from this data and generate equivalent vectors used in other contexts.                       
                         Here is a list of headers and parameters for you to analyse in JSON:
                         """);
 
@@ -61,7 +62,7 @@ public class VariationAnalyser {
                     JSONArray variations = new JSONArray();
                     for (String vector : vectors) {
                         JSONObject variation = new JSONObject();
-                        variation.put("vector", vector);
+                        variation.put("vector", vector.trim());
                         variations.put(variation);
                     }
                     if(debugAi) {
