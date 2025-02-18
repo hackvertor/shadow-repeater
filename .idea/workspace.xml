@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated workspace" />
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Also encode URL request bodies if % doesn't exist">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -266,14 +268,9 @@
       <workItem from="1739874262046" duration="748000" />
       <workItem from="1739882904896" duration="2073000" />
       <workItem from="1739885190001" duration="161000" />
-    </task>
-    <task id="LOCAL-00002" summary="Improved diffing logic to use James' bulk scan variation analyser">
-      <option name="closed" value="true" />
-      <created>1739272292538</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1739272292538</updated>
+      <workItem from="1739885386045" duration="138000" />
+      <workItem from="1739886423703" duration="62000" />
+      <workItem from="1739890819771" duration="273000" />
     </task>
     <task id="LOCAL-00003" summary="Added bulk scan jar">
       <option name="closed" value="true" />
@@ -659,14 +656,21 @@
       <option name="project" value="LOCAL" />
       <updated>1739885341024</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Also encode URL request bodies if % doesn't exist">
+      <option name="closed" value="true" />
+      <created>1739885516387</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1739885516387</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed image path" />
     <MESSAGE value="Fixed logo, increased height. Added BApp description and manifest." />
     <MESSAGE value="Added reset request history option to context menu" />
     <MESSAGE value="Updated warning message and BApp description" />
@@ -691,6 +695,7 @@
     <MESSAGE value="Completed code review feedback:&#10;- Added setting to debug output&#10;- Made settings two columns &#10;- Removed unneeded method in AI class" />
     <MESSAGE value="Removed JSON type" />
     <MESSAGE value="Updated workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated workspace" />
+    <MESSAGE value="Also encode URL request bodies if % doesn't exist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Also encode URL request bodies if % doesn't exist" />
   </component>
 </project>
