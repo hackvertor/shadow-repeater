@@ -6,10 +6,12 @@ Shadow Repeater enhances Burp Suite’s Repeater by automatically generating and
 
 ![](https://github.com/hackvertor/shadow-repeater/blob/main/videos/shadow-repeater-ssti-demo.gif)
 
-## How to use
+## Installation instructions
 
-Go to the BApp store and search for Shadow Repeater. Click the install button and then check the "Use AI" checkbox in the Extension tab for this extension.
+**In Burp Suite Professional, go to Extensions->BApp store and search for Shadow Repeater. Click the install button and then navigate to the installed tab then select Shadow Repeater and check the "Use AI" checkbox in the Extension tab.**
 
 ![](https://github.com/hackvertor/shadow-repeater/blob/main/screenshots/shadow-repeater-install-screenshot.png)
+
+## How to use
 
 By default Shadow repeater gets invoked on the 5th repeater request you make and it requires a parameter or header to be changed. You simply try to hack a target by altering the request in some way. In the background Shadow repeater will send variations and look for differences in the response. When it's found something interesting it will send it to the organiser for inspection.

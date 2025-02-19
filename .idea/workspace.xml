@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Moved video demo" />
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Moved screenshot">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -275,15 +277,7 @@
       <workItem from="1739954648121" duration="60000" />
       <workItem from="1739955886949" duration="581000" />
       <workItem from="1739957627104" duration="1913000" />
-      <workItem from="1739968696631" duration="868000" />
-    </task>
-    <task id="LOCAL-00009" summary="Fixed off by one error">
-      <option name="closed" value="true" />
-      <created>1739287022115</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1739287022115</updated>
+      <workItem from="1739968696631" duration="5634000" />
     </task>
     <task id="LOCAL-00010" summary="Renamed to Shadow repeater">
       <option name="closed" value="true" />
@@ -669,14 +663,21 @@
       <option name="project" value="LOCAL" />
       <updated>1739969069135</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Moved screenshot">
+      <option name="closed" value="true" />
+      <created>1739969676226</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1739969676226</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Prevented the AI from spoofing domains and generating random domain names" />
     <MESSAGE value="Reduced control values request and skipped duplicate entries in paramHeaders list" />
     <MESSAGE value="Removed domain spoofing from the prompt" />
     <MESSAGE value="Removed duplicate code" />
@@ -701,6 +702,7 @@
     <MESSAGE value="Fixed URL encoding detection and added screenshot" />
     <MESSAGE value="Added video demo" />
     <MESSAGE value="Moved video demo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved video demo" />
+    <MESSAGE value="Moved screenshot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved screenshot" />
   </component>
 </project>
