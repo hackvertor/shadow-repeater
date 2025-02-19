@@ -26,7 +26,7 @@ public class Utils {
         return switch (type) {
             case "header" -> req.withRemovedHeader(name).withAddedHeader(name, value);
             case "URL", "BODY", "COOKIE", "JSON" -> {
-                if ((type.equals("BODY") || type.equals("URL")) && !value.matches("%[a-fA-F0-9]{2}]")) {
+                if ((type.equals("BODY") || type.equals("URL")) && !Pattern.compile("%[a-fA-F0-9]{2}]").matcher(value).find()) {
                     value = api.utilities().urlUtils().encode(value);
                 }
                 yield req.withUpdatedParameters(HttpParameter.parameter(name, value, HttpParameterType.valueOf(type)));
