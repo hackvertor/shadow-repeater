@@ -2,6 +2,8 @@
 
 # Shadow Repeater
 
+![](https://github.com/hackvertor/shadow-repeater/blob/main/videos/shadow-repeater-ssti-demo.gif)
+
 Shadow Repeater enhances Burp Suite’s Repeater by automatically generating and testing variations of your payloads to uncover potential security weaknesses. Whether you're probing for path traversal, SQL injection, XSS, or other vulnerabilities, Shadow Repeater intelligently mutates your inputs and analyzes responses for anomalies, making it an essential tool for in-depth manual testing and fuzzing. Stay one step ahead by discovering bypasses and alternative attack vectors that might otherwise go unnoticed.
 
 ## How to use
