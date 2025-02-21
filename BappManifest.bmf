@@ -2,7 +2,7 @@ Uuid: 7be1798d600647688bb2f051da37f504
 ExtensionType: 1
 Name: Shadow Repeater
 RepoName: shadow-repeater
-ScreenVersion: 1.0.0
+ScreenVersion: 1.0.1
 SerialVersion: 1
 MinPlatformVersion: 19
 ProOnly: True
