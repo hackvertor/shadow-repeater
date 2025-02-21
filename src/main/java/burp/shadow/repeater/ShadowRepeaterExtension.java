@@ -26,7 +26,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
     public static IBurpExtenderCallbacks callbacks;
     public static Settings generalSettings = null;
     public static String extensionName = "Shadow Repeater";
-    public static String version = "v1.0.0";
+    public static String version = "v1.0.1";
     public static MontoyaApi api;
     public static HashMap<String, Integer> requestHistoryPos = new HashMap<>();
     public static HashMap<String, ArrayList<HttpRequest>> requestHistory = new HashMap<>();

@@ -12,6 +12,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -109,6 +112,19 @@ public class Utils {
 
     }
 
+    public static void openUrl(String url) {
+        if(url.startsWith("https://")) {
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                try {
+                    Desktop.getDesktop().browse(new URI(url));
+                } catch (IOException ioException) {
+                } catch (URISyntaxException uriSyntaxException) {
+
+                }
+            }
+        }
+    }
+
     public static JFrame getSettingsWindowInstance() {
         if(SettingsFrame != null) {
             return SettingsFrame;
@@ -130,6 +146,11 @@ public class Utils {
         JMenuItem settingsMenu = new JMenuItem("Settings");
         settingsMenu.addActionListener(e -> Settings.showSettingsWindow());
         menuBar.add(settingsMenu);
+        JMenuItem reportFeedbackMenu = new JMenuItem("Report feedback");
+        reportFeedbackMenu.addActionListener(e -> {
+            Utils.openUrl("https://github.com/hackvertor/shadow-repeater/issues/new");
+        });
+        menuBar.add(reportFeedbackMenu);
         return menuBar;
     }
 
