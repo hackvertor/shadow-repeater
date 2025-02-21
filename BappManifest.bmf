@@ -1,0 +1,13 @@
+Uuid: 7be1798d600647688bb2f051da37f504
+ExtensionType: 1
+Name: Shadow Repeater
+RepoName: shadow-repeater
+ScreenVersion: 1.0.0
+SerialVersion: 1
+MinPlatformVersion: 19
+ProOnly: True
+Author: Gareth Heyes, PortSwigger
+ShortDescription: Enhance Repeater by generating and testing payload variations to uncover hidden vulnerabilities, bypasses, and unexpected responses across various attack vectors.
+EntryPoint: build/libs/shadow-repeater.jar
+BuildCommand: ./gradlew jar
+SupportedProducts: Pro
