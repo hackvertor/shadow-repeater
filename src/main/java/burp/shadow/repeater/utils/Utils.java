@@ -28,6 +28,7 @@ public class Utils {
     public static HttpRequest modifyRequest(HttpRequest req, String type, String name, String value) {
         return switch (type) {
             case "header" -> req.withRemovedHeader(name).withAddedHeader(name, value);
+            case "PATH" -> req.withPath(value);
             case "URL", "BODY", "COOKIE", "JSON" -> {
                 if ((type.equals("BODY") || type.equals("URL")) && !Pattern.compile("%[a-fA-F0-9]{2}]").matcher(value).find()) {
                     value = api.utilities().urlUtils().encode(value);

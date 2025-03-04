@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added report feedback menu" />
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated manifest">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BappManifest.bmf" beforeDir="false" afterPath="$PROJECT_DIR$/BappManifest.bmf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -276,14 +281,10 @@
       <workItem from="1739955886949" duration="581000" />
       <workItem from="1739957627104" duration="1913000" />
       <workItem from="1739968696631" duration="18059000" />
-    </task>
-    <task id="LOCAL-00012" summary="Added more messages to the console">
-      <option name="closed" value="true" />
-      <created>1739347441940</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1739347441940</updated>
+      <workItem from="1740132490831" duration="642000" />
+      <workItem from="1740389895193" duration="52000" />
+      <workItem from="1740997427180" duration="481000" />
+      <workItem from="1741076776307" duration="2964000" />
     </task>
     <task id="LOCAL-00013" summary="Fixed output formatting">
       <option name="closed" value="true" />
@@ -669,14 +670,21 @@
       <option name="project" value="LOCAL" />
       <updated>1740132275223</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Updated manifest">
+      <option name="closed" value="true" />
+      <created>1740132528897</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1740132528898</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed duplicate code" />
     <MESSAGE value="Changed code to use a HashMap of requests and keyed it by parameters names which allows multiple repeater tabs to be used. When there is more than one parameter used it should pick the most frequent." />
     <MESSAGE value="Improved fingerprint list" />
     <MESSAGE value="Removed unused imports" />
@@ -701,6 +709,7 @@
     <MESSAGE value="Moved screenshot" />
     <MESSAGE value="Updated installation instructions based on James' feedback" />
     <MESSAGE value="Added report feedback menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added report feedback menu" />
+    <MESSAGE value="Updated manifest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated manifest" />
   </component>
 </project>
