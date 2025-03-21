@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Fixed bug when modifying the request which was skipping the path.">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated manifest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ContextMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,23 +281,12 @@
       <workItem from="1740132490831" duration="642000" />
       <workItem from="1740389895193" duration="52000" />
       <workItem from="1740997427180" duration="481000" />
-      <workItem from="1741076776307" duration="5120000" />
-    </task>
-    <task id="LOCAL-00014" summary="Added name file">
-      <option name="closed" value="true" />
-      <created>1739347658815</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1739347658815</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Only applied URL encoding when the vector is not URL encoded.">
-      <option name="closed" value="true" />
-      <created>1739348543340</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1739348543340</updated>
+      <workItem from="1741076776307" duration="6645000" />
+      <workItem from="1741600998394" duration="70000" />
+      <workItem from="1742300896081" duration="1140000" />
+      <workItem from="1742395225601" duration="40000" />
+      <workItem from="1742398090234" duration="16000" />
+      <workItem from="1742398590857" duration="41000" />
     </task>
     <task id="LOCAL-00016" summary="Changed string builder to string">
       <option name="closed" value="true" />
@@ -678,14 +664,29 @@
       <option name="project" value="LOCAL" />
       <updated>1741093585573</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Added hotkey support for do analysis">
+      <option name="closed" value="true" />
+      <created>1741095733238</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1741095733238</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Updated manifest">
+      <option name="closed" value="true" />
+      <created>1741095866552</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1741095866552</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Improved fingerprint list" />
     <MESSAGE value="Removed unused imports" />
     <MESSAGE value="Moved to public montoya API" />
     <MESSAGE value="Tweak the prompt to follow RFCs if detected and avoid using spoofed domains." />
@@ -708,8 +709,9 @@
     <MESSAGE value="Moved screenshot" />
     <MESSAGE value="Updated installation instructions based on James' feedback" />
     <MESSAGE value="Added report feedback menu" />
-    <MESSAGE value="Updated manifest" />
     <MESSAGE value="Fixed bug when modifying the request which was skipping the path." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug when modifying the request which was skipping the path." />
+    <MESSAGE value="Added hotkey support for do analysis" />
+    <MESSAGE value="Updated manifest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated manifest" />
   </component>
 </project>
