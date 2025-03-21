@@ -35,6 +35,9 @@ public class ContextMenu implements ContextMenuItemsProvider {
             }
             doAnalysisItem.setEnabled(AI.isAiSupported());
             HttpRequestResponse requestResponse = event.messageEditorRequestResponse().isPresent() ? event.messageEditorRequestResponse().get().requestResponse() : event.selectedRequestResponses().getFirst();
+            if(requestResponse.httpService() == null) {
+                return null;
+            }
             String requestKey = Utils.generateRequestKey(requestResponse.request());
             doAnalysisItem.addActionListener(e -> {
                 JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.get(requestKey).toArray(new HttpRequest[0]));

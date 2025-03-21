@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated manifest">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated git ignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -287,22 +287,9 @@
       <workItem from="1742395225601" duration="40000" />
       <workItem from="1742398090234" duration="16000" />
       <workItem from="1742398590857" duration="41000" />
-    </task>
-    <task id="LOCAL-00016" summary="Changed string builder to string">
-      <option name="closed" value="true" />
-      <created>1739348633450</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1739348633450</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Optimised the prompt">
-      <option name="closed" value="true" />
-      <created>1739349393588</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1739349393588</updated>
+      <workItem from="1742542883250" duration="194000" />
+      <workItem from="1742543128661" duration="10000" />
+      <workItem from="1742543717289" duration="4000" />
     </task>
     <task id="LOCAL-00018" summary="Added console message before sending to the AI">
       <option name="closed" value="true" />
@@ -680,15 +667,29 @@
       <option name="project" value="LOCAL" />
       <updated>1741095866552</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Removed library">
+      <option name="closed" value="true" />
+      <created>1742542963840</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1742542963840</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Updated git ignore">
+      <option name="closed" value="true" />
+      <created>1742542993923</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1742542993923</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed unused imports" />
-    <MESSAGE value="Moved to public montoya API" />
     <MESSAGE value="Tweak the prompt to follow RFCs if detected and avoid using spoofed domains." />
     <MESSAGE value="Refactored check for differences. Added a vector reducer." />
     <MESSAGE value="Removed unused import" />
@@ -712,6 +713,8 @@
     <MESSAGE value="Fixed bug when modifying the request which was skipping the path." />
     <MESSAGE value="Added hotkey support for do analysis" />
     <MESSAGE value="Updated manifest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated manifest" />
+    <MESSAGE value="Removed library" />
+    <MESSAGE value="Updated git ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated git ignore" />
   </component>
 </project>
