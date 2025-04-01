@@ -1,5 +1,6 @@
 package burp.shadow.repeater.ai;
 
+import burp.OrganiseVectors;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ShadowRepeaterExtension;

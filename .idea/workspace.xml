@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Fixed bug if you right-click on a repeater message without a valid HttpService">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Changed jar to compile only dep">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/bulkScan-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/bulkScan-all.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/Burp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/Burp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,14 +299,8 @@
       <workItem from="1742561855129" duration="27000" />
       <workItem from="1742567918072" duration="1771000" />
       <workItem from="1743415490438" duration="32000" />
-    </task>
-    <task id="LOCAL-00019" summary="Added context menu and auto invoke setting">
-      <option name="closed" value="true" />
-      <created>1739354984222</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1739354984222</updated>
+      <workItem from="1743495692254" duration="231000" />
+      <workItem from="1743496929566" duration="9817000" />
     </task>
     <task id="LOCAL-00020" summary="Added context menu class">
       <option name="closed" value="true" />
@@ -687,14 +686,21 @@
       <option name="project" value="LOCAL" />
       <updated>1742544013660</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Changed jar to compile only dep">
+      <option name="closed" value="true" />
+      <created>1743495755780</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1743495755781</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored check for differences. Added a vector reducer." />
     <MESSAGE value="Removed unused import" />
     <MESSAGE value="Fixed settings when resetting to defaults" />
     <MESSAGE value="Added setting to reduce vectors if they fail" />
@@ -719,6 +725,7 @@
     <MESSAGE value="Removed library" />
     <MESSAGE value="Updated git ignore" />
     <MESSAGE value="Fixed bug if you right-click on a repeater message without a valid HttpService" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug if you right-click on a repeater message without a valid HttpService" />
+    <MESSAGE value="Changed jar to compile only dep" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed jar to compile only dep" />
   </component>
 </project>

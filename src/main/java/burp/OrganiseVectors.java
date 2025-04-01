@@ -1,8 +1,8 @@
-package burp.shadow.repeater.ai;
+package burp;
 
-import burp.CustomResponseGroup;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ShadowRepeaterExtension;
+import burp.shadow.repeater.ai.VectorReducer;
 import burp.shadow.repeater.settings.InvalidTypeSettingException;
 import burp.shadow.repeater.settings.UnregisteredSettingException;
 import burp.shadow.repeater.utils.Utils;
