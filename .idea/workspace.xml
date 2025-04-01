@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated git ignore">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Fixed bug if you right-click on a repeater message without a valid HttpService">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -290,14 +290,10 @@
       <workItem from="1742542883250" duration="194000" />
       <workItem from="1742543128661" duration="10000" />
       <workItem from="1742543717289" duration="4000" />
-    </task>
-    <task id="LOCAL-00018" summary="Added console message before sending to the AI">
-      <option name="closed" value="true" />
-      <created>1739350155005</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1739350155005</updated>
+      <workItem from="1742543878018" duration="154000" />
+      <workItem from="1742561855129" duration="27000" />
+      <workItem from="1742567918072" duration="1771000" />
+      <workItem from="1743415490438" duration="32000" />
     </task>
     <task id="LOCAL-00019" summary="Added context menu and auto invoke setting">
       <option name="closed" value="true" />
@@ -683,14 +679,21 @@
       <option name="project" value="LOCAL" />
       <updated>1742542993923</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Fixed bug if you right-click on a repeater message without a valid HttpService">
+      <option name="closed" value="true" />
+      <created>1742544013660</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1742544013660</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Tweak the prompt to follow RFCs if detected and avoid using spoofed domains." />
     <MESSAGE value="Refactored check for differences. Added a vector reducer." />
     <MESSAGE value="Removed unused import" />
     <MESSAGE value="Fixed settings when resetting to defaults" />
@@ -715,6 +718,7 @@
     <MESSAGE value="Updated manifest" />
     <MESSAGE value="Removed library" />
     <MESSAGE value="Updated git ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated git ignore" />
+    <MESSAGE value="Fixed bug if you right-click on a repeater message without a valid HttpService" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug if you right-click on a repeater message without a valid HttpService" />
   </component>
 </project>

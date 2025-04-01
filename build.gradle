@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation files("libs/montoya-api-2025.3.6.jar")
+    compileOnly files("libs/montoya-api-2025.3.6.jar")
     implementation 'org.json:json:20231013'
     implementation files("libs/bulkScan-all.jar")
     compileOnly 'net.portswigger.burp.extender:burp-extender-api:2.3'
