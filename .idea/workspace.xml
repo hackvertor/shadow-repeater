@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Changed jar to compile only dep">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated bulk scan to use newer montoya features, updated capabilities check to use EA build number. Moved OrganiseVectors to Burp/ to account for package private methods in BulkScan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/bulkScan-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/bulkScan-all.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/Burp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/Burp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,15 +295,8 @@
       <workItem from="1742567918072" duration="1771000" />
       <workItem from="1743415490438" duration="32000" />
       <workItem from="1743495692254" duration="231000" />
-      <workItem from="1743496929566" duration="9817000" />
-    </task>
-    <task id="LOCAL-00020" summary="Added context menu class">
-      <option name="closed" value="true" />
-      <created>1739355003617</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1739355003617</updated>
+      <workItem from="1743496929566" duration="10176000" />
+      <workItem from="1743514889564" duration="19000" />
     </task>
     <task id="LOCAL-00021" summary="Fixed prompt">
       <option name="closed" value="true" />
@@ -694,14 +682,21 @@
       <option name="project" value="LOCAL" />
       <updated>1743495755781</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Updated bulk scan to use newer montoya features, updated capabilities check to use EA build number. Moved OrganiseVectors to Burp/ to account for package private methods in BulkScan">
+      <option name="closed" value="true" />
+      <created>1743511188519</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1743511188519</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed unused import" />
     <MESSAGE value="Fixed settings when resetting to defaults" />
     <MESSAGE value="Added setting to reduce vectors if they fail" />
     <MESSAGE value="Removed BApp description and manifest" />
@@ -726,6 +721,7 @@
     <MESSAGE value="Updated git ignore" />
     <MESSAGE value="Fixed bug if you right-click on a repeater message without a valid HttpService" />
     <MESSAGE value="Changed jar to compile only dep" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed jar to compile only dep" />
+    <MESSAGE value="Updated bulk scan to use newer montoya features, updated capabilities check to use EA build number. Moved OrganiseVectors to Burp/ to account for package private methods in BulkScan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated bulk scan to use newer montoya features, updated capabilities check to use EA build number. Moved OrganiseVectors to Burp/ to account for package private methods in BulkScan" />
   </component>
 </project>

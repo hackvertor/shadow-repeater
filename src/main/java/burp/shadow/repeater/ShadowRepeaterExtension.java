@@ -3,6 +3,7 @@ package burp.shadow.repeater;
 import burp.BulkUtilities;
 import burp.IBurpExtender;
 import burp.IBurpExtenderCallbacks;
+import burp.api.montoya.core.Registration;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.ui.contextmenu.MessageEditorHttpRequestResponse;
@@ -30,7 +31,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
     public static IBurpExtenderCallbacks callbacks;
     public static Settings generalSettings = null;
     public static String extensionName = "Shadow Repeater";
-    public static String version = "v1.0.4";
+    public static String version = "v1.0.5";
     public static MontoyaApi api;
     public static HashMap<String, Integer> requestHistoryPos = new HashMap<>();
     public static HashMap<String, ArrayList<HttpRequest>> requestHistory = new HashMap<>();
@@ -52,25 +53,29 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
         api.userInterface().menuBar().registerMenu(Utils.generateMenuBar());
         Burp burp = new Burp(montoyaApi.burpSuite().version());
         if(burp.hasCapability(Burp.Capability.REGISTER_HOTKEY)) {
-            montoyaApi.userInterface().registerHotKeyHandler(HotKeyContext.HTTP_MESSAGE_EDITOR,
-                    "Ctrl+Alt+A",
-                    event -> {
-                        if (event.messageEditorRequestResponse().isEmpty() || !AI.isAiSupported()) {
-                            return;
-                        }
-                        MessageEditorHttpRequestResponse requestResponse = event.messageEditorRequestResponse().get();
-                        if(requestResponse.selectionContext().toString().equalsIgnoreCase("request")) {
-                            String requestKey = Utils.generateRequestKey(requestResponse.requestResponse().request());
-                            JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.get(requestKey).toArray(new HttpRequest[0]));
-                            if (!headersAndParameters.isEmpty()) {
-                                VariationAnalyser.analyse(headersAndParameters, requestResponse.requestResponse().request(), new HttpResponse[0]);
-                            } else {
-                                JOptionPane.showMessageDialog(null, nothingToAnalyseMsg);
-                                api.logging().logToOutput(nothingToAnalyseMsg);
-                            }
-                            Utils.resetHistory(requestKey, false);
-                        }
-                    });
+            Registration registration = montoyaApi.userInterface().registerHotKeyHandler(HotKeyContext.HTTP_MESSAGE_EDITOR, "Ctrl+Alt+A",
+            event -> {
+                if (event.messageEditorRequestResponse().isEmpty() || !AI.isAiSupported()) {
+                    return;
+                }
+                MessageEditorHttpRequestResponse requestResponse = event.messageEditorRequestResponse().get();
+                if(requestResponse.selectionContext().toString().equalsIgnoreCase("request")) {
+                    String requestKey = Utils.generateRequestKey(requestResponse.requestResponse().request());
+                    JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.get(requestKey).toArray(new HttpRequest[0]));
+                    if (!headersAndParameters.isEmpty()) {
+                        VariationAnalyser.analyse(headersAndParameters, requestResponse.requestResponse().request(), new HttpResponse[0]);
+                    } else {
+                        JOptionPane.showMessageDialog(null, nothingToAnalyseMsg);
+                        api.logging().logToOutput(nothingToAnalyseMsg);
+                    }
+                    Utils.resetHistory(requestKey, false);
+                }
+            });
+            if(registration.isRegistered()) {
+                api.logging().logToOutput("Successfully registered hotkey handler");
+            } else {
+                api.logging().logToError("Failed to register hotkey handler");
+            }
         }
     }
 
