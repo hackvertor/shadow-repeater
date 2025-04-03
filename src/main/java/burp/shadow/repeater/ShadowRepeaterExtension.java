@@ -33,6 +33,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
     public static String extensionName = "Shadow Repeater";
     public static String version = "v1.0.5";
     public static MontoyaApi api;
+    public static boolean hasHotKey = false;
     public static HashMap<String, Integer> requestHistoryPos = new HashMap<>();
     public static HashMap<String, ArrayList<HttpRequest>> requestHistory = new HashMap<>();
     public static HashMap<String, ArrayList<HttpResponse>> responseHistory = new HashMap<>();
@@ -73,8 +74,10 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
             });
             if(registration.isRegistered()) {
                 api.logging().logToOutput("Successfully registered hotkey handler");
+                hasHotKey = true;
             } else {
                 api.logging().logToError("Failed to register hotkey handler");
+                hasHotKey = false;
             }
         }
     }

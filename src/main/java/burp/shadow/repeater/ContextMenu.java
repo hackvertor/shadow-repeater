@@ -28,7 +28,7 @@ public class ContextMenu implements ContextMenuItemsProvider {
             List<Component> menuItemList = new ArrayList<>();
             JMenuItem doAnalysisItem;
             Burp burp = new Burp(api.burpSuite().version());
-            if(burp.hasCapability(Burp.Capability.REGISTER_HOTKEY)) {
+            if(hasHotKey && burp.hasCapability(Burp.Capability.REGISTER_HOTKEY)) {
                 doAnalysisItem = new JMenuItem("Do analysis (CTRL+ALT+A)");
             } else {
                 doAnalysisItem = new JMenuItem("Do analysis");
