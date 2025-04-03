@@ -77,7 +77,6 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                 hasHotKey = true;
             } else {
                 api.logging().logToError("Failed to register hotkey handler");
-                hasHotKey = false;
             }
         }
     }

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added register hot key check">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added hasHotKey flag" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -298,14 +296,7 @@
       <workItem from="1743496929566" duration="10176000" />
       <workItem from="1743514889564" duration="19000" />
       <workItem from="1743580387167" duration="2129000" />
-    </task>
-    <task id="LOCAL-00022" summary="Added logo and readme">
-      <option name="closed" value="true" />
-      <created>1739358487107</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1739358487107</updated>
+      <workItem from="1743671478174" duration="167000" />
     </task>
     <task id="LOCAL-00023" summary="Fixed image path">
       <option name="closed" value="true" />
@@ -691,14 +682,21 @@
       <option name="project" value="LOCAL" />
       <updated>1743580523589</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Added hasHotKey flag">
+      <option name="closed" value="true" />
+      <created>1743671560514</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1743671560514</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added setting to reduce vectors if they fail" />
     <MESSAGE value="Removed BApp description and manifest" />
     <MESSAGE value="Updated bulk scan" />
     <MESSAGE value="Completed code review feedback:&#10;- Added setting to debug output&#10;- Made settings two columns &#10;- Removed unneeded method in AI class" />
@@ -723,6 +721,7 @@
     <MESSAGE value="Changed jar to compile only dep" />
     <MESSAGE value="Updated bulk scan to use newer montoya features, updated capabilities check to use EA build number. Moved OrganiseVectors to Burp/ to account for package private methods in BulkScan" />
     <MESSAGE value="Added register hot key check" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added register hot key check" />
+    <MESSAGE value="Added hasHotKey flag" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added hasHotKey flag" />
   </component>
 </project>
