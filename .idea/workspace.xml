@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added hasHotKey flag" />
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Used hasHotKey flag instead of capability in context menu">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -297,14 +299,11 @@
       <workItem from="1743514889564" duration="19000" />
       <workItem from="1743580387167" duration="2129000" />
       <workItem from="1743671478174" duration="167000" />
-    </task>
-    <task id="LOCAL-00023" summary="Fixed image path">
-      <option name="closed" value="true" />
-      <created>1739358560216</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1739358560216</updated>
+      <workItem from="1743673266175" duration="3419000" />
+      <workItem from="1743691388822" duration="601000" />
+      <workItem from="1743758505573" duration="5766000" />
+      <workItem from="1744616362750" duration="613000" />
+      <workItem from="1744882864139" duration="74000" />
     </task>
     <task id="LOCAL-00024" summary="Updated readme">
       <option name="closed" value="true" />
@@ -690,14 +689,21 @@
       <option name="project" value="LOCAL" />
       <updated>1743671560514</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Used hasHotKey flag instead of capability in context menu">
+      <option name="closed" value="true" />
+      <created>1743673297419</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1743673297419</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed BApp description and manifest" />
     <MESSAGE value="Updated bulk scan" />
     <MESSAGE value="Completed code review feedback:&#10;- Added setting to debug output&#10;- Made settings two columns &#10;- Removed unneeded method in AI class" />
     <MESSAGE value="Removed JSON type" />
@@ -722,6 +728,7 @@
     <MESSAGE value="Updated bulk scan to use newer montoya features, updated capabilities check to use EA build number. Moved OrganiseVectors to Burp/ to account for package private methods in BulkScan" />
     <MESSAGE value="Added register hot key check" />
     <MESSAGE value="Added hasHotKey flag" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added hasHotKey flag" />
+    <MESSAGE value="Used hasHotKey flag instead of capability in context menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Used hasHotKey flag instead of capability in context menu" />
   </component>
 </project>

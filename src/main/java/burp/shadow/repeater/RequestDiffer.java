@@ -146,8 +146,7 @@ public class RequestDiffer {
         return switch (type) {
             case BODY -> "BODY";
             case COOKIE -> "COOKIE";
-            //case JSON -> "JSON";
-            //I'll put this back when editing JSON is supported
+            case JSON -> "JSON";
             case URL -> "URL";
             default -> "";
         };
