@@ -10,3 +10,5 @@ out/
 /build/
 /.gradle/
 libs/montoya-api-2025.3.6.jar
+#other
+.DS_Store
