@@ -55,8 +55,10 @@ public class AI {
     }
     public String execute() {
         boolean debugAi;
+        Provider aiProvider;
         try {
             debugAi = ShadowRepeaterExtension.generalSettings.getBoolean("debugAi");
+            aiProvider = Provider.valueOf(ShadowRepeaterExtension.generalSettings.getStringEnum("aiProvider"));
         } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
             api.logging().logToError("Error loading settings:" + e);
             throw new RuntimeException(e);
@@ -71,7 +73,11 @@ public class AI {
             api.logging().logToOutput("System Prompt:" + this.systemMessage + "\n\n");
             api.logging().logToOutput("Prompt:" + this.prompt + "\n\n");
         }
-        PromptResponse response = api.ai().prompt().execute(PromptOptions.promptOptions().withTemperature(this.temperature), Message.systemMessage(this.systemMessage), Message.userMessage(this.prompt));
+        PromptResponse response = switch (aiProvider) {
+            case Provider.BurpAI -> api.ai().prompt().execute(PromptOptions.promptOptions().withTemperature(this.temperature), Message.systemMessage(this.systemMessage), Message.userMessage(this.prompt));
+            case Provider.OpenAI -> OpenAI.execute(this.temperature, this.systemMessage, this.prompt);
+            default -> throw new RuntimeException("Invalid AI provider");
+        };
         if(debugAi) {
             api.logging().logToOutput("AI Response:" + response.content() + "\n\n");
         }

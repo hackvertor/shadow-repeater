@@ -2,6 +2,8 @@ package burp.shadow.repeater.utils;
 
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
 import burp.shadow.repeater.ShadowRepeaterExtension;
+import burp.shadow.repeater.ai.OpenAI;
+import burp.shadow.repeater.ai.Provider;
 import burp.shadow.repeater.settings.Settings;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.params.HttpParameter;
@@ -22,7 +24,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static burp.shadow.repeater.ShadowRepeaterExtension.*;
-import static burp.shadow.repeater.ShadowRepeaterExtension.responseHistory;
 
 public class Utils {
     public static HttpRequest modifyRequest(HttpRequest req, String type, String name, String value) {
@@ -111,6 +112,10 @@ public class Utils {
         settings.registerBooleanSetting("debugOutput", false, "Print debug output", "General", null);
         settings.registerBooleanSetting("debugAi", false, "Debug AI requests/responses", "AI", null);
 
+        settings.registerStringEnumSetting("aiProvider", Provider.BurpAI.value(), "AI provider", "AI", java.util.Arrays.stream(Provider.values()).map(Provider::value).toArray(String[]::new));
+        settings.registerPasswordSetting("openAiApiKey", "", "API key for OpenAI compatible APIs", "AI");
+        settings.registerStringSetting("openAiEndpoint", OpenAI.DEFAULT_ENDPOINT, "API endpoint URL for OpenAI compatible AI", "AI");
+        settings.registerStringSetting("openAiModelName", OpenAI.DEFAULT_MODEL, "The model used to generate the response", "AI");
     }
 
     public static void openUrl(String url) {
