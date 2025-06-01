@@ -1,11 +1,11 @@
 package burp.shadow.repeater.ai;
 
-public enum Provider {
+public enum AIProviderType {
     BurpAI("BurpAI"), OpenAI("OpenAI");
 
     private final String value;
 
-    Provider(String value) {
+    AIProviderType(String value) {
         this.value = value;
     }
 

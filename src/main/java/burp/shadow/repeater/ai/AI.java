@@ -3,8 +3,6 @@ package burp.shadow.repeater.ai;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.settings.InvalidTypeSettingException;
 import burp.shadow.repeater.settings.UnregisteredSettingException;
-import burp.api.montoya.ai.chat.Message;
-import burp.api.montoya.ai.chat.PromptOptions;
 import burp.api.montoya.ai.chat.PromptResponse;
 
 import java.security.MessageDigest;
@@ -55,10 +53,8 @@ public class AI {
     }
     public String execute() {
         boolean debugAi;
-        Provider aiProvider;
         try {
             debugAi = ShadowRepeaterExtension.generalSettings.getBoolean("debugAi");
-            aiProvider = Provider.valueOf(ShadowRepeaterExtension.generalSettings.getStringEnum("aiProvider"));
         } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
             api.logging().logToError("Error loading settings:" + e);
             throw new RuntimeException(e);
@@ -73,11 +69,7 @@ public class AI {
             api.logging().logToOutput("System Prompt:" + this.systemMessage + "\n\n");
             api.logging().logToOutput("Prompt:" + this.prompt + "\n\n");
         }
-        PromptResponse response = switch (aiProvider) {
-            case Provider.BurpAI -> api.ai().prompt().execute(PromptOptions.promptOptions().withTemperature(this.temperature), Message.systemMessage(this.systemMessage), Message.userMessage(this.prompt));
-            case Provider.OpenAI -> OpenAI.execute(this.temperature, this.systemMessage, this.prompt);
-            default -> throw new RuntimeException("Invalid AI provider");
-        };
+        PromptResponse response = AIProvider.acquire().execute(this.temperature, this.systemMessage, this.prompt);
         if(debugAi) {
             api.logging().logToOutput("AI Response:" + response.content() + "\n\n");
         }

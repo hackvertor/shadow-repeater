@@ -1,6 +1,7 @@
-package burp.shadow.repeater.ai;
+package burp.shadow.repeater.ai.executor;
 
 import burp.api.montoya.ai.chat.PromptResponse;
+import burp.shadow.repeater.ai.AIExecutor;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,7 +23,7 @@ class OpenAIResponse implements PromptResponse {
 
 class Payload extends JSONObject {
     Payload(double temperature, String systemMessage, String userMessage, String model) {
-        put("model", (model != null && model.length() > 0) ? model : OpenAI.DEFAULT_MODEL);
+        put("model", (model != null && model.length() > 0) ? model : OpenAIExecutor.DEFAULT_MODEL);
         put("temperature", temperature);
 
         JSONArray messages = new JSONArray();
@@ -41,11 +42,12 @@ class Payload extends JSONObject {
     }
 }
 
-public class OpenAI {
+public class OpenAIExecutor implements AIExecutor {
     public static String DEFAULT_ENDPOINT = "https://api.openai.com/v1/responses";
     public static String DEFAULT_MODEL = "o4-mini";
 
-    static public PromptResponse execute(double temperature, String systemMessage, String userMessage) {
+    @Override
+    public PromptResponse execute(double temperature, String systemMessage, String userMessage) {
         try {
             String apiKey = generalSettings.getString("openAiApiKey");
             String endpoint = generalSettings.getString("openAiEndpoint");
