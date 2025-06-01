@@ -3,8 +3,6 @@ package burp.shadow.repeater.ai;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.settings.InvalidTypeSettingException;
 import burp.shadow.repeater.settings.UnregisteredSettingException;
-import burp.api.montoya.ai.chat.Message;
-import burp.api.montoya.ai.chat.PromptOptions;
 import burp.api.montoya.ai.chat.PromptResponse;
 
 import java.security.MessageDigest;
@@ -71,7 +69,7 @@ public class AI {
             api.logging().logToOutput("System Prompt:" + this.systemMessage + "\n\n");
             api.logging().logToOutput("Prompt:" + this.prompt + "\n\n");
         }
-        PromptResponse response = api.ai().prompt().execute(PromptOptions.promptOptions().withTemperature(this.temperature), Message.systemMessage(this.systemMessage), Message.userMessage(this.prompt));
+        PromptResponse response = AIProvider.acquire().execute(this.temperature, this.systemMessage, this.prompt);
         if(debugAi) {
             api.logging().logToOutput("AI Response:" + response.content() + "\n\n");
         }

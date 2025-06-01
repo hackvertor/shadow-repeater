@@ -4,6 +4,8 @@ import burp.IBurpExtenderCallbacks;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.utils.GridbagUtils;
 import burp.shadow.repeater.utils.Utils;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.swing.*;
@@ -11,8 +13,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -38,7 +43,7 @@ public class Settings {
         settingsWindow.getContentPane().removeAll();
         settingsWindow.setTitle(extensionName + " settings");
         settingsWindow.setResizable(false);
-        settingsWindow.setPreferredSize(new Dimension(800, 600));
+        settingsWindow.setPreferredSize(new Dimension(800, 700));
         Container pane = settingsWindow.getContentPane();
         try {
             Map<String, Integer> columns = new HashMap<>();
@@ -70,7 +75,7 @@ public class Settings {
     }
 
     public enum SettingType  {
-            Boolean, String, Password, Integer
+        Boolean, String, Password, Integer, StringEnum
     }
 
     public Settings(String settingsName, IBurpExtenderCallbacks callbacks) {
@@ -175,6 +180,23 @@ public class Settings {
         this.settings.put(name, setting);
         this.defaults.put(name, setting);
     }
+
+    public void registerStringEnumSetting(String name, String defaultValue, String description, String category, String[] values) {
+        if(!Arrays.asList(values).contains(defaultValue)){
+            throw new RuntimeException("Default value " + defaultValue + " is not present in possible values " + String.join(",", values));
+        }
+        addCategory(category, name);
+        JSONObject setting = this.settings.has(name) ? (JSONObject) this.settings.get(name) : new JSONObject();
+        setting.put("description", description);
+        setting.put("value", defaultValue);
+        setting.put("type", "StringEnum");
+        setting.put("category", category);
+        setting.put("values", new JSONArray(values));
+
+        this.settings.put(name, setting);
+        this.defaults.put(name, setting);
+    }
+
     public void load() {
         String json = callbacks.loadExtensionSetting(this.settingsName);
         if(json == null) {
@@ -228,6 +250,19 @@ public class Settings {
         throw new InvalidTypeSettingException("The setting " + name + " expects a int");
     }
 
+    public String getStringEnum(String name) throws UnregisteredSettingException, InvalidTypeSettingException {
+        JSONObject setting = this.getSetting(name);
+        String type = setting.getString("type");
+        if(SettingType.StringEnum.name().equals(type)) {
+            if(setting.has("value")) {
+                return setting.getString("value");
+            } else {
+                return this.defaults.getJSONObject(name).getString("value");
+            }
+        }
+        throw new InvalidTypeSettingException("The setting " + name + " expects a string enum");
+    }
+
     public void setString(String name, String value) throws UnregisteredSettingException, InvalidTypeSettingException {
         JSONObject setting = this.getSetting(name);
         String type = setting.getString("type");
@@ -260,6 +295,24 @@ public class Settings {
         throw new InvalidTypeSettingException("Error setting " + name + " expects an boolean");
     }
 
+    public void setStringEnum(String name, String value) throws UnregisteredSettingException, InvalidTypeSettingException {
+        JSONObject setting = this.getSetting(name);
+        String type = setting.getString("type");
+
+        java.util.List<String> values = new ArrayList<>();
+        for(Object o : setting.getJSONArray("values")) {
+            values.add((String) o);
+        }
+
+        if(SettingType.StringEnum.name().equals(type) && values.contains(value)) {
+            setting.put("value", value);
+            isModified = true;
+            return;
+        }
+        throw new InvalidTypeSettingException("Error setting " + name
+                + " expects a string enum and the value must be one of " + String.join(",", values));
+    }
+
     private JSONObject getSetting(String name) throws UnregisteredSettingException {
         if(!this.settings.has(name) && !this.defaults.has(name)) {
             throw new UnregisteredSettingException(name +" has not been registered.");
@@ -287,6 +340,16 @@ public class Settings {
     private void updateBoolean(String name, boolean checked) {
         try {
             this.setBoolean(name, checked);
+        } catch (UnregisteredSettingException | InvalidTypeSettingException ex) {
+            callbacks.printError(ex.toString());
+            throw new RuntimeException(ex);
+        }
+    }
+
+    private void updateStringEnum(String name, JComboBox<String> comboBox, JSONObject currentSetting) {
+        try {
+            String value = (String) comboBox.getSelectedItem();
+            this.setStringEnum(name, value);
         } catch (UnregisteredSettingException | InvalidTypeSettingException ex) {
             callbacks.printError(ex.toString());
             throw new RuntimeException(ex);
@@ -424,6 +487,32 @@ public class Settings {
                         });
                         categoryContainer.add(label, addMarginToGbc(createConstraints(0, componentRow, 1, GridBagConstraints.BOTH, 1, 0, spacing, spacing, GridBagConstraints.WEST), 0, 5, 0,0));
                         categoryContainer.add(checkBox, createConstraints(1, componentRow, 1, GridBagConstraints.EAST, 0, 0, spacing, spacing, GridBagConstraints.EAST));
+                    }
+                    case "StringEnum" -> {
+                        JLabel label = new JLabel(currentSetting.getString("description"));
+                        label.setPreferredSize(new Dimension(componentWidth, componentHeight));
+                        JComboBox<String> comboBox = new JComboBox<>();
+                        for (Object o : currentSetting.getJSONArray("values")) {
+                            comboBox.addItem((String) o);
+                        }
+                        comboBox.setEditable(false);
+                        comboBox.setSelectedItem(this.getStringEnum(name));
+                        comboBox.setPreferredSize(new Dimension(componentWidth, componentHeight));
+                        categoryContainer.add(label, addMarginToGbc(createConstraints(0, componentRow, 1,
+                                GridBagConstraints.BOTH, 1, 0, spacing, spacing, GridBagConstraints.WEST), 0, 5, 0, 0));
+                        categoryContainer.add(new JLabel(), createConstraints(1, componentRow, 1,
+                                GridBagConstraints.BOTH, 1, 0, spacing, spacing, GridBagConstraints.WEST));
+                        componentRow++;
+                        categoryContainer.add(comboBox,
+                                createConstraints(0, componentRow, 2, GridBagConstraints.BOTH, 1,
+                                        0, spacing, spacing, GridBagConstraints.WEST));
+
+                        comboBox.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                updateStringEnum(name, comboBox, currentSetting);
+                            }
+                        });
                     }
                     default -> {
                         throw new InvalidTypeSettingException("Unexpected type");
