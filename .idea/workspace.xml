@@ -4,22 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added JSON support in request differ">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Replaced settings class with Montoya settings build. Added excluded headers. Fixed a couple of issues like the modified path not sending a forward slash.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/bulkScan-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/bulkScan-all.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ContextMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/HttpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/HttpHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/RequestDiffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/RequestDiffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/AI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/settings/InvalidTypeSettingException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/settings/Settings.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/settings/UnregisteredSettingException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/GridbagUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -339,15 +325,8 @@
       <workItem from="1749633991277" duration="16000" />
       <workItem from="1749803203803" duration="9000" />
       <workItem from="1750070239582" duration="37000" />
-      <workItem from="1750257043891" duration="6133000" />
-    </task>
-    <task id="LOCAL-00025" summary="Fixed logo, increased height. Added BApp description and manifest.">
-      <option name="closed" value="true" />
-      <created>1739359308911</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1739359308911</updated>
+      <workItem from="1750257043891" duration="6258000" />
+      <workItem from="1750321670257" duration="173000" />
     </task>
     <task id="LOCAL-00026" summary="Added reset request history option to context menu">
       <option name="closed" value="true" />
@@ -733,14 +712,21 @@
       <option name="project" value="LOCAL" />
       <updated>1744883777601</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Replaced settings class with Montoya settings build. Added excluded headers. Fixed a couple of issues like the modified path not sending a forward slash.">
+      <option name="closed" value="true" />
+      <created>1750321631173</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1750321631173</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Completed code review feedback:&#10;- Added setting to debug output&#10;- Made settings two columns &#10;- Removed unneeded method in AI class" />
     <MESSAGE value="Removed JSON type" />
     <MESSAGE value="Updated workspace" />
     <MESSAGE value="Also encode URL request bodies if % doesn't exist" />
@@ -765,6 +751,7 @@
     <MESSAGE value="Added hasHotKey flag" />
     <MESSAGE value="Used hasHotKey flag instead of capability in context menu" />
     <MESSAGE value="Added JSON support in request differ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added JSON support in request differ" />
+    <MESSAGE value="Replaced settings class with Montoya settings build. Added excluded headers. Fixed a couple of issues like the modified path not sending a forward slash." />
+    <option name="LAST_COMMIT_MESSAGE" value="Replaced settings class with Montoya settings build. Added excluded headers. Fixed a couple of issues like the modified path not sending a forward slash." />
   </component>
 </project>

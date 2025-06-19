@@ -29,8 +29,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadingHandler, IBurpExtender {
-
-    public static IBurpExtenderCallbacks callbacks;
     public static String extensionName = "Shadow Repeater";
     public static String version = "v1.2.0";
     public static MontoyaApi api;
@@ -120,7 +118,6 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
 
     @Override
     public void registerExtenderCallbacks(IBurpExtenderCallbacks callbacks) {
-        ShadowRepeaterExtension.callbacks = callbacks;
         new BulkUtilities(callbacks, new HashMap<>(), extensionName);
     }
 }
