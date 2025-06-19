@@ -10,18 +10,20 @@ import org.json.JSONObject;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static burp.shadow.repeater.ShadowRepeaterExtension.settings;
+
 public class RequestDiffer {
     public static Set<String> headersToSkip = Set.of("Content-Length");
     public static JSONArray generateHeadersAndParametersJson(HttpRequest[] requests) {
         JSONArray result = new JSONArray();
         if (requests == null || requests.length == 0) return result;
-
-        boolean allIdentical = areAllRequestsIdentical(requests);
+        HttpRequest[] requestsWithoutFilteredHeaders = filterHeaders(requests);
+        boolean allIdentical = areAllRequestsIdentical(requestsWithoutFilteredHeaders);
 
         if (!allIdentical) {
             HttpRequest previous = null;
-            for (int i = 0; i < requests.length; i++) {
-                HttpRequest current = requests[i];
+            for (int i = 0; i < requestsWithoutFilteredHeaders.length; i++) {
+                HttpRequest current = requestsWithoutFilteredHeaders[i];
                 if (i == 0) {
                     addAllItems(result, current);
                 } else {
@@ -29,12 +31,27 @@ public class RequestDiffer {
                 }
                 previous = current;
             }
-            Set<String> inAll = intersectionOfAllRequests(requests);
+            Set<String> inAll = intersectionOfAllRequests(requestsWithoutFilteredHeaders);
             result = filterNeverChangedItems(result, inAll);
             result = getMostFrequentParam(result);
         }
 
         return result;
+    }
+
+    private static HttpRequest[] filterHeaders(HttpRequest[] requests) {
+        String[] excludedHeaders = Arrays.stream(settings.getString("Excluded headers").split(","))
+                .map(String::trim)
+                .toArray(String[]::new);
+        HttpRequest[] filteredRequests = new HttpRequest[requests.length];
+        for (int i = 0; i < requests.length; i++) {
+            HttpRequest req = requests[i];
+            for (String header : excludedHeaders) {
+                req = req.withRemovedHeader(header.trim());
+            }
+            filteredRequests[i] = req;
+        }
+        return filteredRequests;
     }
 
     private static boolean areAllRequestsIdentical(HttpRequest[] requests) {
@@ -82,7 +99,7 @@ public class RequestDiffer {
             result.put(pathObj);
         }
         List<HttpHeader> headers = new ArrayList<>(request.headers());
-        if (!headers.isEmpty()) headers.remove(0);
+        if (!headers.isEmpty()) headers.removeFirst();
         for (HttpHeader h : headers) {
             if(headersToSkip.contains(h.name())) {
                 continue;
@@ -118,8 +135,8 @@ public class RequestDiffer {
         }
         List<String> curHeaders = current.headers().stream().map((header) -> header.name() + ":" + header.value()).collect(Collectors.toList());
         List<String> prevHeaders = previous.headers().stream().map((header) -> header.name() + ":" + header.value()).collect(Collectors.toList());
-        if (!curHeaders.isEmpty()) curHeaders.remove(0);
-        if (!prevHeaders.isEmpty()) prevHeaders.remove(0);
+        if (!curHeaders.isEmpty()) curHeaders.removeFirst();
+        if (!prevHeaders.isEmpty()) prevHeaders.removeFirst();
         Set<String> curHeadersSet = new HashSet<>(curHeaders);
         Set<String> prevHeadersSet = new HashSet<>(prevHeaders);
         for (String header : curHeadersSet) {
@@ -165,7 +182,7 @@ public class RequestDiffer {
             set.add("PATH|" + path);
         }
         List<HttpHeader> headers = new ArrayList<>(req.headers());
-        if (!headers.isEmpty()) headers.remove(0);
+        if (!headers.isEmpty()) headers.removeFirst();
         for (HttpHeader h : headers) {
             set.add("header|" + h.name() + "|" + h.value());
         }

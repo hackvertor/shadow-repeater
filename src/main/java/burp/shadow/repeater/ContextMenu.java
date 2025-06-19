@@ -8,7 +8,6 @@ import burp.api.montoya.ui.contextmenu.ContextMenuEvent;
 import burp.api.montoya.ui.contextmenu.ContextMenuItemsProvider;
 import burp.shadow.repeater.ai.AI;
 import burp.shadow.repeater.ai.VariationAnalyser;
-import burp.shadow.repeater.settings.Settings;
 import burp.shadow.repeater.utils.Utils;
 import org.json.JSONArray;
 
@@ -53,9 +52,6 @@ public class ContextMenu implements ContextMenuItemsProvider {
             resetHistoryItem.setEnabled(AI.isAiSupported());
             resetHistoryItem.addActionListener(e -> Utils.resetHistory(requestKey, true));
             menuItemList.add(resetHistoryItem);
-            JMenuItem settings = new JMenuItem("Settings");
-            settings.addActionListener(e -> Settings.showSettingsWindow());
-            menuItemList.add(settings);
             return menuItemList;
         }
 

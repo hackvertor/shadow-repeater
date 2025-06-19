@@ -4,8 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Used hasHotKey flag instead of capability in context menu">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added JSON support in request differ">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/bulkScan-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/bulkScan-all.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ContextMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/HttpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/HttpHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/RequestDiffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/RequestDiffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/AI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/settings/InvalidTypeSettingException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/settings/Settings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/settings/UnregisteredSettingException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/GridbagUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,17 +54,6 @@
                 <item name="shadow-repeater" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="shadow-repeater" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="shadow-repeater" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -88,6 +91,7 @@
     &quot;Gradle.shadow-repeater [dependencies].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.shadow-repeater [testClasses].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -228,8 +232,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -304,14 +308,38 @@
       <workItem from="1743758505573" duration="5766000" />
       <workItem from="1744616362750" duration="613000" />
       <workItem from="1744882864139" duration="74000" />
-    </task>
-    <task id="LOCAL-00024" summary="Updated readme">
-      <option name="closed" value="true" />
-      <created>1739358770552</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1739358770552</updated>
+      <workItem from="1744883694207" duration="89000" />
+      <workItem from="1744886072586" duration="15000" />
+      <workItem from="1744896037341" duration="238000" />
+      <workItem from="1744896772668" duration="1295000" />
+      <workItem from="1744899752102" duration="589000" />
+      <workItem from="1745306858890" duration="11000" />
+      <workItem from="1745307579130" duration="41000" />
+      <workItem from="1745309468427" duration="41000" />
+      <workItem from="1745312202681" duration="29000" />
+      <workItem from="1745314943538" duration="947000" />
+      <workItem from="1745326988391" duration="677000" />
+      <workItem from="1745403975118" duration="7000" />
+      <workItem from="1745825501379" duration="13000" />
+      <workItem from="1745932689831" duration="16000" />
+      <workItem from="1746537513606" duration="13000" />
+      <workItem from="1746606184133" duration="156000" />
+      <workItem from="1746689399563" duration="205000" />
+      <workItem from="1746690939749" duration="158000" />
+      <workItem from="1746691403879" duration="14000" />
+      <workItem from="1746691816818" duration="622000" />
+      <workItem from="1746715837332" duration="1892000" />
+      <workItem from="1747744912446" duration="5824000" />
+      <workItem from="1747811889616" duration="58000" />
+      <workItem from="1747812037480" duration="574000" />
+      <workItem from="1748529446809" duration="2517000" />
+      <workItem from="1748593557672" duration="33000" />
+      <workItem from="1748593623088" duration="10000" />
+      <workItem from="1748609514699" duration="12000" />
+      <workItem from="1749633991277" duration="16000" />
+      <workItem from="1749803203803" duration="9000" />
+      <workItem from="1750070239582" duration="37000" />
+      <workItem from="1750257043891" duration="6133000" />
     </task>
     <task id="LOCAL-00025" summary="Fixed logo, increased height. Added BApp description and manifest.">
       <option name="closed" value="true" />
@@ -697,14 +725,21 @@
       <option name="project" value="LOCAL" />
       <updated>1743673297419</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Added JSON support in request differ">
+      <option name="closed" value="true" />
+      <created>1744883777601</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1744883777601</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated bulk scan" />
     <MESSAGE value="Completed code review feedback:&#10;- Added setting to debug output&#10;- Made settings two columns &#10;- Removed unneeded method in AI class" />
     <MESSAGE value="Removed JSON type" />
     <MESSAGE value="Updated workspace" />
@@ -729,6 +764,7 @@
     <MESSAGE value="Added register hot key check" />
     <MESSAGE value="Added hasHotKey flag" />
     <MESSAGE value="Used hasHotKey flag instead of capability in context menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Used hasHotKey flag instead of capability in context menu" />
+    <MESSAGE value="Added JSON support in request differ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added JSON support in request differ" />
   </component>
 </project>

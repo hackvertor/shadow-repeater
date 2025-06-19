@@ -4,8 +4,6 @@ import burp.OrganiseVectors;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ShadowRepeaterExtension;
-import burp.shadow.repeater.settings.InvalidTypeSettingException;
-import burp.shadow.repeater.settings.UnregisteredSettingException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,17 +17,9 @@ public class VariationAnalyser {
     public static void analyse(JSONArray headersAndParameters, HttpRequest req, HttpResponse[] repeaterResponses) {
         ShadowRepeaterExtension.executorService.submit(() -> {
             try {
-                int maxVariationAmount;
-                boolean shouldReduceVectors;
-                boolean debugAi;
-                try {
-                    maxVariationAmount = ShadowRepeaterExtension.generalSettings.getInteger("maxVariationAmount");
-                    shouldReduceVectors = ShadowRepeaterExtension.generalSettings.getBoolean("shouldReduceVectors");
-                    debugAi = ShadowRepeaterExtension.generalSettings.getBoolean("debugAi");
-                } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
-                    api.logging().logToError("Error loading settings:" + e);
-                    throw new RuntimeException(e);
-                }
+                int maxVariationAmount = settings.getInteger("Maximum variation amount");
+                boolean shouldReduceVectors = settings.getBoolean("Reduce vectors");
+                boolean debugAi = settings.getBoolean("Debug AI");
                 api.logging().logToOutput("------");
                 api.logging().logToOutput("Analysing:\n" + headersAndParameters.toString() + "\n");
                 AI ai = new AI();
