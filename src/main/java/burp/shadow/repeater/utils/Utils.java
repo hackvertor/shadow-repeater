@@ -1,10 +1,6 @@
 package burp.shadow.repeater.utils;
 
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
-import burp.shadow.repeater.ShadowRepeaterExtension;
-import burp.shadow.repeater.ai.AIProviderType;
-import burp.shadow.repeater.ai.executor.OpenAIExecutor;
-import burp.shadow.repeater.settings.Settings;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.HttpParameterType;
@@ -12,8 +8,6 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -29,7 +23,7 @@ public class Utils {
     public static HttpRequest modifyRequest(HttpRequest req, String type, String name, String value) {
         return switch (type) {
             case "header" -> req.withRemovedHeader(name).withAddedHeader(name, value);
-            case "PATH" -> req.withPath(value);
+            case "PATH" -> req.withPath(value.startsWith("/") ? value : "/" + value);
             case "URL", "BODY", "COOKIE", "JSON" -> {
                 if ((type.equals("BODY") || type.equals("URL")) && !Pattern.compile("%[a-fA-F0-9]{2}]").matcher(value).find()) {
                     value = api.utilities().urlUtils().encode(value);
@@ -104,19 +98,6 @@ public class Utils {
             api.logging().logToOutput("Request history reset");
         }
     }
-    public static void registerGeneralSettings(Settings settings) {
-        settings.registerBooleanSetting("autoInvoke", true, "Auto invoke after repeater requests", "Repeater settings", null);
-        settings.registerBooleanSetting("shouldReduceVectors", false, "Attempt to reduce length of each vector if they fail", "Repeater settings", null);
-        settings.registerIntegerSetting("amountOfRequests", 5, "Amount of requests before doing AI analysis (2-100)", "Repeater settings", 2, 100);
-        settings.registerIntegerSetting("maxVariationAmount", 10, "Maximum amount of variations (1-100)", "Repeater settings", 1, 100);
-        settings.registerBooleanSetting("debugOutput", false, "Print debug output", "General", null);
-        settings.registerBooleanSetting("debugAi", false, "Debug AI requests/responses", "AI", null);
-
-        settings.registerStringEnumSetting("aiProvider", AIProviderType.BurpAI.value(), "AI provider", "AI", java.util.Arrays.stream(AIProviderType.values()).map(AIProviderType::value).toArray(String[]::new));
-        settings.registerPasswordSetting("openAiApiKey", "", "API key for OpenAI compatible APIs", "AI");
-        settings.registerStringSetting("openAiEndpoint", OpenAIExecutor.DEFAULT_ENDPOINT, "API endpoint URL for OpenAI compatible AI", "AI");
-        settings.registerStringSetting("openAiModelName", OpenAIExecutor.DEFAULT_MODEL, "The model used to generate the response", "AI");
-    }
 
     public static void openUrl(String url) {
         if(url.startsWith("https://")) {
@@ -131,27 +112,8 @@ public class Utils {
         }
     }
 
-    public static JFrame getSettingsWindowInstance() {
-        if(SettingsFrame != null) {
-            return SettingsFrame;
-        }
-        SettingsFrame = new JFrame();
-        SettingsFrame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                SettingsFrame.setVisible(false);
-                SettingsFrame.getContentPane().removeAll();
-                SettingsFrame.getContentPane().setLayout(new BorderLayout());
-            }
-        });
-        return SettingsFrame;
-    }
-
     public static JMenu generateMenuBar() {
         JMenu menuBar = new JMenu(extensionName);
-        JMenuItem settingsMenu = new JMenuItem("Settings");
-        settingsMenu.addActionListener(e -> Settings.showSettingsWindow());
-        menuBar.add(settingsMenu);
         JMenuItem reportFeedbackMenu = new JMenuItem("Report feedback");
         reportFeedbackMenu.addActionListener(e -> {
             Utils.openUrl("https://github.com/hackvertor/shadow-repeater/issues/new");
@@ -160,20 +122,10 @@ public class Utils {
         return menuBar;
     }
 
-    public static ImageIcon createImageIcon(String path, String description) {
-        java.net.URL imgURL = ShadowRepeaterExtension.class.getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL, description);
-        } else {
-            api.logging().logToError("Couldn't find file: " + path);
-            return null;
-        }
-    }
-
     public static String generateRequestKey(HttpRequest req) {
         String currentHost = req.httpService().host();
         String paramNames = req.parameters().stream().map(ParsedHttpParameter::name).collect(Collectors.joining(","));
-        String requestKey = currentHost + paramNames;
+        String requestKey = currentHost + "|" + paramNames;
         if(!requestHistoryPos.containsKey(requestKey)) {
             requestHistoryPos.put(requestKey, 1);
             requestHistory.put(requestKey, new ArrayList<>());

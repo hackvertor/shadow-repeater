@@ -1,14 +1,12 @@
 package burp.shadow.repeater.ai;
 
-import burp.shadow.repeater.ShadowRepeaterExtension;
-import burp.shadow.repeater.settings.InvalidTypeSettingException;
-import burp.shadow.repeater.settings.UnregisteredSettingException;
 import burp.api.montoya.ai.chat.PromptResponse;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import static burp.shadow.repeater.ShadowRepeaterExtension.api;
+import static burp.shadow.repeater.ShadowRepeaterExtension.settings;
 
 public class AI {
     public static final String featureMessage = "This feature is only available on the AI version of Burp.";
@@ -52,13 +50,8 @@ public class AI {
         return new String(messageDigest.digest());
     }
     public String execute() {
-        boolean debugAi;
-        try {
-            debugAi = ShadowRepeaterExtension.generalSettings.getBoolean("debugAi");
-        } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
-            api.logging().logToError("Error loading settings:" + e);
-            throw new RuntimeException(e);
-        }
+        boolean debugAi = settings.getBoolean("Debug AI");
+
         if(!isAiSupported()) {
             throw new RuntimeException("Montoya AI API is not enabled. You need to enable use AI in the extension tab.");
         }

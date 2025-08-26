@@ -3,8 +3,6 @@ package burp;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.ai.VectorReducer;
-import burp.shadow.repeater.settings.InvalidTypeSettingException;
-import burp.shadow.repeater.settings.UnregisteredSettingException;
 import burp.shadow.repeater.utils.Utils;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -42,15 +40,7 @@ public class OrganiseVectors {
     }
     public static void organise(HttpRequest req, JSONArray variations, JSONArray headersAndParameters, HttpResponse[] repeaterResponses, boolean shouldReduceVectors) {
         ShadowRepeaterExtension.executorService.submit(() -> {
-
-            boolean debugOutput;
-            try {
-                debugOutput = ShadowRepeaterExtension.generalSettings.getBoolean("debugOutput");
-            } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
-                api.logging().logToError("Error loading settings:" + e);
-                throw new RuntimeException(e);
-            }
-
+            boolean debugOutput = settings.getBoolean("Debug output");
             try {
                 HttpRequestResponse baseRequestResponse = api.http().sendRequest(req);
                 baseRequestResponse.annotations().setNotes("This is the base request/response");

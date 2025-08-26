@@ -4,8 +4,6 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ai.AI;
 import burp.shadow.repeater.ai.VariationAnalyser;
-import burp.shadow.repeater.settings.InvalidTypeSettingException;
-import burp.shadow.repeater.settings.UnregisteredSettingException;
 import burp.shadow.repeater.utils.Utils;
 import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.core.ToolType;
@@ -23,17 +21,9 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
         ToolSource toolSource = req.toolSource();
         String requestKey = Utils.generateRequestKey(req);
         if(AI.isAiSupported() && toolSource.isFromTool(ToolType.REPEATER)) {
-            int amountOfRequests;
-            boolean autoInvoke;
-            boolean debugOutput;
-            try {
-                amountOfRequests = ShadowRepeaterExtension.generalSettings.getInteger("amountOfRequests");
-                autoInvoke = ShadowRepeaterExtension.generalSettings.getBoolean("autoInvoke");
-                debugOutput = ShadowRepeaterExtension.generalSettings.getBoolean("debugOutput");
-            } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
-                api.logging().logToError("Error loading settings:" + e);
-                throw new RuntimeException(e);
-            }
+            int amountOfRequests = settings.getInteger("Amount of requests");
+            boolean autoInvoke = settings.getBoolean("Auto invoke");
+            boolean debugOutput = settings.getBoolean("Debug output");
             if(debugOutput) {
                 api.logging().logToOutput("Repeater request " + requestHistoryPos.get(requestKey) + " of " + amountOfRequests);
             }
@@ -59,7 +49,6 @@ public class HttpHandler implements burp.api.montoya.http.handler.HttpHandler {
 
     @Override
     public ResponseReceivedAction handleHttpResponseReceived(HttpResponseReceived resp) {
-        //responseHistory.add(resp);
         return null;
     }
 }

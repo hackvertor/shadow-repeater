@@ -8,9 +8,12 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.ui.contextmenu.MessageEditorHttpRequestResponse;
 import burp.api.montoya.ui.hotkey.HotKeyContext;
+import burp.api.montoya.ui.settings.SettingsPanelBuilder;
+import burp.api.montoya.ui.settings.SettingsPanelPersistence;
+import burp.api.montoya.ui.settings.SettingsPanelSetting;
+import burp.api.montoya.ui.settings.SettingsPanelWithData;
 import burp.shadow.repeater.ai.AI;
 import burp.shadow.repeater.ai.VariationAnalyser;
-import burp.shadow.repeater.settings.Settings;
 import burp.shadow.repeater.utils.Utils;
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.EnhancedCapability;
@@ -26,12 +29,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadingHandler, IBurpExtender {
-
-    public static JFrame SettingsFrame = null;
-    public static IBurpExtenderCallbacks callbacks;
-    public static Settings generalSettings = null;
     public static String extensionName = "Shadow Repeater";
-    public static String version = "v1.0.6";
+    public static String version = "v1.2.0";
     public static MontoyaApi api;
     public static boolean hasHotKey = false;
     public static HashMap<String, Integer> requestHistoryPos = new HashMap<>();
@@ -39,6 +38,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
     public static HashMap<String, ArrayList<HttpResponse>> responseHistory = new HashMap<>();
     public static final ExecutorService executorService = Executors.newSingleThreadExecutor();
     public static String nothingToAnalyseMsg = "Nothing to analyse. "+ extensionName +" requires data changing in the request.";
+    public static SettingsPanelWithData settings;
 
     @Override
     public void initialize(MontoyaApi montoyaApi) {
@@ -79,6 +79,31 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                 api.logging().logToError("Failed to register hotkey handler");
             }
         }
+
+        settings = SettingsPanelBuilder.settingsPanel()
+                .withPersistence(SettingsPanelPersistence.USER_SETTINGS)
+                .withTitle("Shadow Repeater Settings")
+                .withDescription("""                       
+                        Auto invoke - Runs Shadow Repeater automatically after the amount of requests specified.
+                        Amount of requests - Amount of Repeater requests before invoking Shadow Repeater
+                        Debug output - Outputs debug information to the console.
+                        Debug AI - Make Shadow Repeater log all AI requests and responses to the console.
+                        Reduce vectors - Should Shadow Repeater reduce the vectors?
+                        Maximum variation amount - Maximum number of variations to create
+                        Excluded headers - Comma separated list of headers to to exclude from analysis
+                        """)
+                .withKeywords("Repeater", "Shadow")
+                .withSettings(
+                        SettingsPanelSetting.booleanSetting("Auto invoke", true),
+                        SettingsPanelSetting.integerSetting("Amount of requests", 5),
+                        SettingsPanelSetting.booleanSetting("Debug output", false),
+                        SettingsPanelSetting.booleanSetting("Debug AI", false),
+                        SettingsPanelSetting.booleanSetting("Reduce vectors", false),
+                        SettingsPanelSetting.integerSetting("Maximum variation amount", 10),
+                        SettingsPanelSetting.stringSetting("Excluded headers", "Authorization,Cookie,Content-Length,Connection")
+                )
+                .build();
+        api.userInterface().registerSettingsPanel(settings);
     }
 
     @Override
@@ -93,10 +118,6 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
 
     @Override
     public void registerExtenderCallbacks(IBurpExtenderCallbacks callbacks) {
-        ShadowRepeaterExtension.callbacks = callbacks;
         new BulkUtilities(callbacks, new HashMap<>(), extensionName);
-        generalSettings = new Settings("general", callbacks);
-        Utils.registerGeneralSettings(generalSettings);
-        generalSettings.load();
     }
 }
