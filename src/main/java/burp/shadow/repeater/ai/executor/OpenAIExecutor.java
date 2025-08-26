@@ -90,7 +90,8 @@ public class OpenAIExecutor implements AIExecutor {
 
             return new OpenAIResponse(result);
         } catch (Exception e) {
-            api.logging().logToError(e);
+            api.logging().logToOutput("An error occurred while processing the request. See `Errors` for details");
+            api.logging().logToError(e.getMessage());
             return new OpenAIResponse("");
         }
     }
