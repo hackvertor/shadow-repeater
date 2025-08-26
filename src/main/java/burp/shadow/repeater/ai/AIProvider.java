@@ -1,17 +1,16 @@
 package burp.shadow.repeater.ai;
 
-import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.ai.executor.BurpAIExecutor;
 import burp.shadow.repeater.ai.executor.OpenAIExecutor;
-import burp.shadow.repeater.settings.InvalidTypeSettingException;
-import burp.shadow.repeater.settings.UnregisteredSettingException;
+
+import static burp.shadow.repeater.ShadowRepeaterExtension.settings;
 
 public class AIProvider {
     public static AIExecutor acquire() {
         AIProviderType aiProvider;
         try {
-            aiProvider = AIProviderType.valueOf(ShadowRepeaterExtension.generalSettings.getStringEnum("aiProvider"));
-        } catch (UnregisteredSettingException | InvalidTypeSettingException e) {
+            aiProvider = AIProviderType.valueOf(settings.getString("AI provider"));
+        } catch (Exception e) {
             aiProvider = AIProviderType.BurpAI;
         }
 

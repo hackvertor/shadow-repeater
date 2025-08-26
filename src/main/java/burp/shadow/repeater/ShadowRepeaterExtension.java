@@ -13,7 +13,9 @@ import burp.api.montoya.ui.settings.SettingsPanelPersistence;
 import burp.api.montoya.ui.settings.SettingsPanelSetting;
 import burp.api.montoya.ui.settings.SettingsPanelWithData;
 import burp.shadow.repeater.ai.AI;
+import burp.shadow.repeater.ai.AIProviderType;
 import burp.shadow.repeater.ai.VariationAnalyser;
+import burp.shadow.repeater.ai.executor.OpenAIExecutor;
 import burp.shadow.repeater.utils.Utils;
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.EnhancedCapability;
@@ -91,6 +93,10 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                         Reduce vectors - Should Shadow Repeater reduce the vectors?
                         Maximum variation amount - Maximum number of variations to create
                         Excluded headers - Comma separated list of headers to to exclude from analysis
+                        AI provider - The AI provider to use
+                        OpenAI API key - The API key to use for OpenAI
+                        OpenAI endpoint - The endpoint to use for OpenAI
+                        OpenAI model - The model to use for OpenAI
                         """)
                 .withKeywords("Repeater", "Shadow")
                 .withSettings(
@@ -100,7 +106,11 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                         SettingsPanelSetting.booleanSetting("Debug AI", false),
                         SettingsPanelSetting.booleanSetting("Reduce vectors", false),
                         SettingsPanelSetting.integerSetting("Maximum variation amount", 10),
-                        SettingsPanelSetting.stringSetting("Excluded headers", "Authorization,Cookie,Content-Length,Connection")
+                        SettingsPanelSetting.stringSetting("Excluded headers", "Authorization,Cookie,Content-Length,Connection"),
+                        SettingsPanelSetting.listSetting("AI provider", java.util.Arrays.stream(AIProviderType.values()).map(AIProviderType::value).collect(java.util.stream.Collectors.toList()), AIProviderType.BurpAI.value()),
+                        SettingsPanelSetting.stringSetting("OpenAI API key"),
+                        SettingsPanelSetting.stringSetting("OpenAI endpoint", OpenAIExecutor.DEFAULT_ENDPOINT),
+                        SettingsPanelSetting.stringSetting("OpenAI model", OpenAIExecutor.DEFAULT_MODEL)
                 )
                 .build();
         api.userInterface().registerSettingsPanel(settings);
