@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import static burp.shadow.repeater.ShadowRepeaterExtension.api;
-import static burp.shadow.repeater.ShadowRepeaterExtension.generalSettings;
+import static burp.shadow.repeater.ShadowRepeaterExtension.settings;
 
 class OpenAIResponse implements PromptResponse {
     private String content;
@@ -49,9 +49,9 @@ public class OpenAIExecutor implements AIExecutor {
     @Override
     public PromptResponse execute(double temperature, String systemMessage, String userMessage) {
         try {
-            String apiKey = generalSettings.getString("openAiApiKey");
-            String endpoint = generalSettings.getString("openAiEndpoint");
-            String model = generalSettings.getString("openAiModelName");
+            String apiKey = settings.getString("OpenAI API key");
+            String endpoint = settings.getString("OpenAI endpoint");
+            String model = settings.getString("OpenAI model");
 
             Payload payload = new Payload(temperature, systemMessage, userMessage, model);
 
