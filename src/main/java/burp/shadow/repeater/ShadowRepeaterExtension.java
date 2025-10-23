@@ -59,7 +59,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
         settings = SettingsPanelBuilder.settingsPanel()
                 .withPersistence(SettingsPanelPersistence.USER_SETTINGS)
                 .withTitle("Shadow Repeater Settings")
-                .withDescription("""                       
+                .withDescription("""
                         Auto invoke - Runs Shadow Repeater automatically after the amount of requests specified.
                         Amount of requests - Amount of Repeater requests before invoking Shadow Repeater
                         Debug output - Outputs debug information to the console.
@@ -67,6 +67,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                         Reduce vectors - Should Shadow Repeater reduce the vectors?
                         Maximum variation amount - Maximum number of variations to create
                         Excluded headers - Comma separated list of headers to to exclude from analysis
+                        Time difference threshold (ms) - Minimum time difference in milliseconds to detect timing-based attacks
                         """)
                 .withKeywords("Repeater", "Shadow")
                 .withSettings(
@@ -76,7 +77,8 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                         SettingsPanelSetting.booleanSetting("Debug AI", false),
                         SettingsPanelSetting.booleanSetting("Reduce vectors", false),
                         SettingsPanelSetting.integerSetting("Maximum variation amount", 10),
-                        SettingsPanelSetting.stringSetting("Excluded headers", "Authorization,Cookie,Content-Length,Connection")
+                        SettingsPanelSetting.stringSetting("Excluded headers", "Authorization,Cookie,Content-Length,Connection"),
+                        SettingsPanelSetting.integerSetting("Time difference threshold (ms)", 4000)
                 )
                 .build();
         api.userInterface().registerSettingsPanel(settings);

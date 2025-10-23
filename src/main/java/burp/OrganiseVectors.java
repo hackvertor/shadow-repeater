@@ -21,7 +21,10 @@ import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
 public class OrganiseVectors {
     public static boolean checkForDifferences(JSONArray vectors, HttpRequestResponse baseRequestResponse, CustomResponseGroup responsesAnalyser, HttpRequest req, String type, String name) {
-        long timeDifferenceMs = 4000;
+        // Get timing difference threshold from settings
+        long timeDifferenceMs = settings.getInteger("Time difference threshold (ms)");
+        double timeMultiplier = 2.0;  // Consider making this configurable in the future
+
         Duration baseResponseTime = null;
         Optional<TimingData> timing = baseRequestResponse.timingData();
         if(timing.isPresent()) {
@@ -34,13 +37,24 @@ public class OrganiseVectors {
             if(modifiedReq != null) {
                 HttpRequestResponse requestResponse = api.http().sendRequest(modifiedReq);
                 if(baseResponseTime != null) {
-                    Optional<TimingData> vectorTiming = baseRequestResponse.timingData();
+                    Optional<TimingData> vectorTiming = requestResponse.timingData();
                     if(vectorTiming.isPresent()) {
                         long baseMs = baseResponseTime.toMillis();
                         long vectorMs = vectorTiming.get().timeBetweenRequestSentAndStartOfResponse().toMillis();
-                        if(baseMs < timeDifferenceMs && vectorMs > timeDifferenceMs) {
+
+                        long absoluteDifference = vectorMs - baseMs;
+                        double relativeDifference = baseMs > 0 ? (double) vectorMs / baseMs : 0;
+
+                        if(absoluteDifference >= timeDifferenceMs || relativeDifference >= timeMultiplier) {
                             api.organizer().sendToOrganizer(baseRequestResponse);
-                            String notes = "The response is had a time difference";
+                            String notes = String.format(
+                                "The response has a significant time difference:%n" +
+                                "Base response: %dms%n" +
+                                "Vector response: %dms%n" +
+                                "Difference: %dms (%.1fx slower)%n" +
+                                "Vector: %s",
+                                baseMs, vectorMs, absoluteDifference, relativeDifference, vector
+                            );
                             requestResponse.annotations().setNotes(notes);
                             api.organizer().sendToOrganizer(requestResponse);
                             api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
