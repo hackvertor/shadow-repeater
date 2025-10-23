@@ -1,5 +1,6 @@
 package burp;
 
+import burp.api.montoya.http.handler.TimingData;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.ai.VectorReducer;
@@ -11,19 +12,42 @@ import org.json.JSONObject;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.time.Duration;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
 public class OrganiseVectors {
     public static boolean checkForDifferences(JSONArray vectors, HttpRequestResponse baseRequestResponse, CustomResponseGroup responsesAnalyser, HttpRequest req, String type, String name) {
+        long timeDifferenceMs = 4000;
+        Duration baseResponseTime = null;
+        Optional<TimingData> timing = baseRequestResponse.timingData();
+        if(timing.isPresent()) {
+            baseResponseTime = timing.get().timeBetweenRequestSentAndStartOfResponse();
+        }
         for(int j = 0; j < vectors.length(); j++) {
             HttpRequest modifiedReq = null;
             String vector = vectors.getJSONObject(j).getString("vector");
             modifiedReq = Utils.modifyRequest(req, type, name, vector);
             if(modifiedReq != null) {
                 HttpRequestResponse requestResponse = api.http().sendRequest(modifiedReq);
+                if(baseResponseTime != null) {
+                    Optional<TimingData> vectorTiming = baseRequestResponse.timingData();
+                    if(vectorTiming.isPresent()) {
+                        long baseMs = baseResponseTime.toMillis();
+                        long vectorMs = vectorTiming.get().timeBetweenRequestSentAndStartOfResponse().toMillis();
+                        if(baseMs < timeDifferenceMs && vectorMs > timeDifferenceMs) {
+                            api.organizer().sendToOrganizer(baseRequestResponse);
+                            String notes = "The response is had a time difference";
+                            requestResponse.annotations().setNotes(notes);
+                            api.organizer().sendToOrganizer(requestResponse);
+                            api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
+                            return true;
+                        }
+                    }
+                }
                 if(!responsesAnalyser.matches(requestResponse)) {
                     api.organizer().sendToOrganizer(baseRequestResponse);
                     String notes = "The response is different in the following ways" +

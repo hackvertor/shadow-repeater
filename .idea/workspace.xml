@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Replaced settings class with Montoya settings build. Added excluded headers. Fixed a couple of issues like the modified path not sending a forward slash.">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Removed callbacks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/Burp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/Burp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +44,11 @@
                 <item name="shadow-repeater" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="shadow-repeater" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -327,6 +336,9 @@
       <workItem from="1750070239582" duration="37000" />
       <workItem from="1750257043891" duration="6258000" />
       <workItem from="1750321670257" duration="173000" />
+      <workItem from="1760454635164" duration="17000" />
+      <workItem from="1760454686842" duration="637000" />
+      <workItem from="1761246068908" duration="2219000" />
     </task>
     <task id="LOCAL-00026" summary="Added reset request history option to context menu">
       <option name="closed" value="true" />

@@ -7,7 +7,9 @@ import burp.api.montoya.core.Registration;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.ui.contextmenu.MessageEditorHttpRequestResponse;
+import burp.api.montoya.ui.hotkey.HotKey;
 import burp.api.montoya.ui.hotkey.HotKeyContext;
+import burp.api.montoya.ui.hotkey.HotKeyHandler;
 import burp.api.montoya.ui.settings.SettingsPanelBuilder;
 import burp.api.montoya.ui.settings.SettingsPanelPersistence;
 import burp.api.montoya.ui.settings.SettingsPanelSetting;
@@ -22,15 +24,13 @@ import burp.api.montoya.extension.ExtensionUnloadingHandler;
 import org.json.JSONArray;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadingHandler, IBurpExtender {
     public static String extensionName = "Shadow Repeater";
-    public static String version = "v1.2.0";
+    public static String version = "v1.2.1";
     public static MontoyaApi api;
     public static boolean hasHotKey = false;
     public static HashMap<String, Integer> requestHistoryPos = new HashMap<>();
@@ -54,32 +54,8 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
         api.userInterface().menuBar().registerMenu(Utils.generateMenuBar());
         Burp burp = new Burp(montoyaApi.burpSuite().version());
         if(burp.hasCapability(Burp.Capability.REGISTER_HOTKEY)) {
-            Registration registration = montoyaApi.userInterface().registerHotKeyHandler(HotKeyContext.HTTP_MESSAGE_EDITOR, "Ctrl+Alt+A",
-            event -> {
-                if (event.messageEditorRequestResponse().isEmpty() || !AI.isAiSupported()) {
-                    return;
-                }
-                MessageEditorHttpRequestResponse requestResponse = event.messageEditorRequestResponse().get();
-                if(requestResponse.selectionContext().toString().equalsIgnoreCase("request")) {
-                    String requestKey = Utils.generateRequestKey(requestResponse.requestResponse().request());
-                    JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.get(requestKey).toArray(new HttpRequest[0]));
-                    if (!headersAndParameters.isEmpty()) {
-                        VariationAnalyser.analyse(headersAndParameters, requestResponse.requestResponse().request(), new HttpResponse[0]);
-                    } else {
-                        JOptionPane.showMessageDialog(null, nothingToAnalyseMsg);
-                        api.logging().logToOutput(nothingToAnalyseMsg);
-                    }
-                    Utils.resetHistory(requestKey, false);
-                }
-            });
-            if(registration.isRegistered()) {
-                api.logging().logToOutput("Successfully registered hotkey handler");
-                hasHotKey = true;
-            } else {
-                api.logging().logToError("Failed to register hotkey handler");
-            }
+            registerAllHotkeys(montoyaApi, burp);
         }
-
         settings = SettingsPanelBuilder.settingsPanel()
                 .withPersistence(SettingsPanelPersistence.USER_SETTINGS)
                 .withTitle("Shadow Repeater Settings")
@@ -104,6 +80,68 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                 )
                 .build();
         api.userInterface().registerSettingsPanel(settings);
+    }
+
+    private void registerAllHotkeys(MontoyaApi montoyaApi, Burp burp) {
+        List<HotkeyDefinition> hotkeys = Arrays.asList(
+        new HotkeyDefinition("Analyse", "Ctrl+Alt+A", event -> {
+            if (event.messageEditorRequestResponse().isEmpty() || !AI.isAiSupported()) {
+                return;
+            }
+            MessageEditorHttpRequestResponse requestResponse = event.messageEditorRequestResponse().get();
+            if(requestResponse.selectionContext().toString().equalsIgnoreCase("request")) {
+                String requestKey = Utils.generateRequestKey(requestResponse.requestResponse().request());
+                JSONArray headersAndParameters = RequestDiffer.generateHeadersAndParametersJson(requestHistory.get(requestKey).toArray(new HttpRequest[0]));
+                if (!headersAndParameters.isEmpty()) {
+                    VariationAnalyser.analyse(headersAndParameters, requestResponse.requestResponse().request(), new HttpResponse[0]);
+                } else {
+                    JOptionPane.showMessageDialog(null, nothingToAnalyseMsg);
+                    api.logging().logToOutput(nothingToAnalyseMsg);
+                }
+                Utils.resetHistory(requestKey, false);
+            }
+        }));
+
+        for (HotkeyDefinition hotkey : hotkeys) {
+            registerHotkey(montoyaApi, burp, hotkey);
+        }
+    }
+
+    private static class HotkeyDefinition {
+        final String name;
+        final String keyCombo;
+        final HotKeyHandler handler;
+
+        HotkeyDefinition(String name, String keyCombo, HotKeyHandler handler) {
+            this.name = name;
+            this.keyCombo = keyCombo;
+            this.handler = handler;
+        }
+    }
+
+    private void registerHotkey(MontoyaApi montoyaApi, Burp burp, HotkeyDefinition hotkey) {
+        Registration registration;
+
+        if(burp.hasCapability(Burp.Capability.REGISTER_HOTKEY_WITH_NAME)) {
+            registration = montoyaApi.userInterface().registerHotKeyHandler(
+                    HotKeyContext.HTTP_MESSAGE_EDITOR,
+                    HotKey.hotKey(hotkey.name, hotkey.keyCombo),
+                    hotkey.handler);
+        } else {
+            registration = montoyaApi.userInterface().registerHotKeyHandler(
+                    HotKeyContext.HTTP_MESSAGE_EDITOR,
+                    hotkey.keyCombo,
+                    hotkey.handler);
+        }
+
+        if(registration.isRegistered()) {
+            montoyaApi.logging().logToOutput("Successfully registered hotkey: " + hotkey.name + " (" + hotkey.keyCombo + ")");
+            if(hotkey.name.equals("Auto decode")) {
+                hasHotKey = true;
+            }
+        } else {
+            montoyaApi.logging().logToError("Failed to register hotkey: " + hotkey.name + " (" + hotkey.keyCombo + ")");
+        }
     }
 
     @Override
