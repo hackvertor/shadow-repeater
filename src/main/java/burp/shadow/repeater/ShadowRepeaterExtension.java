@@ -138,9 +138,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
 
         if(registration.isRegistered()) {
             montoyaApi.logging().logToOutput("Successfully registered hotkey: " + hotkey.name + " (" + hotkey.keyCombo + ")");
-            if(hotkey.name.equals("Auto decode")) {
-                hasHotKey = true;
-            }
+            hasHotKey = true;
         } else {
             montoyaApi.logging().logToError("Failed to register hotkey: " + hotkey.name + " (" + hotkey.keyCombo + ")");
         }

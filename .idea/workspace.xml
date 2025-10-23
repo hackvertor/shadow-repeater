@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added named hotkey support. Started work on timing differences.">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Improve timing difference detection.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,15 +334,8 @@
       <workItem from="1750321670257" duration="173000" />
       <workItem from="1760454635164" duration="17000" />
       <workItem from="1760454686842" duration="637000" />
-      <workItem from="1761246068908" duration="3539000" />
-    </task>
-    <task id="LOCAL-00027" summary="Removed unused imports">
-      <option name="closed" value="true" />
-      <created>1739360185888</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1739360185888</updated>
+      <workItem from="1761246068908" duration="3923000" />
+      <workItem from="1761252487930" duration="186000" />
     </task>
     <task id="LOCAL-00028" summary="Updated warning message and BApp description">
       <option name="closed" value="true" />
@@ -730,14 +721,21 @@
       <option name="project" value="LOCAL" />
       <updated>1761248866637</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Improve timing difference detection.">
+      <option name="closed" value="true" />
+      <created>1761251822204</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1761251822204</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated workspace" />
     <MESSAGE value="Also encode URL request bodies if % doesn't exist" />
     <MESSAGE value="Updated logo" />
     <MESSAGE value="Improved prompts and URL encoded detection. Trimmed vectors. Added spaces to control values." />
@@ -762,6 +760,7 @@
     <MESSAGE value="Added JSON support in request differ" />
     <MESSAGE value="Replaced settings class with Montoya settings build. Added excluded headers. Fixed a couple of issues like the modified path not sending a forward slash." />
     <MESSAGE value="Added named hotkey support. Started work on timing differences." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added named hotkey support. Started work on timing differences." />
+    <MESSAGE value="Improve timing difference detection." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve timing difference detection." />
   </component>
 </project>
