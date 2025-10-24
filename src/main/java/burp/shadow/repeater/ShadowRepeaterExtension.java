@@ -70,7 +70,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                         Time difference threshold (ms) - Minimum time difference in milliseconds to detect timing-based attacks
                         Stop when finding first difference - When Shadow Repeater finds a difference it should stop looking for more.
                         """)
-                .withKeywords("Repeater", "Shadow")
+                .withKeywords("Repeater", "Shadow", "Shadow Repeater settings")
                 .withSettings(
                         SettingsPanelSetting.booleanSetting("Auto invoke", true),
                         SettingsPanelSetting.integerSetting("Amount of requests", 5),

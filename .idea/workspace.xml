@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Removed incorrect code">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Improved timing differences">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -339,15 +337,8 @@
       <workItem from="1761246068908" duration="3923000" />
       <workItem from="1761252487930" duration="186000" />
       <workItem from="1761252838354" duration="61000" />
-      <workItem from="1761287849256" duration="6442000" />
-    </task>
-    <task id="LOCAL-00029" summary="Updated readme">
-      <option name="closed" value="true" />
-      <created>1739370476439</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1739370476439</updated>
+      <workItem from="1761287849256" duration="7201000" />
+      <workItem from="1761308758534" duration="86000" />
     </task>
     <task id="LOCAL-00030" summary="Made the AI return plain text vectors separated by new lines. Tweaked the prompt to remove JSON.">
       <option name="closed" value="true" />
@@ -733,14 +724,21 @@
       <option name="project" value="LOCAL" />
       <updated>1761252887471</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Improved timing differences">
+      <option name="closed" value="true" />
+      <created>1761306108272</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1761306108272</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated logo" />
     <MESSAGE value="Improved prompts and URL encoded detection. Trimmed vectors. Added spaces to control values." />
     <MESSAGE value="Improved prompt" />
     <MESSAGE value="Fixed URL encoding detection and added screenshot" />
@@ -765,6 +763,7 @@
     <MESSAGE value="Added named hotkey support. Started work on timing differences." />
     <MESSAGE value="Improve timing difference detection." />
     <MESSAGE value="Removed incorrect code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed incorrect code" />
+    <MESSAGE value="Improved timing differences" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved timing differences" />
   </component>
 </project>
