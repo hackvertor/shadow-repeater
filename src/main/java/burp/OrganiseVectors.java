@@ -22,7 +22,7 @@ import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 public class OrganiseVectors {
     public static boolean checkForDifferences(JSONArray vectors, HttpRequestResponse baseRequestResponse, CustomResponseGroup responsesAnalyser, HttpRequest req, String type, String name) {
         int timeDifferenceMs = settings.getInteger("Time difference threshold (ms)");
-        boolean shouldStopWhenFoundFirst = settings.getBoolean("Stop when finding first difference");
+        boolean shouldStopWhenFoundFirstDifference = settings.getBoolean("Stop when first difference found");
         boolean foundDifference = false;
         Duration baseResponseTime = null;
         Optional<TimingData> timing = baseRequestResponse.timingData();
@@ -58,7 +58,7 @@ public class OrganiseVectors {
                             requestResponse.annotations().setNotes(notes);
                             api.organizer().sendToOrganizer(requestResponse);
                             api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
-                            if(shouldStopWhenFoundFirst) return true;
+                            if(shouldStopWhenFoundFirstDifference) return true;
                             foundDifference = true;
                         }
                     }
@@ -73,7 +73,7 @@ public class OrganiseVectors {
                     requestResponse.annotations().setNotes(notes);
                     api.organizer().sendToOrganizer(requestResponse);
                     api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
-                    if(shouldStopWhenFoundFirst) return true;
+                    if(shouldStopWhenFoundFirstDifference) return true;
                     foundDifference = true;
                 }
             }
