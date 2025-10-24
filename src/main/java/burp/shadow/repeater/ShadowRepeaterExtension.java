@@ -68,6 +68,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                         Maximum variation amount - Maximum number of variations to create
                         Excluded headers - Comma separated list of headers to to exclude from analysis
                         Time difference threshold (ms) - Minimum time difference in milliseconds to detect timing-based attacks
+                        Stop when finding first difference - When Shadow Repeater finds a difference it should stop looking for more.
                         """)
                 .withKeywords("Repeater", "Shadow")
                 .withSettings(
@@ -78,7 +79,8 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                         SettingsPanelSetting.booleanSetting("Reduce vectors", false),
                         SettingsPanelSetting.integerSetting("Maximum variation amount", 10),
                         SettingsPanelSetting.stringSetting("Excluded headers", "Authorization,Cookie,Content-Length,Connection"),
-                        SettingsPanelSetting.integerSetting("Time difference threshold (ms)", 4000)
+                        SettingsPanelSetting.integerSetting("Time difference threshold (ms)", 4000),
+                        SettingsPanelSetting.booleanSetting("Stop when finding first difference", false)
                 )
                 .build();
         api.userInterface().registerSettingsPanel(settings);

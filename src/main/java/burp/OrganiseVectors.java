@@ -21,10 +21,9 @@ import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
 public class OrganiseVectors {
     public static boolean checkForDifferences(JSONArray vectors, HttpRequestResponse baseRequestResponse, CustomResponseGroup responsesAnalyser, HttpRequest req, String type, String name) {
-        // Get timing difference threshold from settings
-        long timeDifferenceMs = settings.getInteger("Time difference threshold (ms)");
-        double timeMultiplier = 2.0;  // Consider making this configurable in the future
-
+        int timeDifferenceMs = settings.getInteger("Time difference threshold (ms)");
+        boolean shouldStopWhenFoundFirst = settings.getBoolean("Stop when finding first difference");
+        boolean foundDifference = false;
         Duration baseResponseTime = null;
         Optional<TimingData> timing = baseRequestResponse.timingData();
         if(timing.isPresent()) {
@@ -36,6 +35,7 @@ public class OrganiseVectors {
             modifiedReq = Utils.modifyRequest(req, type, name, vector);
             if(modifiedReq != null) {
                 HttpRequestResponse requestResponse = api.http().sendRequest(modifiedReq);
+                if(requestResponse.response() == null) continue;
                 if(baseResponseTime != null) {
                     Optional<TimingData> vectorTiming = requestResponse.timingData();
                     if(vectorTiming.isPresent()) {
@@ -45,7 +45,7 @@ public class OrganiseVectors {
                         long absoluteDifference = vectorMs - baseMs;
                         double relativeDifference = baseMs > 0 ? (double) vectorMs / baseMs : 0;
 
-                        if(absoluteDifference >= timeDifferenceMs || relativeDifference >= timeMultiplier) {
+                        if(absoluteDifference >= timeDifferenceMs || (relativeDifference * baseMs) > timeDifferenceMs) {
                             api.organizer().sendToOrganizer(baseRequestResponse);
                             String notes = String.format(
                                 "The response has a significant time difference:%n" +
@@ -58,7 +58,8 @@ public class OrganiseVectors {
                             requestResponse.annotations().setNotes(notes);
                             api.organizer().sendToOrganizer(requestResponse);
                             api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
-                            return true;
+                            if(shouldStopWhenFoundFirst) return true;
+                            foundDifference = true;
                         }
                     }
                 }
@@ -67,14 +68,17 @@ public class OrganiseVectors {
                     String notes = "The response is different in the following ways" +
                             System.lineSeparator() +
                             responsesAnalyser.describeDiff(requestResponse);
+                    notes += System.lineSeparator();
+                    notes += "Vector:"+vector+System.lineSeparator();
                     requestResponse.annotations().setNotes(notes);
                     api.organizer().sendToOrganizer(requestResponse);
                     api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
-                    return true;
+                    if(shouldStopWhenFoundFirst) return true;
+                    foundDifference = true;
                 }
             }
         }
-        return false;
+        return foundDifference;
     }
     public static void organise(HttpRequest req, JSONArray variations, JSONArray headersAndParameters, HttpResponse[] repeaterResponses, boolean shouldReduceVectors) {
         ShadowRepeaterExtension.executorService.submit(() -> {
