@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated keywords">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
-    </list>
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Renamed setting" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -344,15 +340,7 @@
       <workItem from="1761309236128" duration="34000" />
       <workItem from="1761309558507" duration="285000" />
       <workItem from="1761326203551" duration="768000" />
-      <workItem from="1761333559154" duration="1265000" />
-    </task>
-    <task id="LOCAL-00031" summary="Removed message that sounds negative when multiple variations failed to produce difference">
-      <option name="closed" value="true" />
-      <created>1739373483871</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1739373483871</updated>
+      <workItem from="1761333559154" duration="1539000" />
     </task>
     <task id="LOCAL-00032" summary="Prevented the AI from spoofing domains and generating random domain names">
       <option name="closed" value="true" />
@@ -738,14 +726,21 @@
       <option name="project" value="LOCAL" />
       <updated>1761309265650</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Renamed setting">
+      <option name="closed" value="true" />
+      <created>1761334841139</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1761334841140</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Improved prompt" />
     <MESSAGE value="Fixed URL encoding detection and added screenshot" />
     <MESSAGE value="Added video demo" />
     <MESSAGE value="Moved video demo" />
@@ -770,6 +765,7 @@
     <MESSAGE value="Removed incorrect code" />
     <MESSAGE value="Improved timing differences" />
     <MESSAGE value="Updated keywords" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated keywords" />
+    <MESSAGE value="Renamed setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed setting" />
   </component>
 </project>
