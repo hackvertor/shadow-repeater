@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated capability">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added additional instructions setting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
@@ -346,7 +346,7 @@
       <workItem from="1761326203551" duration="768000" />
       <workItem from="1761333559154" duration="1539000" />
       <workItem from="1761688846495" duration="33000" />
-      <workItem from="1761773768476" duration="787000" />
+      <workItem from="1761773768476" duration="1088000" />
     </task>
     <task id="LOCAL-00033" summary="Reduced control values request and skipped duplicate entries in paramHeaders list">
       <option name="closed" value="true" />
@@ -747,7 +747,6 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added video demo" />
     <MESSAGE value="Moved video demo" />
     <MESSAGE value="Moved screenshot" />
     <MESSAGE value="Updated installation instructions based on James' feedback" />
@@ -772,6 +771,7 @@
     <MESSAGE value="Updated keywords" />
     <MESSAGE value="Renamed setting" />
     <MESSAGE value="Updated capability" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated capability" />
+    <MESSAGE value="Added additional instructions setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added additional instructions setting" />
   </component>
 </project>
