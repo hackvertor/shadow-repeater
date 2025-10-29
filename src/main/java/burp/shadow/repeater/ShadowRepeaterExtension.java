@@ -69,6 +69,7 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                         Excluded headers - Comma separated list of headers to to exclude from analysis
                         Time difference threshold (ms) - Minimum time difference in milliseconds to detect timing-based attacks
                         Stop when first difference found - When Shadow Repeater finds a difference it should stop looking for more.
+                        Additional LLM instructions - Give Shadow Repeater some additional instructions
                         """)
                 .withKeywords("Repeater", "Shadow", "Shadow Repeater settings")
                 .withSettings(
@@ -80,7 +81,8 @@ public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadin
                         SettingsPanelSetting.integerSetting("Maximum variation amount", 10),
                         SettingsPanelSetting.stringSetting("Excluded headers", "Authorization,Cookie,Content-Length,Connection"),
                         SettingsPanelSetting.integerSetting("Time difference threshold (ms)", 4000),
-                        SettingsPanelSetting.booleanSetting("Stop when first difference found", false)
+                        SettingsPanelSetting.booleanSetting("Stop when first difference found", false),
+                        SettingsPanelSetting.stringSetting("Additional LLM instructions", "")
                 )
                 .build();
         api.userInterface().registerSettingsPanel(settings);

@@ -18,6 +18,7 @@ public class VariationAnalyser {
         ShadowRepeaterExtension.executorService.submit(() -> {
             try {
                 int maxVariationAmount = settings.getInteger("Maximum variation amount");
+                String additionalInstructions = settings.getString("Additional LLM instructions");
                 boolean shouldReduceVectors = settings.getBoolean("Reduce vectors");
                 boolean debugAi = settings.getBoolean("Debug AI");
                 api.logging().logToOutput("------");
@@ -38,7 +39,11 @@ public class VariationAnalyser {
                         Do not use example domains, you should always use the existing domains in the data your analyzing.
                         What are the structural differences between the vectors in this dataset? 
                         - Identify other possible variations that could follow the same pattern.
-                        - Extract common patterns from this data and generate equivalent vectors used in other contexts.                       
+                        - Extract common patterns from this data and generate equivalent vectors used in other contexts.
+                        Additional instructions:
+                        """
+                        +additionalInstructions+"\n"+
+                        """
                         Here is a list of headers and parameters for you to analyse in JSON:
                         """);
 
