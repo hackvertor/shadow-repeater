@@ -41,7 +41,7 @@ public class VariationAnalyser {
                         - Identify other possible variations that could follow the same pattern.
                         - Extract common patterns from this data and generate equivalent vectors used in other contexts.                      
                         """
-                        +(!additionalInstructions.isEmpty() ? "Additional instructions:\n"+additionalInstructions+"\n":"")+
+                        +(!additionalInstructions.isEmpty() ? "\n"+additionalInstructions+"\n":"")+
                         """
                         Here is a list of headers and parameters for you to analyse in JSON:
                         """);

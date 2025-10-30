@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Added additional instructions setting">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Only added additional instructions if the setting isn't empty">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ai/VariationAnalyser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -346,23 +344,7 @@
       <workItem from="1761326203551" duration="768000" />
       <workItem from="1761333559154" duration="1539000" />
       <workItem from="1761688846495" duration="33000" />
-      <workItem from="1761773768476" duration="1088000" />
-    </task>
-    <task id="LOCAL-00033" summary="Reduced control values request and skipped duplicate entries in paramHeaders list">
-      <option name="closed" value="true" />
-      <created>1739435141934</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1739435141934</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Removed domain spoofing from the prompt">
-      <option name="closed" value="true" />
-      <created>1739436632231</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1739436632231</updated>
+      <workItem from="1761773768476" duration="1518000" />
     </task>
     <task id="LOCAL-00035" summary="Removed duplicate code">
       <option name="closed" value="true" />
@@ -740,14 +722,29 @@
       <option name="project" value="LOCAL" />
       <updated>1761688872010</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Added additional instructions setting">
+      <option name="closed" value="true" />
+      <created>1761774862625</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1761774862625</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Only added additional instructions if the setting isn't empty">
+      <option name="closed" value="true" />
+      <created>1761775172572</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1761775172572</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Moved video demo" />
     <MESSAGE value="Moved screenshot" />
     <MESSAGE value="Updated installation instructions based on James' feedback" />
     <MESSAGE value="Added report feedback menu" />
@@ -772,6 +769,7 @@
     <MESSAGE value="Renamed setting" />
     <MESSAGE value="Updated capability" />
     <MESSAGE value="Added additional instructions setting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added additional instructions setting" />
+    <MESSAGE value="Only added additional instructions if the setting isn't empty" />
+    <option name="LAST_COMMIT_MESSAGE" value="Only added additional instructions if the setting isn't empty" />
   </component>
 </project>
