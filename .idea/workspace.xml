@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Only added additional instructions if the setting isn't empty">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Removed prefix from additional instructions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -345,6 +345,7 @@
       <workItem from="1761333559154" duration="1539000" />
       <workItem from="1761688846495" duration="33000" />
       <workItem from="1761773768476" duration="1518000" />
+      <workItem from="1762429640089" duration="2000" />
     </task>
     <task id="LOCAL-00035" summary="Removed duplicate code">
       <option name="closed" value="true" />

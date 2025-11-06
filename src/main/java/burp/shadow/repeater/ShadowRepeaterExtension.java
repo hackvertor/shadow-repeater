@@ -30,7 +30,7 @@ import java.util.concurrent.Executors;
 
 public class ShadowRepeaterExtension implements BurpExtension, ExtensionUnloadingHandler, IBurpExtender {
     public static String extensionName = "Shadow Repeater";
-    public static String version = "v1.2.1";
+    public static String version = "v1.2.2";
     public static MontoyaApi api;
     public static boolean hasHotKey = false;
     public static HashMap<String, Integer> requestHistoryPos = new HashMap<>();

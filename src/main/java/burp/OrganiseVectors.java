@@ -25,6 +25,7 @@ public class OrganiseVectors {
         boolean shouldStopWhenFoundFirstDifference = settings.getBoolean("Stop when first difference found");
         boolean foundDifference = false;
         Duration baseResponseTime = null;
+        boolean hasSentBaseReqResponse = false;
         Optional<TimingData> timing = baseRequestResponse.timingData();
         if(timing.isPresent()) {
             baseResponseTime = timing.get().timeBetweenRequestSentAndStartOfResponse();
@@ -46,7 +47,11 @@ public class OrganiseVectors {
                         double relativeDifference = baseMs > 0 ? (double) vectorMs / baseMs : 0;
 
                         if(absoluteDifference >= timeDifferenceMs || (relativeDifference * baseMs) > timeDifferenceMs) {
-                            api.organizer().sendToOrganizer(baseRequestResponse);
+                            if(!hasSentBaseReqResponse) {
+                                baseRequestResponse.annotations().setNotes("Base request response");
+                                api.organizer().sendToOrganizer(baseRequestResponse);
+                                hasSentBaseReqResponse = true;
+                            }
                             String notes = String.format(
                                 "The response has a significant time difference:%n" +
                                 "Base response: %dms%n" +
@@ -64,7 +69,11 @@ public class OrganiseVectors {
                     }
                 }
                 if(!responsesAnalyser.matches(requestResponse)) {
-                    api.organizer().sendToOrganizer(baseRequestResponse);
+                    if(!hasSentBaseReqResponse) {
+                        baseRequestResponse.annotations().setNotes("Base request response");
+                        api.organizer().sendToOrganizer(baseRequestResponse);
+                        hasSentBaseReqResponse = true;
+                    }
                     String notes = "The response is different in the following ways" +
                             System.lineSeparator() +
                             responsesAnalyser.describeDiff(requestResponse);
