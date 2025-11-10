@@ -2,6 +2,8 @@ package burp;
 
 import burp.api.montoya.http.handler.TimingData;
 import burp.api.montoya.http.message.responses.HttpResponse;
+import burp.api.montoya.utilities.rank.RankedHttpRequestResponse;
+import burp.shadow.repeater.Burp;
 import burp.shadow.repeater.ShadowRepeaterExtension;
 import burp.shadow.repeater.ai.VectorReducer;
 import burp.shadow.repeater.utils.Utils;
@@ -13,19 +15,20 @@ import org.json.JSONObject;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.Duration;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.Comparator;
 
 import static burp.shadow.repeater.ShadowRepeaterExtension.*;
 
 public class OrganiseVectors {
     public static boolean checkForDifferences(JSONArray vectors, HttpRequestResponse baseRequestResponse, CustomResponseGroup responsesAnalyser, HttpRequest req, String type, String name) {
+        Burp burp = new Burp(api.burpSuite().version());
         int timeDifferenceMs = settings.getInteger("Time difference threshold (ms)");
         boolean shouldStopWhenFoundFirstDifference = settings.getBoolean("Stop when first difference found");
         boolean foundDifference = false;
         Duration baseResponseTime = null;
         boolean hasSentBaseReqResponse = false;
+        ArrayList<HttpRequestResponse> organizerItems = new ArrayList<>();
         Optional<TimingData> timing = baseRequestResponse.timingData();
         if(timing.isPresent()) {
             baseResponseTime = timing.get().timeBetweenRequestSentAndStartOfResponse();
@@ -80,13 +83,30 @@ public class OrganiseVectors {
                     notes += System.lineSeparator();
                     notes += "Vector:"+vector+System.lineSeparator();
                     requestResponse.annotations().setNotes(notes);
-                    api.organizer().sendToOrganizer(requestResponse);
                     api.logging().logToOutput("Found an interesting item. Check the organiser to see the results.");
-                    if(shouldStopWhenFoundFirstDifference) return true;
+                    if(shouldStopWhenFoundFirstDifference) {
+                        api.organizer().sendToOrganizer(requestResponse);
+                        return true;
+                    } else {
+                        organizerItems.add(requestResponse);
+                    }
                     foundDifference = true;
                 }
             }
         }
+
+        if(burp.hasCapability(Burp.Capability.ANOMALY_RANK)) {
+            List<RankedHttpRequestResponse>  rankedOrganizerItems = api.utilities().rankingUtils().rank(organizerItems);
+            List<RankedHttpRequestResponse> sortedRankedOrganizerItems = rankedOrganizerItems.stream().sorted(Comparator.comparingInt(RankedHttpRequestResponse::rank).reversed()).toList();
+            for(RankedHttpRequestResponse sortedRankedOrganizerItem : sortedRankedOrganizerItems) {
+                api.organizer().sendToOrganizer(sortedRankedOrganizerItem.requestResponse());
+            }
+        } else {
+            for(HttpRequestResponse organizerItem : organizerItems) {
+                api.organizer().sendToOrganizer(organizerItem);
+            }
+        }
+
         return foundDifference;
     }
     public static void organise(HttpRequest req, JSONArray variations, JSONArray headersAndParameters, HttpResponse[] repeaterResponses, boolean shouldReduceVectors) {
