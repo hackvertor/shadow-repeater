@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Only sent the base request and response once">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/OrganiseVectors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/Burp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/Burp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/burp/shadow/repeater/ShadowRepeaterExtension.java" afterDir="false" />
-    </list>
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Used anomaly ranking Montoya feature for ordering variants that create differences" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -350,15 +345,7 @@
       <workItem from="1761773768476" duration="1518000" />
       <workItem from="1762429640089" duration="2000" />
       <workItem from="1762431420455" duration="208000" />
-      <workItem from="1762800306446" duration="3456000" />
-    </task>
-    <task id="LOCAL-00036" summary="Changed code to use a HashMap of requests and keyed it by parameters names which allows multiple repeater tabs to be used. When there is more than one parameter used it should pick the most frequent.">
-      <option name="closed" value="true" />
-      <created>1739444857793</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1739444857793</updated>
+      <workItem from="1762800306446" duration="3556000" />
     </task>
     <task id="LOCAL-00037" summary="Improved fingerprint list">
       <option name="closed" value="true" />
@@ -744,14 +731,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762431625582</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Used anomaly ranking Montoya feature for ordering variants that create differences">
+      <option name="closed" value="true" />
+      <created>1762804251013</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1762804251013</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated installation instructions based on James' feedback" />
     <MESSAGE value="Added report feedback menu" />
     <MESSAGE value="Fixed bug when modifying the request which was skipping the path." />
     <MESSAGE value="Added hotkey support for do analysis" />
@@ -776,6 +770,7 @@
     <MESSAGE value="Added additional instructions setting" />
     <MESSAGE value="Only added additional instructions if the setting isn't empty" />
     <MESSAGE value="Only sent the base request and response once" />
-    <option name="LAST_COMMIT_MESSAGE" value="Only sent the base request and response once" />
+    <MESSAGE value="Used anomaly ranking Montoya feature for ordering variants that create differences" />
+    <option name="LAST_COMMIT_MESSAGE" value="Used anomaly ranking Montoya feature for ordering variants that create differences" />
   </component>
 </project>
