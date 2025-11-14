@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated capability check with correct Burp version" />
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated Montoya dep">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/bulkScan-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/bulkScan-all.jar" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -347,14 +350,8 @@
       <workItem from="1762431420455" duration="208000" />
       <workItem from="1762800306446" duration="3556000" />
       <workItem from="1763046451312" duration="103000" />
-    </task>
-    <task id="LOCAL-00038" summary="Removed unused imports">
-      <option name="closed" value="true" />
-      <created>1739450133667</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1739450133667</updated>
+      <workItem from="1763048311418" duration="58000" />
+      <workItem from="1763121016289" duration="1048000" />
     </task>
     <task id="LOCAL-00039" summary="Moved to public montoya API">
       <option name="closed" value="true" />
@@ -740,14 +737,21 @@
       <option name="project" value="LOCAL" />
       <updated>1763046485409</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Updated Montoya dep">
+      <option name="closed" value="true" />
+      <created>1763048362951</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1763048362951</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed bug when modifying the request which was skipping the path." />
     <MESSAGE value="Added hotkey support for do analysis" />
     <MESSAGE value="Updated manifest" />
     <MESSAGE value="Removed library" />
@@ -772,6 +776,7 @@
     <MESSAGE value="Only sent the base request and response once" />
     <MESSAGE value="Used anomaly ranking Montoya feature for ordering variants that create differences" />
     <MESSAGE value="Updated capability check with correct Burp version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated capability check with correct Burp version" />
+    <MESSAGE value="Updated Montoya dep" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Montoya dep" />
   </component>
 </project>
