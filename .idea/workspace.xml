@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated Montoya dep">
+    <list default="true" id="5b2ea072-edc7-4ae8-b011-f1b62e16c4bb" name="Changes" comment="Updated bulkScan-all.jar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/bulkScan-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/bulkScan-all.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,15 +350,8 @@
       <workItem from="1762800306446" duration="3556000" />
       <workItem from="1763046451312" duration="103000" />
       <workItem from="1763048311418" duration="58000" />
-      <workItem from="1763121016289" duration="1048000" />
-    </task>
-    <task id="LOCAL-00039" summary="Moved to public montoya API">
-      <option name="closed" value="true" />
-      <created>1739523582609</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1739523582609</updated>
+      <workItem from="1763121016289" duration="1153000" />
+      <workItem from="1763141780660" duration="12000" />
     </task>
     <task id="LOCAL-00040" summary="Tweak the prompt to follow RFCs if detected and avoid using spoofed domains.">
       <option name="closed" value="true" />
@@ -745,14 +737,21 @@
       <option name="project" value="LOCAL" />
       <updated>1763048362951</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Updated bulkScan-all.jar">
+      <option name="closed" value="true" />
+      <created>1763123170229</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1763123170230</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added hotkey support for do analysis" />
     <MESSAGE value="Updated manifest" />
     <MESSAGE value="Removed library" />
     <MESSAGE value="Updated git ignore" />
@@ -777,6 +776,7 @@
     <MESSAGE value="Used anomaly ranking Montoya feature for ordering variants that create differences" />
     <MESSAGE value="Updated capability check with correct Burp version" />
     <MESSAGE value="Updated Montoya dep" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Montoya dep" />
+    <MESSAGE value="Updated bulkScan-all.jar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated bulkScan-all.jar" />
   </component>
 </project>
